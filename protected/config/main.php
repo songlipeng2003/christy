@@ -30,6 +30,7 @@ return array(
                 'bootstrap.gii',
             ),
 		),
+		'admin',
 	),
 
 	// application components
@@ -56,7 +57,7 @@ return array(
 		),
 		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=christy',
+			'connectionString' => 'mysql:host=localhost;dbname=christy;unix_socket=/tmp/mysql.sock',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
