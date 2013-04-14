@@ -60,9 +60,9 @@ class Author extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'Id',
-			'name' => 'Name',
-			'destription' => 'Destription',
+			'id' => '编号',
+			'name' => '名称',
+			'destription' => '描述',
 		);
 	}
 
@@ -77,11 +77,11 @@ class Author extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id', $this->id);
 
-		$criteria->compare('name',$this->name,true);
+		$criteria->compare('name', $this->name, true);
 
-		$criteria->compare('destription',$this->destription,true);
+		$criteria->compare('destription', $this->destription, true);
 
 		return new CActiveDataProvider('Author', array(
 			'criteria'=>$criteria,
