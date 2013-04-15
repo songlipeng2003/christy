@@ -1,15 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Authors',
+	'作者',
 );
 
 $this->menu=array(
-	array('label'=>'Create Author','url'=>array('create')),
-	array('label'=>'Manage Author','url'=>array('admin')),
+	array('label'=>'创建作者','url'=>array('create')),
+	array('label'=>'管理作者','url'=>array('admin')),
 );
 ?>
 
-<h1>Authors</h1>
+<h1>作者</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

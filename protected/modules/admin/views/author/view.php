@@ -1,15 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Authors'=>array('index'),
+	'作者'=>array('index'),
 	$model->name,
 );
 
 $this->menu=array(
-	array('label'=>'List Author','url'=>array('index')),
-	array('label'=>'Create Author','url'=>array('create')),
-	array('label'=>'Update Author','url'=>array('update','id'=>$model->id)),
-	array('label'=>'Delete Author','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Author','url'=>array('admin')),
+	array('label'=>'查看作者','url'=>array('index')),
+	array('label'=>'创建作者','url'=>array('create')),
+	array('label'=>'更新作者','url'=>array('update','id'=>$model->id)),
+	array('label'=>'删除作者','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'管理作者','url'=>array('admin')),
 );
 ?>
 

@@ -1,18 +1,18 @@
 <?php
 $this->breadcrumbs=array(
-	'Authors'=>array('index'),
+	'作者'=>array('index'),
 	$model->name=>array('view','id'=>$model->id),
-	'Update',
+	'更新',
 );
 
 $this->menu=array(
-	array('label'=>'List Author','url'=>array('index')),
-	array('label'=>'Create Author','url'=>array('create')),
-	array('label'=>'View Author','url'=>array('view','id'=>$model->id)),
-	array('label'=>'Manage Author','url'=>array('admin')),
+	array('label'=>'显示作者','url'=>array('index')),
+	array('label'=>'创建作者','url'=>array('create')),
+	array('label'=>'查看作者','url'=>array('view','id'=>$model->id)),
+	array('label'=>'管理作者','url'=>array('admin')),
 );
 ?>
 
-<h1>Update Author <?php echo $model->id; ?></h1>
+<h1>更新作者 <?php echo $model->id; ?></h1>
 
 <?php echo $this->renderPartial('_form',array('model'=>$model)); ?>
