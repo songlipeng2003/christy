@@ -12,6 +12,9 @@ class AdminModule extends CWebModule
 			'admin.models.*',
 			'admin.components.*',
 		));
+
+		$this->layoutPath = Yii::getPathOfAlias('admin.views.layouts');
+		$this->layout = 'column2';
 	}
 
 	public function beforeControllerAction($controller, $action)
