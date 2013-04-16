@@ -53,12 +53,12 @@ return array(
 			'caseSensitive'=>false,  
 		),
 		
-		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
+		//'db'=>array(
+		//	'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
+		//),
 		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=christy;unix_socket=/tmp/mysql.sock',
+			'connectionString' => 'mysql:host=localhost;dbname=christy',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
