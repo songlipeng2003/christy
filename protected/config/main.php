@@ -81,6 +81,11 @@ return array(
 					'class'=>'CWebLogRoute',
 				),
 				*/
+	            array(
+	                'class'=>'ext.yii-debug-toolbar.YiiDebugToolbarRoute',
+	                // Access is restricted by default to the localhost
+	                'ipFilters'=>array('127.0.0.1', '192.168.1.*'),
+	            ),
 			),
 		),
         'bootstrap'=>array(
