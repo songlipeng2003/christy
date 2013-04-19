@@ -69,7 +69,7 @@ class CategoryController extends Controller
 		if(isset($_POST['Category']))
 		{
 			$model->attributes=$_POST['Category'];
-			if($model->save())
+			if($model->saveNode())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
@@ -93,7 +93,7 @@ class CategoryController extends Controller
 		if(isset($_POST['Category']))
 		{
 			$model->attributes=$_POST['Category'];
-			if($model->save())
+			if($model->saveNode())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
