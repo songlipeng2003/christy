@@ -25,4 +25,18 @@ class Controller extends CController
     {
         parent::init();
     }
+
+    public function behaviors()
+	{
+	    return array(
+	        'seo'=>array('class'=>'ext.seo.components.SeoControllerBehavior'),
+	    );
+	}
+
+	public function filters()
+	{
+	    return array(
+	        array('ext.seo.components.SeoFilter + view'), // apply the filter to the view-action
+	    );
+	}
 }
