@@ -3,7 +3,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="help-block">Fields with <span class="required">*</span> are required.</p>
+	<p class="help-block">带 <span class="required">*</span> 的字段必须填写.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -15,7 +15,7 @@
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',
 			'type'=>'primary',
-			'label'=>$model->isNewRecord ? 'Create' : 'Save',
+			'label'=>$model->isNewRecord ? '创建' : '保存',
 		)); ?>
 	</div>
 
