@@ -91,6 +91,19 @@ return array(
         'bootstrap'=>array(
             'class'=>'bootstrap.components.Bootstrap',
         ),
+		'cache'=>array(
+            'class'=>'system.caching.CFileCache',
+        ),
+		'settings'=>array(
+	        'class'             => 'CmsSettings',
+	        'cacheComponentId'  => 'cache',
+	        'cacheId'           => 'global_website_settings',
+	        'cacheTime'         => 84000,
+	        'tableName'     	=> 'settings',
+	        'dbComponentId'     => 'db',
+	        'createTable'       => true,
+	        'dbEngine'      	=> 'InnoDB',
+	    ),
 	),
 
 	// application-level parameters that can be accessed
