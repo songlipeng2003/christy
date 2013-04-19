@@ -69,7 +69,12 @@ class <?php echo $this->controllerClass; ?> extends <?php echo $this->baseContro
 		{
 			$model->attributes=$_POST['<?php echo $this->modelClass; ?>'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>));
+			{
+				Yii::app()->user->setFlash('success', "创建成功");
+				$this->redirect(array('view','id'=>$model->id));
+			}else{
+				Yii::app()->user->setFlash('error', "创建失败");
+			}
 		}
 
 		$this->render('create',array(
@@ -92,8 +97,14 @@ class <?php echo $this->controllerClass; ?> extends <?php echo $this->baseContro
 		if(isset($_POST['<?php echo $this->modelClass; ?>']))
 		{
 			$model->attributes=$_POST['<?php echo $this->modelClass; ?>'];
+
 			if($model->save())
+			{
+				Yii::app()->user->setFlash('success', "更新成功");
 				$this->redirect(array('view','id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>));
+			}else{
+				Yii::app()->user->setFlash('error', "更新失败");
+			}
 		}
 
 		$this->render('update',array(
@@ -103,7 +114,7 @@ class <?php echo $this->controllerClass; ?> extends <?php echo $this->baseContro
 
 	/**
 	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
+	 * If deletion is successful, the browser will be redirected to the 'index' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
 	public function actionDelete($id)
@@ -115,7 +126,11 @@ class <?php echo $this->controllerClass; ?> extends <?php echo $this->baseContro
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			{
+				Yii::app()->user->setFlash('success', "删除成功");
+
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+			}
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
