@@ -16,16 +16,16 @@
 	<?php echo CHtml::encode($data->category); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('prss')); ?>:</b>
-	<?php echo CHtml::encode($data->prss); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('press')); ?>:</b>
+	<?php echo CHtml::encode($data->press); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('isbn')); ?>:</b>
 	<?php echo CHtml::encode($data->isbn); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('destription')); ?>:</b>
-	<?php echo CHtml::encode($data->destription); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
+	<?php echo CHtml::encode($data->description); ?>
 	<br />
 
 

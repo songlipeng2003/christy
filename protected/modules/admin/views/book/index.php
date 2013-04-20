@@ -1,11 +1,10 @@
 <?php
 $this->breadcrumbs=array(
-	'Books'=>array('index'),
-	'管理',
+	Yii::t('model', 'Books'),
 );
 
 $this->menu=array(
-	array('label'=>'创建 Book','url'=>array('create')),
+	array('label'=>Yii::t('admin', 'Create {model}', array('{model}'=>Yii::t('model', 'Book'))),'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -22,14 +21,11 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>管理 Books</h1>
+<h1><?php echo Yii::t('admin', 'Create {model}', array('{model}'=>Yii::t('model', 'Book'))); ?></h1>
 
-<p>
-你可以选择输入一个比较运算符 (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) 在每个搜索值前来指定如何应该做比较.
-</p>
+<p><?php echo Yii::t('admin', 'You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b> or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.'); ?></p>
 
-<?php echo CHtml::link('高级搜索','#',array('class'=>'search-button btn')); ?>
+<?php echo CHtml::link(Yii::t('admin', 'Advanced Search'),'#',array('class'=>'search-button btn')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -45,10 +41,10 @@ or <b>=</b>) 在每个搜索值前来指定如何应该做比较.
 		'name',
 		'author',
 		'category',
-		'prss',
+		'press',
 		'isbn',
 		/*
-		'destription',
+		'description',
 		*/
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',

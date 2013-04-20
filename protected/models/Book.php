@@ -8,9 +8,9 @@
  * @property string $name
  * @property string $author
  * @property string $category
- * @property string $prss
+ * @property string $press
  * @property string $isbn
- * @property string $destription
+ * @property string $description
  */
 class Book extends CActiveRecord
 {
@@ -40,11 +40,11 @@ class Book extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, author, prss, isbn', 'required'),
-			array('name, author, category, prss, isbn, destription', 'length', 'max'=>255),
+			array('name, author, press, isbn', 'required'),
+			array('name, author, category, press, isbn, description', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, author, category, prss, isbn, destription', 'safe', 'on'=>'search'),
+			array('id, name, author, category, press, isbn, description', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,13 +65,13 @@ class Book extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'name' => 'Name',
-			'author' => 'Author',
-			'category' => 'Category',
-			'prss' => 'Prss',
-			'isbn' => 'Isbn',
-			'destription' => 'Destription',
+			'id' => '编号',
+			'name' => '书籍名称',
+			'author' => '作者',
+			'category' => '书籍分类',
+			'press' => '出版社',
+			'isbn' => 'ISBN编号',
+			'description' => '描述',
 		);
 	}
 
@@ -90,9 +90,9 @@ class Book extends CActiveRecord
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('author',$this->author,true);
 		$criteria->compare('category',$this->category,true);
-		$criteria->compare('prss',$this->prss,true);
+		$criteria->compare('press',$this->press,true);
 		$criteria->compare('isbn',$this->isbn,true);
-		$criteria->compare('destription',$this->destription,true);
+		$criteria->compare('description',$this->description,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

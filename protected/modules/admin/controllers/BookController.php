@@ -62,7 +62,12 @@ class BookController extends Controller
 		{
 			$model->attributes=$_POST['Book'];
 			if($model->save())
+			{
+				Yii::app()->user->setFlash('success', Yii::t('admin', 'Create succesfully'));
 				$this->redirect(array('view','id'=>$model->id));
+			}else{
+				Yii::app()->user->setFlash('error', Yii::t('admin', 'Create failed'));
+			}
 		}
 
 		$this->render('create',array(
@@ -85,8 +90,14 @@ class BookController extends Controller
 		if(isset($_POST['Book']))
 		{
 			$model->attributes=$_POST['Book'];
+
 			if($model->save())
+			{
+				Yii::app()->user->setFlash('success', Yii::t('admin', 'Update succesfully'));
 				$this->redirect(array('view','id'=>$model->id));
+			}else{
+				Yii::app()->user->setFlash('error', Yii::t('admin', 'Update failed'));
+			}
 		}
 
 		$this->render('update',array(
@@ -96,7 +107,7 @@ class BookController extends Controller
 
 	/**
 	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
+	 * If deletion is successful, the browser will be redirected to the 'index' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
 	public function actionDelete($id)
@@ -108,7 +119,11 @@ class BookController extends Controller
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			{
+				Yii::app()->user->setFlash('success', Yii::t('admin', 'Delete succesfully'));
+
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+			}
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
