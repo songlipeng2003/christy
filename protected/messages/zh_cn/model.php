@@ -12,4 +12,11 @@ return array(
     'Press.name'=>'名称',
     'Press.address'=>'地址',
     'Press.description'=>'描述',
+
+    'Category'=>'类别',
+    'Categories'=>'类别',
+    'Category.id'=>'编号',
+    'Category.name'=>'名称',
+    'Category.description'=>'描述',
+    'Category.parent_id'=>'父类别',
 );
