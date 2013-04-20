@@ -1,19 +1,16 @@
 <?php
 $this->breadcrumbs=array(
-	'Presses'=>array('index'),
+	Yii::t('model', 'Presses')=>array('index'),
 	$model->name,
 );
 
 $this->menu=array(
-	array('label'=>'List Press','url'=>array('index')),
-	array('label'=>'Create Press','url'=>array('create')),
-	array('label'=>'Update Press','url'=>array('update','id'=>$model->id)),
-	array('label'=>'Delete Press','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Press','url'=>array('admin')),
+	array('label'=>Yii::t('admin', 'Update {model}', array('{model}'=>Yii::t('model', 'Press'))),'url'=>array('update','id'=>$model->id)),
+	array('label'=>Yii::t('admin', 'Delete {model}', array('{model}'=>Yii::t('model', 'Press'))),'url'=>'#','htmlOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>Yii::t('admin', 'Are you sure you want to delete this item?'))),
 );
 ?>
 
-<h1>View Press #<?php echo $model->id; ?></h1>
+<h1><?php echo Yii::t('admin', 'View {model}', array('{model}'=>Yii::t('model', 'Press'))); ?>  #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('bootstrap.widgets.TbDetailView',array(
 	'data'=>$model,
@@ -21,6 +18,6 @@ $this->menu=array(
 		'id',
 		'name',
 		'address',
-		'destription',
+		'description',
 	),
 )); ?>

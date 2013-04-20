@@ -1,18 +1,11 @@
 <?php
 $this->breadcrumbs=array(
-	'Presses'=>array('index'),
+	Yii::t('model', 'Presses')=>array('index'),
 	$model->name=>array('view','id'=>$model->id),
-	'Update',
-);
-
-$this->menu=array(
-	array('label'=>'List Press','url'=>array('index')),
-	array('label'=>'Create Press','url'=>array('create')),
-	array('label'=>'View Press','url'=>array('view','id'=>$model->id)),
-	array('label'=>'Manage Press','url'=>array('admin')),
+	Yii::t('admin', 'Update'),
 );
 ?>
 
-<h1>Update Press <?php echo $model->id; ?></h1>
+<h1><?php echo Yii::t('admin', 'Update {model}', array('{model}'=>Yii::t('model', 'Press'))); ?>  <?php echo $model->id; ?></h1>
 
 <?php echo $this->renderPartial('_form',array('model'=>$model)); ?>

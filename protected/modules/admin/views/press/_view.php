@@ -12,8 +12,8 @@
 	<?php echo CHtml::encode($data->address); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('destription')); ?>:</b>
-	<?php echo CHtml::encode($data->destription); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
+	<?php echo CHtml::encode($data->description); ?>
 	<br />
 
 
