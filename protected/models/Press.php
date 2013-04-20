@@ -7,7 +7,7 @@
  * @property integer $id
  * @property string $name
  * @property string $address
- * @property string $destription
+ * @property string $description
  */
 class Press extends CActiveRecord
 {
@@ -38,10 +38,10 @@ class Press extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name, address', 'required'),
-			array('name, address, destription', 'length', 'max'=>255),
+			array('name, address, description', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, address, destription', 'safe', 'on'=>'search'),
+			array('id, name, address, description', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,10 +62,10 @@ class Press extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'name' => 'Name',
-			'address' => 'Address',
-			'destription' => 'Destription',
+			'id' => Yii::t('model', 'Press.id'),
+			'name' => Yii::t('model', 'Press.name'),
+			'address' => Yii::t('model', 'Press.address'),
+			'description' => Yii::t('model', 'Press.description'),
 		);
 	}
 
@@ -83,7 +83,7 @@ class Press extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('address',$this->address,true);
-		$criteria->compare('destription',$this->destription,true);
+		$criteria->compare('description',$this->description,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
