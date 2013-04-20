@@ -1,11 +1,11 @@
 <?php
 $this->breadcrumbs=array(
-	'作者'=>array('index'),
-	'创建',
+	Yii::t('model', 'Authors')=>array('index'),
+	Yii::t('admin', 'Create'),
 );
 
 ?>
 
-<h1>创建作者</h1>
+<h1><?php echo Yii::t('admin', 'Create {model}', array('{model}'=>Yii::t('model', 'Author'))); ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

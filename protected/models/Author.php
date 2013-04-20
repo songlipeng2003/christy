@@ -60,9 +60,9 @@ class Author extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '编号',
-			'name' => '名称',
-			'destription' => '描述',
+			'id' => Yii::t('model', 'Author.id'),
+			'name' => Yii::t('model', 'Author.name'),
+			'destription' => Yii::t('model', 'Author.description'),
 		);
 	}
 

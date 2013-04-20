@@ -3,7 +3,8 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="help-block">带 <span class="required">*</span> 的字段必须填写.</p>
+	<p class="help-block"><?php echo Yii::t('admin', 'required.tip') ?>
+</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -15,7 +16,7 @@
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',
 			'type'=>'primary',
-			'label'=>$model->isNewRecord ? '创建' : '保存',
+			'label'=>$model->isNewRecord ? Yii::t('admin', 'Create') : Yii::t('admin', 'Update'),
 		)); ?>
 	</div>
 

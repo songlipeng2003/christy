@@ -1,11 +1,10 @@
 <?php
 $this->breadcrumbs=array(
-	'作者'=>array('index'),
-	'管理',
+	Yii::t('model', 'Authors'),
 );
 
 $this->menu=array(
-	array('label'=>'创建作者','url'=>array('create')),
+	array('label'=>Yii::t('admin', 'Create {model}', array('{model}'=>Yii::t('model', 'Author'))),'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -22,14 +21,11 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>管理作者</h1>
+<h1><?php echo Yii::t('admin', 'Create {model}', array('{model}'=>Yii::t('model', 'Author'))); ?></h1>
 
-<p>
-你可以选择输入一个比较运算符 (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) 在每个搜索值前来指定如何应该做比较.
-</p>
+<p><?php Yii::t('admin', 'search.tip'); ?></p>
 
-<?php echo CHtml::link('高级搜索','#',array('class'=>'search-button btn')); ?>
+<?php echo CHtml::link(Yii::t('admin', 'Advanced Search'),'#',array('class'=>'search-button btn')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
