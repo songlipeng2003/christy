@@ -1,18 +1,11 @@
 <?php
 $this->breadcrumbs=array(
-	'Categories'=>array('index'),
+	Yii::t('model', 'Categories')=>array('index'),
 	$model->name=>array('view','id'=>$model->id),
-	'Update',
-);
-
-$this->menu=array(
-	array('label'=>'List Category','url'=>array('index')),
-	array('label'=>'Create Category','url'=>array('create')),
-	array('label'=>'View Category','url'=>array('view','id'=>$model->id)),
-	array('label'=>'Manage Category','url'=>array('admin')),
+	Yii::t('admin', 'Update'),
 );
 ?>
 
-<h1>Update Category <?php echo $model->id; ?></h1>
+<h1><?php echo Yii::t('admin', 'Update {model}', array('{model}'=>Yii::t('model', 'Category'))); ?>  <?php echo $model->id; ?></h1>
 
 <?php echo $this->renderPartial('_form',array('model'=>$model)); ?>

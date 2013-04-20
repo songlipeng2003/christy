@@ -1,25 +1,23 @@
 <?php
 $this->breadcrumbs=array(
-	'Categories'=>array('index'),
+	Yii::t('model', 'Categories')=>array('index'),
 	$model->name,
 );
 
 $this->menu=array(
-	array('label'=>'List Category','url'=>array('index')),
-	array('label'=>'Create Category','url'=>array('create')),
-	array('label'=>'Update Category','url'=>array('update','id'=>$model->id)),
-	array('label'=>'Delete Category','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Category','url'=>array('admin')),
+	array('label'=>Yii::t('admin', 'Update {model}', array('{model}'=>Yii::t('model', 'Category'))),'url'=>array('update','id'=>$model->id)),
+	array('label'=>Yii::t('admin', 'Delete {model}', array('{model}'=>Yii::t('model', 'Category'))),'url'=>'#','htmlOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>Yii::t('admin', 'Are you sure you want to delete this item?'))),
 );
 ?>
 
-<h1>View Category #<?php echo $model->id; ?></h1>
+<h1><?php echo Yii::t('admin', 'View {model}', array('{model}'=>Yii::t('model', 'Category'))); ?>  #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('bootstrap.widgets.TbDetailView',array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
 		'name',
-		'destription',
+		'description',
+		'parent_id',
 	),
 )); ?>
