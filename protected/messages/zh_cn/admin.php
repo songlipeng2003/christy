@@ -13,6 +13,7 @@ return array(
     'search.tip'=>'你可以选择输入一个比较运算符 (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
 or <b>=</b>) 在每个搜索值前来指定如何应该做比较.',
     'required.tip'=>'带 <span class="required">*</span> 的字段必须填写.',
+    'Are you sure you want to delete this item?'=>'确定要删除这条数据吗?'
     'create.success'=>'创建成功',
     'create.error'=>'创建失败',
     'update.success'=>'更新成功',
