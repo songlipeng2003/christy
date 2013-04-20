@@ -16,7 +16,7 @@ echo "\$this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>Yii::t('admin', 'Update {model}', array('{model}'=>Yii::t('model', '<?php echo $this->modelClass ?>'))),'url'=>array('update','id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>)),
-	array('label'=>Yii::t('admin', 'Delete {model}', array('{model}'=>Yii::t('model', '<?php echo $this->modelClass ?>'))),'url'=>'#','htmlOptions'=>array('submit'=>array('delete','id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>),'confirm'=>Yii::t('model', 'Are you sure you want to delete this item?'))),
+	array('label'=>Yii::t('admin', 'Delete {model}', array('{model}'=>Yii::t('model', '<?php echo $this->modelClass ?>'))),'url'=>'#','htmlOptions'=>array('submit'=>array('delete','id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>),'confirm'=>Yii::t('admin', 'Are you sure you want to delete this item?'))),
 );
 ?>
 

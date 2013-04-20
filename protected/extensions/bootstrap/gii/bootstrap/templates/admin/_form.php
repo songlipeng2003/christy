@@ -9,7 +9,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>\n"; ?>
 
-	<p class="help-block"><?php echo "<?php echo Yii::t('admin', 'required.tip') ?>\n"; ?></p>
+	<p class="help-block"><?php echo "<?php echo Yii::t('admin', 'Fields with <span class=\"required\">*</span> are required.') ?>\n"; ?></p>
 
 	<?php echo "<?php echo \$form->errorSummary(\$model); ?>\n"; ?>
 
