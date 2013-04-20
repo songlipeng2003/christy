@@ -23,7 +23,7 @@ $('.search-form form').submit(function(){
 
 <h1><?php echo Yii::t('admin', 'Create {model}', array('{model}'=>Yii::t('model', 'Author'))); ?></h1>
 
-<p><?php Yii::t('admin', 'search.tip'); ?></p>
+<p><?php echo Yii::t('admin', 'You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b> or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.'); ?></p>
 
 <?php echo CHtml::link(Yii::t('admin', 'Advanced Search'),'#',array('class'=>'search-button btn')); ?>
 <div class="search-form" style="display:none">
