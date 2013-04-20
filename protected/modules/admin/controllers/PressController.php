@@ -6,7 +6,7 @@ class PressController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	// public $layout='//layouts/column2';
+	public $layout='/layouts/column2';
 
 	/**
 	 * @return array action filters
@@ -26,16 +26,8 @@ class PressController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+			array('allow',
+				'actions'=>array('index','view','create','update','delete'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -70,7 +62,12 @@ class PressController extends Controller
 		{
 			$model->attributes=$_POST['Press'];
 			if($model->save())
+			{
+				Yii::app()->user->setFlash('success', Yii::t('admin', 'Create succesfully'));
 				$this->redirect(array('view','id'=>$model->id));
+			}else{
+				Yii::app()->user->setFlash('error', Yii::t('admin', 'Create failed'));
+			}
 		}
 
 		$this->render('create',array(
@@ -93,8 +90,14 @@ class PressController extends Controller
 		if(isset($_POST['Press']))
 		{
 			$model->attributes=$_POST['Press'];
+
 			if($model->save())
+			{
+				Yii::app()->user->setFlash('success', Yii::t('admin', 'Update succesfully'));
 				$this->redirect(array('view','id'=>$model->id));
+			}else{
+				Yii::app()->user->setFlash('error', Yii::t('admin', 'Update failed'));
+			}
 		}
 
 		$this->render('update',array(
@@ -104,7 +107,7 @@ class PressController extends Controller
 
 	/**
 	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
+	 * If deletion is successful, the browser will be redirected to the 'index' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
 	public function actionDelete($id)
@@ -116,34 +119,27 @@ class PressController extends Controller
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			{
+				Yii::app()->user->setFlash('success', Yii::t('admin', 'Delete succesfully'));
+
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+			}
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 
 	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Press');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionIndex()
 	{
 		$model=new Press('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Press']))
 			$model->attributes=$_GET['Press'];
 
-		$this->render('admin',array(
+		$this->render('index',array(
 			'model'=>$model,
 		));
 	}
