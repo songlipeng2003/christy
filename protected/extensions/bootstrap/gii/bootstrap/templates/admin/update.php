@@ -9,13 +9,13 @@ echo "<?php\n";
 $nameColumn=$this->guessNameColumn($this->tableSchema->columns);
 $label=$this->pluralize($this->class2name($this->modelClass));
 echo "\$this->breadcrumbs=array(
-	'$label'=>array('index'),
+	Yii::t('model', '$label')=>array('index'),
 	\$model->{$nameColumn}=>array('view','id'=>\$model->{$this->tableSchema->primaryKey}),
-	'更新',
+	Yii::t('admin', 'Update'),
 );\n";
 ?>
 ?>
 
-<h1>更新 <?php echo $this->modelClass." <?php echo \$model->{$this->tableSchema->primaryKey}; ?>"; ?></h1>
+<h1><?php echo "<?php echo Yii::t('admin', 'Update {model}', array('{model}'=>Yii::t('model', '$this->modelClass'))); ?>" ?> <?php echo " <?php echo \$model->{$this->tableSchema->primaryKey}; ?>"; ?></h1>
 
 <?php echo "<?php echo \$this->renderPartial('_form',array('model'=>\$model)); ?>"; ?>

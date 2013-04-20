@@ -8,13 +8,13 @@
 echo "<?php\n";
 $label=$this->pluralize($this->class2name($this->modelClass));
 echo "\$this->breadcrumbs=array(
-	'$label'=>array('index'),
-	'创建',
+	Yii::t('model', '$label')=>array('index'),
+	Yii::t('admin', 'Create'),
 );\n";
 ?>
 
 ?>
 
-<h1>创建 <?php echo $this->modelClass; ?></h1>
+<h1><?php echo "<?php echo Yii::t('admin', 'Create {model}', array('{model}'=>Yii::t('model', '$this->modelClass'))); ?>" ?></h1>
 
 <?php echo "<?php echo \$this->renderPartial('_form', array('model'=>\$model)); ?>"; ?>

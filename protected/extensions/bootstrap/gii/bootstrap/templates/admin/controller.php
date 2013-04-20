@@ -70,10 +70,10 @@ class <?php echo $this->controllerClass; ?> extends <?php echo $this->baseContro
 			$model->attributes=$_POST['<?php echo $this->modelClass; ?>'];
 			if($model->save())
 			{
-				Yii::app()->user->setFlash('success', "创建成功");
+				Yii::app()->user->setFlash('success', Yii::t('admin', 'create.success'));
 				$this->redirect(array('view','id'=>$model->id));
 			}else{
-				Yii::app()->user->setFlash('error', "创建失败");
+				Yii::app()->user->setFlash('error', Yii::t('admin', 'create.error'));
 			}
 		}
 
@@ -100,10 +100,10 @@ class <?php echo $this->controllerClass; ?> extends <?php echo $this->baseContro
 
 			if($model->save())
 			{
-				Yii::app()->user->setFlash('success', "更新成功");
+				Yii::app()->user->setFlash('success', Yii::t('admin', 'udpate.success'));
 				$this->redirect(array('view','id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>));
 			}else{
-				Yii::app()->user->setFlash('error', "更新失败");
+				Yii::app()->user->setFlash('error', Yii::t('admin', 'update.error'));
 			}
 		}
 
@@ -127,7 +127,7 @@ class <?php echo $this->controllerClass; ?> extends <?php echo $this->baseContro
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 			{
-				Yii::app()->user->setFlash('success', "删除成功");
+				Yii::app()->user->setFlash('success', Yii::t('admin', 'delete.success'));
 
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 			}
