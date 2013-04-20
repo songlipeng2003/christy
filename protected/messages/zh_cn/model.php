@@ -19,4 +19,14 @@ return array(
     'Category.name'=>'名称',
     'Category.description'=>'描述',
     'Category.parent_id'=>'父类别',
+
+    'Book'=>'书籍',
+    'Books'=>'书籍',
+    'Book.id'=>'编号',
+    'Book.name'=>'图书名称',
+    'Book.author'=>'作者',
+    'Book.category'=>'分类',
+    'Book.press'=>'出版社',
+    'Book.author'=>'ISBN编号',
+    'Book.description'=>'描述',
 );
