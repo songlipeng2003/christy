@@ -15,7 +15,7 @@
 class NestedSetBehavior extends CActiveRecordBehavior
 {
 	public $hasManyRoots=false;
-	public $rootAttribute='root';
+	public $rootAttribute='parent_id';
 	public $leftAttribute='lft';
 	public $rightAttribute='rgt';
 	public $levelAttribute='level';

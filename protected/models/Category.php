@@ -97,6 +97,7 @@ class Category extends CActiveRecord
 	            'leftAttribute'=>'lft',
 	            'rightAttribute'=>'rgt',
 	            'levelAttribute'=>'level',
+	            'rootAttribute'=>'parent_id',
 	            'hasManyRoots'=>true,
 	        ),
 	    );
