@@ -9,12 +9,6 @@
 
 	<?php echo $form->textFieldRow($model,'description',array('class'=>'span5','maxlength'=>255)); ?>
 
-	<?php echo $form->textFieldRow($model,'lft',array('class'=>'span5')); ?>
-
-	<?php echo $form->textFieldRow($model,'rgt',array('class'=>'span5')); ?>
-
-	<?php echo $form->textFieldRow($model,'level',array('class'=>'span5')); ?>
-
 	<?php echo $form->textFieldRow($model,'parent_id',array('class'=>'span5')); ?>
 
 	<div class="form-actions">
