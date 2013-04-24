@@ -7,6 +7,10 @@
  * @property integer $id
  * @property string $name
  * @property string $description
+ * @property integer $lft
+ * @property integer $rgt
+ * @property integer $level
+ * @property integer $parent_id
  */
 class Category extends CActiveRecord
 {
@@ -37,6 +41,7 @@ class Category extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'required'),
+			array('lft, rgt, level, parent_id', 'numerical', 'integerOnly'=>true),
 			array('name, description', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -82,6 +87,7 @@ class Category extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
+		$criteria->compare('parent_id',$this->parent_id);
 		$criteria->compare('description',$this->description,true);
 
 		return new CActiveDataProvider($this, array(
@@ -89,17 +95,17 @@ class Category extends CActiveRecord
 		));
 	}
 
-	public function behaviors()
-	{
-	    return array(
-	        'nestedSetBehavior'=>array(
-	            'class'=>'NestedSetBehavior',
-	            'leftAttribute'=>'lft',
-	            'rightAttribute'=>'rgt',
-	            'levelAttribute'=>'level',
-	            'rootAttribute'=>'parent_id',
-	            'hasManyRoots'=>true,
-	        ),
-	    );
-	}
+	// public function behaviors()
+	// {
+	//     return array(
+	//         'nestedSetBehavior'=>array(
+	//             'class'=>'NestedSetBehavior',
+	//             'leftAttribute'=>'lft',
+	//             'rightAttribute'=>'rgt',
+	//             'levelAttribute'=>'level',
+	//             'rootAttribute'=>'parent_id',
+	//             'hasManyRoots'=>true,
+	//         ),
+	//     );
+	// }
 }
