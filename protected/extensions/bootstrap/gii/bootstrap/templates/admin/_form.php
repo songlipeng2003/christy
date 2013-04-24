@@ -6,7 +6,11 @@
 ?>
 <?php echo "<?php \$form=\$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'".$this->class2id($this->modelClass)."-form',
+	'enableClientValidation'=>true,
 	'enableAjaxValidation'=>false,
+    'clientOptions'=>array( 
+        'validateOnSubmit'=>true,
+    ), 
 )); ?>\n"; ?>
 
 	<p class="help-block"><?php echo "<?php echo Yii::t('admin', 'Fields with <span class=\"required\">*</span> are required.') ?>\n"; ?></p>
