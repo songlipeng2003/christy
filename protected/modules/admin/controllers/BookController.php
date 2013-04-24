@@ -54,7 +54,7 @@ class BookController extends Controller
 	public function actionCreate()
 	{
 		$model=new Book;
-
+		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -70,8 +70,11 @@ class BookController extends Controller
 			}
 		}
 
-		$this->render('create',array(
+    		$this->render('create',array(
 			'model'=>$model,
+			'author'=>$this->GetInfo()['author'],
+			'category'=>$this->GetInfo()['category'],
+			'press'=>$this->GetInfo()['press'],
 		));
 	}
 
@@ -102,6 +105,9 @@ class BookController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
+			'author'=>$this->GetInfo()['author'],
+			'category'=>$this->GetInfo()['category'],
+			'press'=>$this->GetInfo()['press'],
 		));
 	}
 
@@ -168,5 +174,24 @@ class BookController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+	protected function GetInfo()
+	{
+		$author=new Author;
+		$category=new Category;
+		$press=new Press;
+		$authors = array_map(function($record) {return $record->attributes;},$author->findAll());
+		$categories = array_map(function($record) {return $record->attributes;},$category->findAll());
+		$presses = array_map(function($record) {return $record->attributes;},$press->findAll());
+		foreach ($authors as $key => $value) {
+			$author_name[$value['name']]=$value['name'];
+		}
+		foreach ($categories as $key => $value) {
+			$category_name[$value['name']]=$value['name'];
+		}
+		foreach ($presses as $key => $value) {
+			$press_name[$value['name']]=$value['name'];
+		}
+		return array('author'=>$author_name,'category'=>$category_name,'press'=>$press_name);
 	}
 }
