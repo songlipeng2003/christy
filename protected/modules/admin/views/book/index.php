@@ -49,6 +49,7 @@ $('.search-form form').submit(function(){
 		'isbn',
 		/*
 		'description',
+		'document',
 		*/
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',

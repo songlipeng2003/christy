@@ -8,4 +8,4 @@ $this->breadcrumbs=array(
 
 <h1><?php echo Yii::t('admin', 'Create {model}', array('{model}'=>Yii::t('model', 'Book'))); ?></h1>
 
-<?php echo $this->renderPartial('_form',array('model'=>$model,'author'=>$author,'category'=>$category,'press'=>$press)); ?>
+<?php echo $this->renderPartial('_form',array('model'=>$model,'authors'=>$authors,'categories'=>$categories,'presses'=>$presses)); ?>

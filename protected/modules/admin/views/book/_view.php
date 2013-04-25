@@ -28,5 +28,11 @@
 	<?php echo CHtml::encode($data->description); ?>
 	<br />
 
+	<?php /*
+	<b><?php echo CHtml::encode($data->getAttributeLabel('document')); ?>:</b>
+	<?php echo CHtml::encode($data->document); ?>
+	<br />
+
+	*/ ?>
 
 </div>

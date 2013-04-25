@@ -11,6 +11,7 @@
  * @property string $press
  * @property string $isbn
  * @property string $description
+ * @property string $document
  */
 class Book extends CActiveRecord
 {
@@ -40,11 +41,11 @@ class Book extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, author, press, isbn', 'required'),
-			array('name, author, category, press, isbn, description', 'length', 'max'=>255),
+			array('name, author, press, isbn, document', 'required'),
+			array('name, author, category, press, isbn, description, document', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, author, category, press, isbn, description', 'safe', 'on'=>'search'),
+			array('id, name, author, category, press, isbn, description, document', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -72,6 +73,7 @@ class Book extends CActiveRecord
 			'press' => '出版社',
 			'isbn' => 'ISBN编号',
 			'description' => '描述',
+			'document'=>'书籍文档',
 		);
 	}
 
@@ -93,6 +95,7 @@ class Book extends CActiveRecord
 		$criteria->compare('press',$this->press,true);
 		$criteria->compare('isbn',$this->isbn,true);
 		$criteria->compare('description',$this->description,true);
+		$criteria->compare('document',$this->document,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -17,6 +17,8 @@
 
 	<?php echo $form->textFieldRow($model,'description',array('class'=>'span5','maxlength'=>255)); ?>
 
+	<?php echo $form->textFieldRow($model,'document',array('class'=>'span5','maxlength'=>255)); ?>
+
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',

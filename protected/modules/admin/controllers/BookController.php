@@ -54,7 +54,7 @@ class BookController extends Controller
 	public function actionCreate()
 	{
 		$model=new Book;
-		
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -70,11 +70,11 @@ class BookController extends Controller
 			}
 		}
 
-    		$this->render('create',array(
+		$this->render('create',array(
 			'model'=>$model,
-			'author'=>$this->GetInfo()['author'],
-			'category'=>$this->GetInfo()['category'],
-			'press'=>$this->GetInfo()['press'],
+			'authors'=>$this->GetInfo()['authors'],
+			'categories'=>$this->GetInfo()['categories'], 
+			'presses'=>$this->GetInfo()['presses'],
 		));
 	}
 
@@ -105,9 +105,9 @@ class BookController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
-			'author'=>$this->GetInfo()['author'],
-			'category'=>$this->GetInfo()['category'],
-			'press'=>$this->GetInfo()['press'],
+			'authors'=>$this->GetInfo()['authors'],
+			'categories'=>$this->GetInfo()['categories'], 
+			'presses'=>$this->GetInfo()['presses'],
 		));
 	}
 
@@ -177,21 +177,18 @@ class BookController extends Controller
 	}
 	protected function GetInfo()
 	{
-		$author=new Author;
-		$category=new Category;
-		$press=new Press;
-		$authors = array_map(function($record) {return $record->attributes;},$author->findAll());
-		$categories = array_map(function($record) {return $record->attributes;},$category->findAll());
-		$presses = array_map(function($record) {return $record->attributes;},$press->findAll());
-		foreach ($authors as $key => $value) {
-			$author_name[$value['name']]=$value['name'];
+		$author = array_map(function($record) {return $record->attributes;},Author::model()->findAll());
+		$category = array_map(function($record) {return $record->attributes;},Category::model()->findAll());
+		$press = array_map(function($record) {return $record->attributes;},Press::model()->findAll());
+		foreach ($author as $key => $value) {
+			$authors[$value['name']]=$value['name']; 
 		}
-		foreach ($categories as $key => $value) {
-			$category_name[$value['name']]=$value['name'];
+		foreach ($category as $key => $value) {
+			$categories[$value['name']]=$value['name'];
 		}
-		foreach ($presses as $key => $value) {
-			$press_name[$value['name']]=$value['name'];
+		foreach ($press as $key => $value) {
+			$presses[$value['name']]=$value['name'];
 		}
-		return array('author'=>$author_name,'category'=>$category_name,'press'=>$press_name);
-	}
+		return array('authors'=>$authors,'categories'=>$categories,'presses'=>$presses);
+	} 
 }
