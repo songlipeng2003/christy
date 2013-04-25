@@ -37,7 +37,11 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+		array(
+			'name'=>'id',
+			'type'=>'raw',
+			'value'=>'CHtml::link($data->id,Yii::app()->createUrl("admin/book/view",array("id"=>$data->id)))',
+		),
 		'name',
 		'author',
 		'category',
