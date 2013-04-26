@@ -76,11 +76,13 @@ class BookController extends Controller
 			
 		}
 
+		$info = $this->GetInfo();
+
 		$this->render('create',array(
 			'model'=>$model,
-			'authors'=>$this->GetInfo()['authors'],
-			'categories'=>$this->GetInfo()['categories'], 
-			'presses'=>$this->GetInfo()['presses'],
+			'authors'=>$info['authors'],
+			'categories'=>$info['categories'], 
+			'presses'=>$info['presses'],
 		));
 	}
 
@@ -114,11 +116,13 @@ class BookController extends Controller
 			
 		}
 
-		$this->render('update',array(
+		$info = $this->GetInfo();
+
+		$this->render('create',array(
 			'model'=>$model,
-			'authors'=>$this->GetInfo()['authors'],
-			'categories'=>$this->GetInfo()['categories'], 
-			'presses'=>$this->GetInfo()['presses'],
+			'authors'=>$info['authors'],
+			'categories'=>$info['categories'], 
+			'presses'=>$info['presses'],
 		));
 	}
 
