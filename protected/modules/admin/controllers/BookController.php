@@ -188,7 +188,7 @@ class BookController extends Controller
 		//$filesize=$file->getSize();//获取文件大小
 		//$filetype=$file->getType();//获取文件类型
 		$model->$document=time().'_'.$filename;//数据库中要存放文件名
-		$uploadfile="./assets/upload/".$model->$document;
+		$uploadfile="./upload/".$model->$document;
 		return $file->saveAs($uploadfile,true);//上传操作
 	}
 }
