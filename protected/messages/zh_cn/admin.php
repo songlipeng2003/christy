@@ -20,4 +20,6 @@ or <b>=</b>) 在每个搜索值前来指定如何应该做比较.',
     'Update failed'=>'更新失败',
     'Delete succesfully'=>'删除成功',
     'Delete failed'=>'删除失败',
+    'Upload succesfully'=>'上传成功',
+    'Upload failed'=>'上传失败',
 );

@@ -5,6 +5,9 @@
     'clientOptions'=>array( 
         'validateOnSubmit'=>true,
     ), 
+	'htmlOptions'=>array(
+	'enctype'=>'multipart/form-data',
+	), 
 )); ?>
 
 	<p class="help-block"><?php echo Yii::t('admin', 'Fields with <span class="required">*</span> are required.') ?>
