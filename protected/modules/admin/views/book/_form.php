@@ -19,11 +19,11 @@
 
 	<?php echo $form->textFieldRow($model,'isbn',array('class'=>'span5','maxlength'=>255)); ?>
 
-	<?php echo $form->dropDownListRow($model,'author',CHtml::listData(Author::model()->findAll(), 'id', 'name')); ?>
+	<?php echo $form->dropDownListRow($model,'author',CHtml::listData(Author::model()->findAll(), 'name', 'name')); ?>
 
-	<?php echo $form->dropDownListRow($model,'category',CHtml::listData(Category::model()->findAll(), 'id', 'name')); ?>
+	<?php echo $form->dropDownListRow($model,'category',CHtml::listData(Category::model()->findAll(), 'name', 'name')); ?>
 
-	<?php echo $form->dropDownListRow($model,'press',CHtml::listData(Press::model()->findAll(), 'id', 'name')); ?>
+	<?php echo $form->dropDownListRow($model,'press',CHtml::listData(Press::model()->findAll(), 'name', 'name')); ?>
 
 	<?php echo $form->fileFieldRow($model,'document'); ?>
 
