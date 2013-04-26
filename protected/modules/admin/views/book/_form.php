@@ -6,7 +6,7 @@
         'validateOnSubmit'=>true,
     ), 
 	'htmlOptions'=>array(
-	'enctype'=>'multipart/form-data',
+		'enctype'=>'multipart/form-data',
 	), 
 )); ?>
 
@@ -17,13 +17,13 @@
 
 	<?php echo $form->textFieldRow($model,'name',array('class'=>'span5','maxlength'=>255)); ?>
 
-	<?php echo $form->dropDownListRow($model,'author',$authors); ?>
-
-	<?php echo $form->dropDownListRow($model,'category',$categories); ?>
-
-	<?php echo $form->dropDownListRow($model,'press',$presses); ?>
-
 	<?php echo $form->textFieldRow($model,'isbn',array('class'=>'span5','maxlength'=>255)); ?>
+
+	<?php echo $form->dropDownListRow($model,'author',CHtml::listData(Author::model()->findAll(), 'id', 'name')); ?>
+
+	<?php echo $form->dropDownListRow($model,'category',CHtml::listData(Category::model()->findAll(), 'id', 'name')); ?>
+
+	<?php echo $form->dropDownListRow($model,'press',CHtml::listData(Press::model()->findAll(), 'id', 'name')); ?>
 
 	<?php echo $form->fileFieldRow($model,'document'); ?>
 

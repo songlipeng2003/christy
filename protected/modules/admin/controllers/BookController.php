@@ -76,13 +76,8 @@ class BookController extends Controller
 			
 		}
 
-		$info = $this->GetInfo();
-
 		$this->render('create',array(
 			'model'=>$model,
-			'authors'=>$info['authors'],
-			'categories'=>$info['categories'], 
-			'presses'=>$info['presses'],
 		));
 	}
 
@@ -116,13 +111,8 @@ class BookController extends Controller
 			
 		}
 
-		$info = $this->GetInfo();
-
 		$this->render('create',array(
 			'model'=>$model,
-			'authors'=>$info['authors'],
-			'categories'=>$info['categories'], 
-			'presses'=>$info['presses'],
 		));
 	}
 
@@ -190,22 +180,7 @@ class BookController extends Controller
 			Yii::app()->end();
 		}
 	}
-	protected function GetInfo()
-	{
-		$author = array_map(function($record) {return $record->attributes;},Author::model()->findAll());
-		$category = array_map(function($record) {return $record->attributes;},Category::model()->findAll());
-		$press = array_map(function($record) {return $record->attributes;},Press::model()->findAll());
-		foreach ($author as $key => $value) {
-			$authors[$value['name']]=$value['name']; 
-		}
-		foreach ($category as $key => $value) {
-			$categories[$value['name']]=$value['name'];
-		}
-		foreach ($press as $key => $value) {
-			$presses[$value['name']]=$value['name'];
-		}
-		return array('authors'=>$authors,'categories'=>$categories,'presses'=>$presses);
-	} 
+
 	protected function upload($model,$document)
 	{
 		$file=CUploadedFile::getInstance($model,$document);//获取表单名为$document的上传信息
