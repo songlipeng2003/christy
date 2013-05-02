@@ -17,11 +17,17 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		$users=array(
+		if($this->username=='demo' or $this->username=='admin')
+		{
+			$users=array(
 			// username => password
-			'demo'=>'demo',
-			'admin'=>'admin',
-		);
+			'demo'=>md5('demo'),
+			'admin'=>md5('admin'),
+			);
+		}else{
+			$users=CHtml::listData(User::model()->findAll(),'username','password');
+		}
+		
 		if(!isset($users[$this->username]))
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
 		elseif($users[$this->username]!==$this->password)
