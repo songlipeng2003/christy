@@ -43,12 +43,10 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('username, password, password2, user_email', 'required','on'=>'Register'),
-			array('user_email', 'required','on'=>'update'),
+			array('user_email', 'required','on'=>'Update'),
 			array('password, password2, password3', 'required','on'=>'ModifyPass'),
 			array('username, password, user_sex, user_tel, user_email, user_qq', 'length', 'max'=>255),
-			array('password2', 'compare', 'allowEmpty'=>false, 'compareAttribute'=>'password', 'message'=>'两次密码必须一致','on'=>'Register'),
-			array('password2', 'compare', 'allowEmpty'=>false, 'compareAttribute'=>'password3', 'message'=>'两次密码必须一致','on'=>'ModifyPass'),
-			array('user_email', 'email'),
+			array('password2', 'compare', 'allowEmpty'=>false, 'compareAttribute'=>'password', 'message'=>'两次密码必须一致','on'=>'Register,ModifyPass'),
 			array('username', 'unique'),
 		);
 	}
@@ -74,7 +72,7 @@ class User extends CActiveRecord
 			'username' => '用户名',
 			'password' => '密码',
 			'password2' => '再次输入密码',
-			'password3' => '输入新密码',
+			'password3' => '原密码',
 			'user_sex' => '性别',
 			'user_tel' => '电话',
 			'user_email' => '电子邮箱',

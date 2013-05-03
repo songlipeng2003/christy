@@ -12,9 +12,9 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<?php echo $form->passwordFieldRow($model,'password',array('class'=>'span5','maxlength'=>255)); ?>
-
 	<?php echo $form->passwordFieldRow($model,'password3',array('class'=>'span5','maxlength'=>255)); ?>
+
+	<?php echo $form->passwordFieldRow($model,'password',array('class'=>'span5','maxlength'=>255)); ?>
 
 	<?php echo $form->passwordFieldRow($model,'password2',array('class'=>'span5','maxlength'=>255)); ?>
 

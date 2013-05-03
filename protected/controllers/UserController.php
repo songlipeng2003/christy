@@ -73,7 +73,7 @@ class UserController extends Controller
 	 */
 	public function actionUpdate()
 	{
-		$model=$this->loadModel();
+		$model=$this->loadModel('Update');
 		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -97,17 +97,17 @@ class UserController extends Controller
 	}
 	public function actionModifyPass()
 	{
-		$model=$this->loadModel();
+		$model=$this->loadModel('ModifyPass');
 		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 		
 		if(isset($_POST['User']))
 		{
-			if(md5($_POST['User']['password']) === $model->password)
+			if(md5($_POST['User']['password3']) === $model->password)
 			{
 				$model->attributes=$_POST['User'];
-				$model->password=md5($_POST['User']['password3']);
+				$model->password=md5($_POST['User']['password']);
 				$model->password2=md5($_POST['User']['password2']);
 
 				if($model->save())
@@ -155,9 +155,10 @@ class UserController extends Controller
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer the ID of the model to be loaded
 	 */
-	public function loadModel()
+	public function loadModel($scenario='Info')
 	{
 		$model=User::model()->findByAttributes(array('username'=>Yii::app()->user->name));
+		$model->setScenario($scenario);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

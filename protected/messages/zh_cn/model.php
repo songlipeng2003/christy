@@ -29,4 +29,14 @@ return array(
     'Book.press'=>'出版社',
     'Book.author'=>'ISBN编号',
     'Book.description'=>'描述',
+
+    'User'=>'用户',
+    'Users'=>'用户',
+    'User.username'=>'用户名',
+    'User.password'=>'密码',
+    'User.user_sex'=>'性别',
+    'User.user_tel'=>'电话',
+    'User.user_email'=>'电子邮箱',
+    'User.user_qq'=>'QQ',
+
 );
