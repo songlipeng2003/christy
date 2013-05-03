@@ -117,7 +117,7 @@ class UserController extends Controller
 				}else{
 					Yii::app()->user->setFlash('error', Yii::t('admin', 'ModifyPass failed'));
 				}
-			}else{var_dump($_POST['User']);
+			}else{
 				Yii::app()->user->setFlash('error', '<strong>原密码错误</strong>.');
 			}
 		}
