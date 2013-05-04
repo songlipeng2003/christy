@@ -51,7 +51,7 @@ class UserController extends Controller
 		{
 			$model->attributes=$_POST['User'];
 			$model->password=md5($_POST['User']['password']);
-			$model->password2=md5($_POST['User']['password2']);
+			$model->config_password=md5($_POST['User']['config_password']);
 			if($model->save())
 			{
 				Yii::app()->user->setFlash('success', Yii::t('admin', 'Register succesfully'));
@@ -104,11 +104,11 @@ class UserController extends Controller
 		
 		if(isset($_POST['User']))
 		{
-			if(md5($_POST['User']['password3']) === $model->password)
+			if(md5($_POST['User']['old_password']) === $model->password)
 			{
 				$model->attributes=$_POST['User'];
 				$model->password=md5($_POST['User']['password']);
-				$model->password2=md5($_POST['User']['password2']);
+				$model->config_password=md5($_POST['User']['config_password']);
 
 				if($model->save())
 				{

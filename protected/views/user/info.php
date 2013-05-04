@@ -11,9 +11,9 @@ $this->menu=array(
 <?php $this->widget('bootstrap.widgets.TbDetailView',array(
 	'data'=>$model,
 	'attributes'=>array(
-		'user_sex',
-		'user_tel',
-		'user_email',
-		'user_qq',
+		'sex',
+		'tel',
+		'email',
+		'qq',
 	),
 )); ?>
