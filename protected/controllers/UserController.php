@@ -126,29 +126,6 @@ class UserController extends Controller
 			'model'=>$model,
 		));
 	}
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'index' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	// public function actionDelete($id)
-	// {
-	// 	if(Yii::app()->request->isPostRequest)
-	// 	{
-	// 		// we only allow deletion via POST request
-	// 		$this->loadModel($id)->delete();
-
-	// 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-	// 		if(!isset($_GET['ajax']))
-	// 		{
-	// 			Yii::app()->user->setFlash('success', Yii::t('admin', 'Delete succesfully'));
-
-	// 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
-	// 		}
-	// 	}
-	// 	else
-	// 		throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-	// }
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

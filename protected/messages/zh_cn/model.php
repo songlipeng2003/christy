@@ -39,4 +39,5 @@ return array(
     'User.user_email'=>'电子邮箱',
     'User.user_qq'=>'QQ',
 
+    'User.rememberMe'=>'记住我'
 );
