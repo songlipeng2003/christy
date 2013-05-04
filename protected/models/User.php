@@ -43,7 +43,7 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('username, password, config_password, email', 'required','on'=>'Register'),
-			array('email', 'required','on'=>'Update'),
+			array('email', 'required','on'=>'ModifyEmail'),
 			array('password, config_password, old_password', 'required','on'=>'ModifyPass'),
 			array('username, password, sex, tel, email, qq', 'length', 'max'=>255),
 			array('config_password', 'compare', 'allowEmpty'=>false, 'compareAttribute'=>'password', 'message'=>'两次密码必须一致','on'=>'Register,ModifyPass'),

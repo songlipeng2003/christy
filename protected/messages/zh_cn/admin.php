@@ -22,8 +22,4 @@ or <b>=</b>) 在每个搜索值前来指定如何应该做比较.',
     'Delete failed'=>'删除失败',
     'Upload succesfully'=>'上传成功',
     'Upload failed'=>'上传失败',
-    'ModifyPass succesfully'=>'修改密码成功',
-    'ModifyPass failed'=>'修改密码失败',
-    'ModifyPass'=>'修改密码',
-    'ModifyPass {model}'=>'{model}修改密码',
 );

@@ -54,10 +54,10 @@ class UserController extends Controller
 			$model->config_password=md5($_POST['User']['config_password']);
 			if($model->save())
 			{
-				Yii::app()->user->setFlash('success', Yii::t('admin', 'Register succesfully'));
+				Yii::app()->user->setFlash('success', Yii::t('common', 'Register succesfully'));
 				$this->redirect(array('/site/login'));
 			}else{
-				Yii::app()->user->setFlash('error', Yii::t('admin', 'Register failed'));
+				Yii::app()->user->setFlash('error', Yii::t('common', 'Register failed'));
 			}
 		}
 
@@ -84,10 +84,10 @@ class UserController extends Controller
 			
 			if($model->save())
 			{
-				Yii::app()->user->setFlash('success', Yii::t('admin', 'Update succesfully'));
+				Yii::app()->user->setFlash('success', Yii::t('common', 'Update succesfully'));
 				$this->redirect(array('info'));
 			}else{
-				Yii::app()->user->setFlash('error', Yii::t('admin', 'Update failed'));
+				Yii::app()->user->setFlash('error', Yii::t('common', 'Update failed'));
 			}
 		}
 
@@ -112,10 +112,10 @@ class UserController extends Controller
 
 				if($model->save())
 				{
-					Yii::app()->user->setFlash('success', Yii::t('admin', 'ModifyPass succesfully'));
+					Yii::app()->user->setFlash('success', Yii::t('common', 'ModifyPass succesfully'));
 					$this->redirect(array('info'));
 				}else{
-					Yii::app()->user->setFlash('error', Yii::t('admin', 'ModifyPass failed'));
+					Yii::app()->user->setFlash('error', Yii::t('common', 'ModifyPass failed'));
 				}
 			}else{
 				Yii::app()->user->setFlash('error', '<strong>原密码错误</strong>.');
@@ -145,6 +145,31 @@ class UserController extends Controller
 	{
 		$model=$this->loadModel();
 		$this->render('info',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionModifyEmail()
+	{
+		$model=$this->loadModel('ModifyEmail');
+		
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['User']))
+		{
+			$model->attributes=$_POST['User'];
+			
+			if($model->save())
+			{
+				Yii::app()->user->setFlash('success', Yii::t('common', 'ModifyEmail succesfully'));
+				$this->redirect(array('info'));
+			}else{
+				Yii::app()->user->setFlash('error', Yii::t('common', 'ModifyEmail failed'));
+			}
+		}
+
+		$this->render('update',array(
 			'model'=>$model,
 		));
 	}

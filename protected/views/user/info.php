@@ -3,6 +3,7 @@
 $this->menu=array(
 	array('label'=>'修改密码','url'=>array('ModifyPass')),
 	array('label'=>'修改注册信息','url'=>array('update')),
+	array('label'=>'修改注册邮箱','url'=>array('ModifyEmail')),
 );
 ?>
 
