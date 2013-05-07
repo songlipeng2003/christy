@@ -27,7 +27,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('info','register','modifyPass','update'),
+				'actions'=>array('info','register','modifyPass','update','modifyEmail'),
 				'users'=>array(Yii::app()->user->name),
 			),
 			array('deny',  // deny all users
@@ -169,7 +169,7 @@ class UserController extends Controller
 			}
 		}
 
-		$this->render('update',array(
+		$this->render('modifyEmail',array(
 			'model'=>$model,
 		));
 	}
