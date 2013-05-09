@@ -74,6 +74,7 @@ class Book extends CActiveRecord
 			'isbn' => 'ISBN编号',
 			'description' => '描述',
 			'document'=>'书籍文档',
+			'picture'=>'书籍封面',
 		);
 	}
 
@@ -95,7 +96,7 @@ class Book extends CActiveRecord
 		$criteria->compare('press',$this->press,true);
 		$criteria->compare('isbn',$this->isbn,true);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('document',$this->document,true);
+		// $criteria->compare('document',$this->document,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

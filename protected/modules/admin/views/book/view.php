@@ -22,6 +22,7 @@ $this->menu=array(
 		'press',
 		'isbn',
 		'document',
+		'picture',
 		'description',
 	),
 )); ?>

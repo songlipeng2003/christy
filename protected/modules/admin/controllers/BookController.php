@@ -63,6 +63,7 @@ class BookController extends Controller
 			$model->attributes=$_POST['Book'];
 			if($this->upload($model,'document'))
 			{
+				$this->upload($model,'picture');
 				if($model->save())
 				{
 					Yii::app()->user->setFlash('success', Yii::t('admin', 'Create succesfully'));
@@ -98,6 +99,7 @@ class BookController extends Controller
 			$model->attributes=$_POST['Book'];
 			if($this->upload($model,'document'))
 			{
+				$this->upload($model,'picture');
 				if($model->save())
 				{
 					Yii::app()->user->setFlash('success', Yii::t('admin', 'Update succesfully'));

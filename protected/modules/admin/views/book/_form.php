@@ -27,6 +27,8 @@
 
 	<?php echo $form->fileFieldRow($model,'document'); ?>
 
+	<?php echo $form->fileFieldRow($model,'picture'); ?>
+
 	<?php echo $form->textAreaRow($model,'description',array('class'=>'span5','maxlength'=>255)); ?>
 
 	<div class="form-actions">
