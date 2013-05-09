@@ -53,7 +53,7 @@ class BookController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Book;
+		$model=new Book('Create');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -61,9 +61,8 @@ class BookController extends Controller
 		if(isset($_POST['Book']))
 		{
 			$model->attributes=$_POST['Book'];
-			if($this->upload($model,'document'))
+			if($this->upload($model,'document') and $this->upload($model,'picture'))
 			{
-				$this->upload($model,'picture');
 				if($model->save())
 				{
 					Yii::app()->user->setFlash('success', Yii::t('admin', 'Create succesfully'));
@@ -90,16 +89,20 @@ class BookController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$model->scenario='Update';
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Book']))
 		{
+			if($_POST['Book']['document']==null)
+				$_POST['Book']['document']=$model->document;
+			if($_POST['Book']['picture']==null)
+				$_POST['Book']['picture']=$model->picture;
 			$model->attributes=$_POST['Book'];
-			if($this->upload($model,'document'))
+			if($this->upload($model,'document') and $this->upload($model,'picture'))
 			{
-				$this->upload($model,'picture');
 				if($model->save())
 				{
 					Yii::app()->user->setFlash('success', Yii::t('admin', 'Update succesfully'));
@@ -186,11 +189,17 @@ class BookController extends Controller
 	protected function upload($model,$document)
 	{
 		$file=CUploadedFile::getInstance($model,$document);//获取表单名为$document的上传信息
-		$filename=$file->getName();//获取文件名
-		//$filesize=$file->getSize();//获取文件大小
-		//$filetype=$file->getType();//获取文件类型
-		$model->$document=time().'_'.$filename;//数据库中要存放文件名
-		$uploadfile="./upload/".$model->$document;
-		return $file->saveAs($uploadfile,true);//上传操作
+		if($file)
+		{
+			$filename=$file->getName();//获取文件名
+			//$filesize=$file->getSize();//获取文件大小
+			//$filetype=$file->getType();//获取文件类型
+			$model->$document=time().'_'.$filename;//数据库中要存放文件名
+			$uploadfile="./upload/".$model->$document;
+			return $file->saveAs($uploadfile,true);//上传操作
+		}else{
+			return 'nothing to upload';
+		}
+		
 	}
 }
