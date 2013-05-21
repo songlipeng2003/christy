@@ -32,4 +32,10 @@ if($model->emailActive!=0)
     'url'=>array('ActiveEmail'),
 ));
 }
+	$email = $model->email;
+	$default='http://www.gravatar.com/avatar/fca897bd7fb2d58e94e5525c484e4ec9.png';
+	$size = 40;
+	$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
 ?>
+<p/>
+头像：<img src="<?php echo $grav_url; ?>" alt="" />
