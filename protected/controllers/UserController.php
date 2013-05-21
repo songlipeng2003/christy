@@ -25,19 +25,28 @@ class UserController extends Controller
 	 */
 	public function accessRules()
 	{
-		return array(
-			array('allow',
-				'actions'=>array('info','register','modifyPass','update','modifyEmail','activeEmail'),
-				'users'=>array(Yii::app()->user->name),
-			),
-			array('allow',
-				'actions'=>array('activeEmailCheck'),
-				'users'=>array('*'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
+		if(Yii::app()->user->name!='Guest')
+		{
+			return array(
+				array('allow',
+					'actions'=>array('info','register','modifyPass','update','modifyEmail','activeEmail'),
+				),
+				array('deny',  // deny all users
+					'users'=>array('*'),
+				),
+			);
+		}else{
+			return array(
+				array('allow',
+					'actions'=>array('activeEmailCheck'),
+				),
+				array('deny',  // deny all users
+					'users'=>array('*'),
+				),
+			);
+		}
+
+		
 	}
 
 	/**
