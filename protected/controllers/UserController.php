@@ -27,8 +27,12 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',
-				'actions'=>array('info','register','modifyPass','update','modifyEmail'),
+				'actions'=>array('info','register','modifyPass','update','modifyEmail','activeEmail'),
 				'users'=>array(Yii::app()->user->name),
+			),
+			array('allow',
+				'actions'=>array('activeEmailCheck'),
+				'users'=>array('*'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -172,6 +176,52 @@ class UserController extends Controller
 		$this->render('modifyEmail',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionActiveEmail()
+	{
+		$message = new YiiMailMessage;
+		$model = $this->loadModel('ActiveEmail');
+
+	    $message->from = Yii::app()->params['adminEmail'];    // 送信人
+	    $message->addTo($model->email);               // 收信人
+	    $message->setSubject("注册邮箱激活确认");
+	    
+	    $message->view = 'index';      // 邮件模板的文件名(不带后缀PHP)
+	    $message->setBody(
+	    	array('activeEmail'=>Yii::app()->request->hostInfo.'/christy/user'.'/activeEmailCheck/code/'.md5($model->password).'/username/'.$model->username),  // 传递到模板文件中的参数
+	    	'text/html',                 // 邮件格式
+	    	'utf-8'                      // 邮件编码
+    	);
+	    
+		if(Yii::app()->mail->send($message)){
+	    	yii::app ()->user->setFlash('successed','Successed!');
+	    } else {
+	    	yii::app ()->user->setFlash('failed','Failed!');
+	    }
+	}
+
+	public function actionActiveEmailCheck()
+	{
+		if($model=User::model()->findByAttributes(array('username'=>$_GET['username'])))
+		{
+			if(isset($_GET['username']) and isset($_GET['code']))
+			{
+				if(md5($model->password)==$_GET['code'])
+				{
+					$model->emailActive=1;
+					$model->save();
+					yii::app ()->user->setFlash('successed','Successed!');
+					$this->redirect(array('info'));
+				}else{
+					throw new CHttpException(404,'The requested page does not exist.');
+				}
+			}else{
+				throw new CHttpException(404,'The requested page does not exist.');
+			}	
+		}else{
+			throw new CHttpException(404,'The requested page does not exist.');
+		}
 	}
 
 	/**

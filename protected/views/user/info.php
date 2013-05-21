@@ -14,7 +14,22 @@ $this->menu=array(
 	'attributes'=>array(
 		'sex',
 		'tel',
-		'email',
+		// 'email',
 		'qq',
 	),
 )); ?>
+<?php
+echo '电子邮箱：'.$model->email.'&nbsp&nbsp&nbsp&nbsp';
+if($model->emailActive!=0)
+{
+	echo '已激活';
+}else
+{
+	$this->widget('bootstrap.widgets.TbButton', array(
+    'label'=>'激活邮箱',
+    'type'=>'danger', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+    'size'=>'small', // null, 'large', 'small' or 'mini'
+    'url'=>array('ActiveEmail'),
+));
+}
+?>

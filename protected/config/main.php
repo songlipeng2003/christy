@@ -19,6 +19,7 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'application.behaviors.*',
+		'application.extensions.yii-mail.*',
 	),
 
 	'modules'=>array(
@@ -34,6 +35,8 @@ return array(
 		),
 		'admin',
 	),
+
+
 
 	// application components
 	'components'=>array(
@@ -105,12 +108,26 @@ return array(
 	        'createTable'       => true,
 	        'dbEngine'      	=> 'InnoDB',
 	    ),
-	),
 
+    'mail' => array(
+        'class' => 'application.extensions.yii-mail.YiiMail',
+        'transportType'=>'smtp', /// case sensitive!
+        'viewPath' => 'application.views.mail',   // 邮件模板所存放的位置
+        'logging' => true,
+        'dryRun' => false,    
+        'transportOptions'=>array(
+            'host'=>'smtp.163.com',
+            'username'=>'xxxx',
+            'password'=>'xxxxx',
+            'port'=>'25',
+            //'encryption'=>'ssl',
+        ),
+    ),
+    ),
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'xxx',
 	),
 );
