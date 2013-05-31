@@ -38,7 +38,7 @@ class UserController extends Controller
 		}else{
 			return array(
 				array('allow',
-					'actions'=>array('activeEmailCheck'),
+					'actions'=>array('register','activeEmailCheck'),
 				),
 				array('deny',  // deny all users
 					'users'=>array('*'),
