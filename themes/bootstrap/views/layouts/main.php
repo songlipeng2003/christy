@@ -19,11 +19,17 @@
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'items'=>array(
-                array('label'=>'Home', 'url'=>array('/site/index')),
-                array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-                array('label'=>'Contact', 'url'=>array('/site/contact')),
-                array('label'=>Yii::t('common', 'Login'), 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-                 array('label'=>Yii::t('model', 'User').'('.Yii::app()->user->name.')', 'url'=>array('/user/info'), 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>'首页', 'url'=>array('/site/index')),
+                array('label'=>'关于', 'url'=>array('/site/page', 'view'=>'about')),
+                array('label'=>'联系我们', 'url'=>array('/site/contact')),
+            ),
+        ),
+        array(
+            'class'=>'bootstrap.widgets.TbMenu',
+            'htmlOptions'=>array('class'=>'pull-right'),
+            'items'=>array(
+            	array('label'=>Yii::t('common', 'Login'), 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+                array('label'=>Yii::t('model', 'User').'('.Yii::app()->user->name.')', 'url'=>array('/user/info'), 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>Yii::t('common', 'Logout').' ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>Yii::t('common', 'Register'), 'url'=>array('/user/register'), 'visible'=>Yii::app()->user->isGuest),
             ),
