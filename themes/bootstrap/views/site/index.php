@@ -1,16 +1,33 @@
-<?php
-/* @var $this SiteController */
+<div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">分类</li>
+              <?php $categories=CHtml::listData(Category::model()->findAll(), 'id' , 'name');
+                foreach ($categories as $key => $value) {
+                  echo '<li><a href="#">'.$value.'</a></li>';
+                }
+             ?>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
 
-$this->pageTitle=Yii::app()->name;
-?>
+        <div class="span9">
+          
+          <div class="row-fluid">
+            <div class="span4">
+              <?php $books=Book::model()->findAll();
+                foreach ($books as $key => $value) {
+                  echo '<h2>'.$value->name.'</h2>';
+                  echo '<p><a href="#"> <img src="upload/'.$value->picture.'" class="img-rounded"> </a> </p>';
+                }
+             ?>
 
-<?php $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
-    'heading'=>'Welcome to '.CHtml::encode(Yii::app()->name),
-)); ?>
-
-<p>Congratulations! You have successfully created your Yii application.</p>
-
-<?php $this->endWidget(); ?>
+            </div><!--/span-->
+          </div><!--/row-->
+        </div><!--/span-->
+      </div><!--/row-->
 
 <p>You may change the content of this page by modifying the following two files:</p>
 
