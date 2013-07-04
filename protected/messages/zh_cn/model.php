@@ -53,5 +53,13 @@ return array(
     'Movie.pubdate'=>'发布时间',
     'Movie.languages'=>'语言',
     'Movie.duration'=>'片长',
-    'Movie.summary'=>'摘要'
+    'Movie.summary'=>'摘要',
+
+    'Doc'=>'文档',
+    'Docs'=>'文档',
+    'Doc.id'=>'编号',
+    'Doc.title'=>'名称',
+    'Doc.content'=>'内容',
+    'Doc.created_at'=>'创建时间',
+    'Doc.updated_at'=>'更新时间',
 );
