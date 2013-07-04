@@ -6,6 +6,7 @@
 ?>
 <?php echo "<?php \$form=\$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'".$this->class2id($this->modelClass)."-form',
+    'type'=>'horizontal',
 	'enableClientValidation'=>true,
 	'enableAjaxValidation'=>false,
     'clientOptions'=>array( 
