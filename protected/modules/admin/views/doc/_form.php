@@ -1,5 +1,6 @@
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'doc-form',
+    'type'=>'horizontal',
 	'enableClientValidation'=>true,
 	'enableAjaxValidation'=>false,
     'clientOptions'=>array( 
@@ -12,9 +13,9 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<?php echo $form->textFieldRow($model,'title',array('class'=>'span5','maxlength'=>255)); ?>
+	<?php echo $form->textFieldRow($model,'title',array('maxlength'=>255)); ?>
 
-	<?php echo $form->textAreaRow($model,'content',array('rows'=>6, 'cols'=>50, 'class'=>'span8')); ?>
+	<?php echo $form->textAreaRow($model,'content',array('rows'=>6, 'cols'=>50)); ?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
@@ -25,3 +26,11 @@
 	</div>
 
 <?php $this->endWidget(); ?>
+
+<?php
+    $this->widget('ext.ueditor.Ueditor',
+    array(
+        'getId'=>'Doc_content',
+        'UEDITOR_HOME_URL'=>"/",
+    ));
+?>
