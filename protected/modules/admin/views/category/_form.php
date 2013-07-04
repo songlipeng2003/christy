@@ -1,5 +1,6 @@
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'category-form',
+    'type'=>'horizontal',
 	'enableClientValidation'=>true,
 	'enableAjaxValidation'=>false,
     'clientOptions'=>array( 

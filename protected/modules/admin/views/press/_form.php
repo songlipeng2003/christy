@@ -1,6 +1,11 @@
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'press-form',
+    'type'=>'horizontal',
+	'enableClientValidation'=>true,
 	'enableAjaxValidation'=>false,
+    'clientOptions'=>array( 
+        'validateOnSubmit'=>true,
+    ), 
 )); ?>
 
 	<p class="help-block"><?php echo Yii::t('admin', 'Fields with <span class="required">*</span> are required.') ?>
