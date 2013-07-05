@@ -12,6 +12,8 @@ return array(
     'Press.name'=>'名称',
     'Press.address'=>'地址',
     'Press.description'=>'描述',
+    'Press.created_at'=>'创建时间',
+    'Press.updated_at'=>'更新时间',
 
     'Category'=>'类别',
     'Categories'=>'类别',

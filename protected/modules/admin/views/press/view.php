@@ -19,5 +19,7 @@ $this->menu=array(
 		'name',
 		'address',
 		'description',
+		'created_at',
+		'updated_at',
 	),
 )); ?>
