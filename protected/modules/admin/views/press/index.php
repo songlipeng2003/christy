@@ -44,7 +44,8 @@ $('.search-form form').submit(function(){
 		),
 		'name',
 		'address',
-		'description',
+		'created_at',
+		'updated_at',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),

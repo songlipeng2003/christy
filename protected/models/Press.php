@@ -37,11 +37,11 @@ class Press extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, address', 'required'),
+			array('name', 'required'),
 			array('name, address, description', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, address, description', 'safe', 'on'=>'search'),
+			array('id, name, address, description, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,6 +66,8 @@ class Press extends CActiveRecord
 			'name' => Yii::t('model', 'Press.name'),
 			'address' => Yii::t('model', 'Press.address'),
 			'description' => Yii::t('model', 'Press.description'),
+			'created_at' => Yii::t('model', 'Press.created_at'),
+			'updated_at' => Yii::t('model', 'Press.updated_at'),
 		);
 	}
 
@@ -88,5 +90,15 @@ class Press extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'created_at',
+				'updateAttribute' => 'updated_at',
+			)
+		);
 	}
 }

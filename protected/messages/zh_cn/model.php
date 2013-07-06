@@ -12,6 +12,8 @@ return array(
     'Press.name'=>'名称',
     'Press.address'=>'地址',
     'Press.description'=>'描述',
+    'Press.created_at'=>'创建时间',
+    'Press.updated_at'=>'更新时间',
 
     'Category'=>'类别',
     'Categories'=>'类别',
@@ -38,6 +40,28 @@ return array(
     'User.user_tel'=>'电话',
     'User.user_email'=>'电子邮箱',
     'User.user_qq'=>'QQ',
+    'User.rememberMe'=>'记住我',
 
-    'User.rememberMe'=>'记住我'
+    'Movie'=>'电影',
+    'Movies'=>'电影',
+    'Movie.id'=>'编号',
+    'Movie.title'=>'名称',
+    'Movie.original_title'=>'原名',
+    'Movie.aka'=>'又名',
+    'Movie.directors'=>'导演',
+    'Movie.writers'=>'编剧',
+    'Movie.casts'=>'主演',
+    'Movie.website'=>'官方网站',
+    'Movie.pubdate'=>'发布时间',
+    'Movie.languages'=>'语言',
+    'Movie.duration'=>'片长',
+    'Movie.summary'=>'摘要',
+
+    'Doc'=>'文档',
+    'Docs'=>'文档',
+    'Doc.id'=>'编号',
+    'Doc.title'=>'名称',
+    'Doc.content'=>'内容',
+    'Doc.created_at'=>'创建时间',
+    'Doc.updated_at'=>'更新时间',
 );
