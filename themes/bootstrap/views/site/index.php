@@ -6,7 +6,7 @@
               <li class="nav-header">分类</li>
               <?php $categories=CHtml::listData(Category::model()->findAll(), 'id' , 'name');
                 foreach ($categories as $key => $value) {
-                  echo '<li><a href="#">'.$value.'</a></li>';
+                  echo '<li><a href="book/Category/'.$key.'">'.$value.'</a></li>';
                 }
              ?>
             </ul>
@@ -16,15 +16,14 @@
         <div class="span9">
           
           <div class="row-fluid">
-            <div class="span4">
               <?php $books=Book::model()->findAll();
                 foreach ($books as $key => $value) {
+                  echo '<div class="span3">';
                   echo '<h2>'.$value->name.'</h2>';
-                  echo '<p><a href="#"> <img src="upload/'.$value->picture.'" class="img-rounded"> </a> </p>';
+                  echo '<p><a href="book/id/'.$value->id.'"> <img src="upload/'.$value->picture.'" class="img-rounded"> </a> </p>';
+                  echo '</div><!--/span-->';
                 }
              ?>
-
-            </div><!--/span-->
           </div><!--/row-->
         </div><!--/span-->
       </div><!--/row-->
