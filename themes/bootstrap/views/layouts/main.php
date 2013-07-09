@@ -20,9 +20,7 @@
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'items'=>array(
-                array('label'=>'首页', 'url'=>array('/site/index')),
-                array('label'=>'关于', 'url'=>array('/site/page', 'view'=>'about')),
-                array('label'=>'联系我们', 'url'=>array('/site/contact')),
+                array('label'=>'书籍', 'url'=>'/book'),
             ),
         ),
         array(
@@ -51,9 +49,10 @@
 	<div class="clear"></div>
 
 	<div id="footer">
+        <?php echo Chtml::link('关于我们', array('/site/page', 'view'=>'about')); ?>
+        <?php echo Chtml::link('联系我们', array('/site/contact')); ?><br/>
 		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
+		All Rights Reserved.
 	</div><!-- footer -->
 
 </div><!-- page -->
