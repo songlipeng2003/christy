@@ -73,3 +73,13 @@ $('.search-form form').submit(function(){
 		),
 	),
 ));?>
+
+<?php
+$this->widget(
+    'CTreeView',
+    array(
+    	'url' => array('ajaxFillTree'),
+    	'persist' => 'cookies'
+    )
+);
+?>
