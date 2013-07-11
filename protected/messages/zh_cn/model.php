@@ -19,6 +19,8 @@ return array(
     'Categories'=>'类别',
     'Category.id'=>'编号',
     'Category.name'=>'名称',
+    'Category.english_name'=>'英文名称',
+    'Category.letter_index'=>'字母索引',
     'Category.description'=>'描述',
     'Category.parent_id'=>'父类别',
 

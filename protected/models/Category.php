@@ -40,9 +40,9 @@ class Category extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name', 'required'),
+			array('name, english_name, letter_index', 'required'),
 			array('lft, rgt, level, parent_id', 'numerical', 'integerOnly'=>true),
-			array('name, description', 'length', 'max'=>255),
+			array('name, english_name, letter_index, description', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, name, description', 'safe', 'on'=>'search'),
@@ -69,6 +69,8 @@ class Category extends CActiveRecord
 		return array(
 			'id' => Yii::t('model', 'Category.id'),
 			'name' => Yii::t('model', 'Category.name'),
+			'english_name' => Yii::t('model', 'Category.english_name'),
+			'letter_index' => Yii::t('model', 'Category.letter_index'),
 			'parent_id' => Yii::t('model', 'Category.parent_id'),
 			'description' => Yii::t('model', 'Category.description'),
 		);
@@ -87,6 +89,8 @@ class Category extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
+		$criteria->compare('english_name',$this->name,true);
+		$criteria->compare('letter_index',$this->name,true);
 		$criteria->compare('parent_id',$this->parent_id);
 		$criteria->compare('description',$this->description,true);
 
