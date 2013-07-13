@@ -18,6 +18,9 @@ class SiteController extends Controller
 			'page'=>array(
 				'class'=>'CViewAction',
 			),
+			'upload'=>array(
+				'class'=>'application.controllers.UploadifyAction',
+			),
 		);
 	}
 

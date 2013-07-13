@@ -7,7 +7,7 @@ Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'佳美之处',
 	'theme'=>'bootstrap',
 	'language'=>'zh_cn',
 
@@ -19,6 +19,7 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'application.behaviors.*',
+		'application.helpers.*',
 		'application.extensions.yii-mail.*',
 	),
 
@@ -109,20 +110,44 @@ return array(
 	        'dbEngine'      	=> 'InnoDB',
 	    ),
 
-    'mail' => array(
-        'class' => 'application.extensions.yii-mail.YiiMail',
-        'transportType'=>'smtp', /// case sensitive!
-        'viewPath' => 'application.views.mail',   // 邮件模板所存放的位置
-        'logging' => true,
-        'dryRun' => false,    
-        'transportOptions'=>array(
-            'host'=>'smtp.163.com',
-            'username'=>'xxxx',
-            'password'=>'xxxxx',
-            'port'=>'25',
-            //'encryption'=>'ssl',
+	    'mail' => array(
+	        'class' => 'application.extensions.yii-mail.YiiMail',
+	        'transportType'=>'smtp', /// case sensitive!
+	        'viewPath' => 'application.views.mail',   // 邮件模板所存放的位置
+	        'logging' => true,
+	        'dryRun' => false,    
+	        'transportOptions'=>array(
+	            'host'=>'smtp.163.com',
+	            'username'=>'xxxx',
+	            'password'=>'xxxxx',
+	            'port'=>'25',
+	            //'encryption'=>'ssl',
+	        ),
+	    ),
+	    'image'=>array(
+          'class'=>'application.extensions.image.CImageComponent',
+            // GD or ImageMagick
+            'driver'=>'GD'
         ),
-    ),
+        'widgetFactory'=>array(
+            'widgets'=>array(
+                'SAImageDisplayer'=>array(
+                	'baseDir' => 'upload/images',
+                    'sizes' =>array(
+					    'tiny' => array('width' => 50, 'height' => 50),
+					    'big' => array('width' => 400, 'height' => 400),
+					    'thumb' => array('width' => 100, 'height' => 100),
+					),
+					'groups' => array(
+				    	'book' => array(
+						    'tiny' => array('width' => 42, 'height' => 50),
+						    'big' => array('width' => 340, 'height' => 400),
+						    'thumb' => array('width' => 85, 'height' => 100),
+				    	),
+					),
+                ),
+            ),
+        ),
     ),
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']

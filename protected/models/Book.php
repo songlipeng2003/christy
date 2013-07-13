@@ -105,6 +105,7 @@ class Book extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+<<<<<<< HEAD
 	public function behaviors(){
 		return array(
 			'CTimestampBehavior' => array(
@@ -113,5 +114,9 @@ class Book extends CActiveRecord
 				'updateAttribute' => 'updated_at',
 			)
 		);
+=======
+	
+	public function afterSave($event){
+>>>>>>> 87af6bb87e0d9e2e620203748abbb0cd3352b336
 	}
 }

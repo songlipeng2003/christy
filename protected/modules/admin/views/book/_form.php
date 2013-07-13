@@ -1,3 +1,7 @@
+<?php Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . "/css/uploadify.css"); ?>
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/js/jquery.uploadify.min.js"); ?>
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/js/admin/book.js"); ?>
+
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'book-form',
     'type'=>'horizontal',
@@ -26,9 +30,21 @@
 
 	<?php echo $form->dropDownListRow($model,'press',CHtml::listData(Press::model()->findAll(), 'name', 'name')); ?>
 
-	<?php echo $form->fileFieldRow($model,'document'); ?>
+	<?php echo $form->textFieldRow($model,'document',array('readonly'=>'true')); ?>
+	<div class="control-group ">
+		<label class="control-label"></label>
+		<div class="controls">
+			<div id="file_upload"></div>
+		</div>
+	</div>
 
-	<?php echo $form->fileFieldRow($model,'picture'); ?>
+	<?php echo $form->textFieldRow($model,'picture',array('readonly'=>'true')); ?>
+	<div class="control-group ">
+		<label class="control-label"></label>
+		<div class="controls">
+			<div id="image_upload"></div>
+		</div>
+	</div>
 
 	<?php echo $form->textAreaRow($model,'description',array('class'=>'span5','maxlength'=>255)); ?>
 

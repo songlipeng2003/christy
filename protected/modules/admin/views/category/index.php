@@ -49,6 +49,8 @@ $('.search-form form').submit(function(){
 			'value'=>'CHtml::link($data->id,Yii::app()->createUrl("admin/category/view",array("id"=>$data->id)))',
 		),
 		'name',
+		'english_name',
+		'letter_index',
 		array(
 			'name'=>'parent_id',
 			'type'=>'raw',
@@ -73,3 +75,13 @@ $('.search-form form').submit(function(){
 		),
 	),
 ));?>
+
+<?php
+$this->widget(
+    'CTreeView',
+    array(
+    	'url' => array('ajaxFillTree'),
+    	'persist' => 'cookies'
+    )
+);
+?>
