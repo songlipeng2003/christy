@@ -103,4 +103,7 @@ class Book extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function afterSave($event){
+	}
 }

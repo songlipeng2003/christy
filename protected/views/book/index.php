@@ -26,9 +26,14 @@ $this->breadcrumbs=array(
         <?php foreach ($model as $key => $book) { ?>
         <div class="row">
             <div class="span2">
-                <img src="" alt="<?php echo $book->name; ?>"/>
+                <?php $this->widget('ext.SAImageDisplayer', array(
+                    'image' => $book->picture,
+                    'group' => 'book',
+                    'size' => 'thumb',
+                    'alt' => $book->name
+                )); ?>
             </div>
-            <div class="span9">
+            <div class="span6">
                 <h2><?php echo CHtml::link($book->name, '/book/'.$book->id) ?></h2>
                 <p><?php echo $book->description; ?></p>
             </div>

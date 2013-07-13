@@ -61,17 +61,12 @@ class BookController extends Controller
 		if(isset($_POST['Book']))
 		{
 			$model->attributes=$_POST['Book'];
-			if($this->upload($model,'document') and $this->upload($model,'picture'))
+			if($model->save())
 			{
-				if($model->save())
-				{
-					Yii::app()->user->setFlash('success', Yii::t('admin', 'Create succesfully'));
-					$this->redirect(array('view','id'=>$model->id));
-				}else{
-					Yii::app()->user->setFlash('error', Yii::t('admin', 'Create failed'));
-				}
+				Yii::app()->user->setFlash('success', Yii::t('admin', 'Create succesfully'));
+				$this->redirect(array('view','id'=>$model->id));
 			}else{
-				Yii::app()->user->setFlash('error', Yii::t('admin', 'Upload failed'));
+				Yii::app()->user->setFlash('error', Yii::t('admin', 'Create failed'));
 			}
 			
 		}
@@ -101,17 +96,12 @@ class BookController extends Controller
 			if($_POST['Book']['picture']==null)
 				$_POST['Book']['picture']=$model->picture;
 			$model->attributes=$_POST['Book'];
-			if($this->upload($model,'document') and $this->upload($model,'picture'))
+			if($model->save())
 			{
-				if($model->save())
-				{
-					Yii::app()->user->setFlash('success', Yii::t('admin', 'Update succesfully'));
-					$this->redirect(array('view','id'=>$model->id));
-				}else{
-					Yii::app()->user->setFlash('error', Yii::t('admin', 'Update failed'));
-				}
+				Yii::app()->user->setFlash('success', Yii::t('admin', 'Update succesfully'));
+				$this->redirect(array('view','id'=>$model->id));
 			}else{
-				Yii::app()->user->setFlash('error', Yii::t('admin', 'Upload failed'));
+				Yii::app()->user->setFlash('error', Yii::t('admin', 'Update failed'));
 			}
 			
 		}
@@ -184,22 +174,5 @@ class BookController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-	}
-
-	protected function upload($model,$document)
-	{
-		$file=CUploadedFile::getInstance($model,$document);//获取表单名为$document的上传信息
-		if($file)
-		{
-			$filename=$file->getName();//获取文件名
-			//$filesize=$file->getSize();//获取文件大小
-			//$filetype=$file->getType();//获取文件类型
-			$model->$document=time().'_'.$filename;//数据库中要存放文件名
-			$uploadfile="./upload/".$model->$document;
-			return $file->saveAs($uploadfile,true);//上传操作
-		}else{
-			return 'nothing to upload';
-		}
-		
 	}
 }
