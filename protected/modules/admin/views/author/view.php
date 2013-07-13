@@ -18,5 +18,7 @@ $this->menu=array(
 		'id',
 		'name',
 		'destription',
+		'created_at',
+		'updated_at',
 	),
 )); ?>

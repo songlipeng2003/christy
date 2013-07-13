@@ -84,6 +84,8 @@ class Movie extends CActiveRecord
 			'languages' => Yii::t('model', 'Movie.id'),
 			'duration' => Yii::t('model', 'Movie.duration'),
 			'summary' => Yii::t('model', 'Movie.summary'),
+			'created_at' => Yii::t('model', 'Movie.created_at'),
+			'updated_at' => Yii::t('model', 'Movie.updated_at'),
 		);
 	}
 
@@ -114,5 +116,14 @@ class Movie extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'created_at',
+				'updateAttribute' => 'updated_at',
+			)
+		);
 	}
 }

@@ -24,5 +24,7 @@ $this->menu=array(
 		'document',
 		'picture',
 		'description',
+		'created_at',
+		'updated_at',
 	),
 )); ?>

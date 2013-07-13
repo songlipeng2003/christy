@@ -54,6 +54,8 @@ $('.search-form form').submit(function(){
 			'type'=>'raw',
 			'value'=>'$data->parent()?CHtml::link($data->parent()->name, Yii::app()->createUrl("admin/category/view",array("id"=>$data->parent()->primaryKey))):""',
 		),
+		'created_at',
+		'updated_at',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
             'template'=>'{add}{view}{update}{delete}',

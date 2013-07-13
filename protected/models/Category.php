@@ -71,6 +71,8 @@ class Category extends CActiveRecord
 			'name' => Yii::t('model', 'Category.name'),
 			'parent_id' => Yii::t('model', 'Category.parent_id'),
 			'description' => Yii::t('model', 'Category.description'),
+			'created_at' => Yii::t('model', 'Category.created_at'),
+			'updated_at' => Yii::t('model', 'Category.updated_at'),
 		);
 	}
 
@@ -93,6 +95,16 @@ class Category extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'created_at',
+				'updateAttribute' => 'updated_at',
+			)
+		);
 	}
 
 	// public function behaviors()

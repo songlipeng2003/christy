@@ -51,6 +51,8 @@ $('.search-form form').submit(function(){
 		'duration',
 		'summary',
 		*/
+		'created_at',
+		'updated_at',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),

@@ -5,6 +5,8 @@ return array(
     'Author.id'=>'编号',
     'Author.name'=>'名称',
     'Author.description'=>'描述',
+    'Author.created_at'=>'创建时间',
+    'Author.updated_at'=>'更新时间',
 
     'Press'=>'出版社',
     'Presses'=>'出版社',
@@ -21,6 +23,8 @@ return array(
     'Category.name'=>'名称',
     'Category.description'=>'描述',
     'Category.parent_id'=>'父类别',
+    'Category.created_at'=>'创建时间',
+    'Category.updated_at'=>'更新时间',
 
     'Book'=>'书籍',
     'Books'=>'书籍',
@@ -31,6 +35,8 @@ return array(
     'Book.press'=>'出版社',
     'Book.author'=>'ISBN编号',
     'Book.description'=>'描述',
+    'Book.created_at'=>'创建时间',
+    'Book.updated_at'=>'更新时间',
 
     'User'=>'用户',
     'Users'=>'用户',
@@ -56,6 +62,8 @@ return array(
     'Movie.languages'=>'语言',
     'Movie.duration'=>'片长',
     'Movie.summary'=>'摘要',
+    'Movie.created_at'=>'创建时间',
+    'Movie.updated_at'=>'更新时间',
 
     'Doc'=>'文档',
     'Docs'=>'文档',

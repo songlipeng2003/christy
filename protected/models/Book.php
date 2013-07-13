@@ -76,6 +76,8 @@ class Book extends CActiveRecord
 			'description' => '描述',
 			'document'=>'书籍文档',
 			'picture'=>'书籍封面',
+			'created_at'=>'创建时间',
+    		'updated_at'=>'更新时间',
 		);
 	}
 
@@ -102,5 +104,14 @@ class Book extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'created_at',
+				'updateAttribute' => 'updated_at',
+			)
+		);
 	}
 }

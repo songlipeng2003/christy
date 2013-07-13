@@ -63,6 +63,8 @@ class Author extends CActiveRecord
 			'id' => Yii::t('model', 'Author.id'),
 			'name' => Yii::t('model', 'Author.name'),
 			'destription' => Yii::t('model', 'Author.description'),
+			'created_at' => Yii::t('model', 'Author.created_at'),
+			'updated_at' => Yii::t('model', 'Author.updated_at'),
 		);
 	}
 
@@ -86,5 +88,14 @@ class Author extends CActiveRecord
 		return new CActiveDataProvider('Author', array(
 			'criteria'=>$criteria,
 		));
+	}
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'created_at',
+				'updateAttribute' => 'updated_at',
+			)
+		);
 	}
 }
