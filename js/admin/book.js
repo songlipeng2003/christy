@@ -1,13 +1,13 @@
 $(function(){
     $('#file_upload').uploadify({
-        'swf'  : '/flash/uploadify.swf',
-        'uploader'    : '/site/upload',
-        'buttonText' : '上传',
-        'auto'      : true,
-        'multi'     : false,
-        'sizeLimit' : 10240000,
-        'fileTypeExts'   : '*.pdf',
-        'onComplete': function(event, ID, fileObj, response, data) {
+        swf  : '/flash/uploadify.swf',
+        uploader    : '/site/upload',
+        buttonText : '上传',
+        auto      : true,
+        multi     : false,
+        sizeLimit : 10240000,
+        fileTypeExts   : '*.pdf',
+        onUploadSuccess: function(file, response, data) {
             if(response!='0'){
                 $('#Book_document').val(response);
             }
@@ -15,14 +15,14 @@ $(function(){
   });
 
   $('#image_upload').uploadify({
-        'swf'  : '/flash/uploadify.swf',
-        'uploader'    : '/site/upload',
-        'buttonText' : '上传',
-        'auto'      : true,
-        'multi'     : false,
-        'sizeLimit' : 10240000,
-        'fileTypeExts'   : '*.jpg;*.jpeg;*.gif;*.png',
-        'onComplete': function(event, ID, fileObj, response, data) {
+        swf  : '/flash/uploadify.swf',
+        uploader    : '/site/upload',
+        buttonText : '上传',
+        auto      : true,
+        multi     : false,
+        sizeLimit : 10240000,
+        fileTypeExts   : '*.jpg;*.jpeg;*.gif;*.png',
+        onUploadSuccess : function(file, response, data) {
             if(response!='0'){
                 $('#Book_picture').val(response);
             }

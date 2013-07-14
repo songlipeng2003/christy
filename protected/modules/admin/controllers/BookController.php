@@ -91,10 +91,7 @@ class BookController extends Controller
 
 		if(isset($_POST['Book']))
 		{
-			if($_POST['Book']['document']==null)
-				$_POST['Book']['document']=$model->document;
-			if($_POST['Book']['picture']==null)
-				$_POST['Book']['picture']=$model->picture;
+			// var_dump($_POST['Book']);
 			$model->attributes=$_POST['Book'];
 			if($model->save())
 			{

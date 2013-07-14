@@ -12,9 +12,12 @@
  * @property string $isbn
  * @property string $description
  * @property string $document
+ * @property string $picture
  */
 class Book extends CActiveRecord
 {
+	private $oldAttributes = array();
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -42,8 +45,8 @@ class Book extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name, author, press, isbn', 'required'),
-			array('document, picture', 'required','on'=>'Create'),
-			array('name, author, category, press, isbn, description, document', 'length', 'max'=>255),
+			array('document, picture', 'required', 'on'=>'Create'),
+			array('name, author, category, press, isbn, description, document, picture', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, name, author, category, press, isbn, description, document', 'safe', 'on'=>'search'),
@@ -99,7 +102,6 @@ class Book extends CActiveRecord
 		$criteria->compare('press',$this->press,true);
 		$criteria->compare('isbn',$this->isbn,true);
 		$criteria->compare('description',$this->description,true);
-		// $criteria->compare('document',$this->document,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -115,4 +117,46 @@ class Book extends CActiveRecord
 			)
 		);
 	}
+	
+	protected function afterSave()
+	{
+		// var_dump($this);
+		// exit;
+
+		if(!isset($this->oldAttributes['document']) || $this->document != $this->oldAttributes['document']){
+			$filePath = $_SERVER['DOCUMENT_ROOT'].'/upload/tmp/'.$this->document;
+			$targetPath = $_SERVER['DOCUMENT_ROOT'].'/upload/book/'.$this->document;
+
+			copy($filePath, $targetPath);
+
+			@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/book/'.$this->oldAttributes['document']);
+		}
+
+		if(!isset($this->oldAttributes['picture']) || $this->picture != $this->oldAttributes['picture']){
+			$filePath = $_SERVER['DOCUMENT_ROOT'].'/upload/tmp/'.$this->picture;
+			$targetPath = $_SERVER['DOCUMENT_ROOT'].'/upload/images/book/originals/'.$this->picture;
+
+			copy($filePath, $targetPath);
+
+			@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/originals/'.$this->oldAttributes['picture']);
+			@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/thumb/'.$this->oldAttributes['picture']);
+			@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/tiny/'.$this->oldAttributes['picture']);
+			@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/big/'.$this->oldAttributes['picture']);
+		}
+	}
+
+	protected function afterFind()
+    {
+        $this->oldAttributes = $this->getAttributes();
+
+        return parent::afterFind();
+    }
+
+    protected function afterDelete(){
+    	@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/book/'.$this->oldAttributes['document']);
+    	@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/originals/'.$this->oldAttributes['picture']);
+		@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/thumb/'.$this->oldAttributes['picture']);
+		@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/tiny/'.$this->oldAttributes['picture']);
+		@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/big/'.$this->oldAttributes['picture']);
+    }
 }
