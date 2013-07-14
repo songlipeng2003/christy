@@ -28,9 +28,11 @@
             'htmlOptions'=>array('class'=>'pull-right'),
             'items'=>array(
             	array('label'=>Yii::t('common', 'Login'), 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-                array('label'=>Yii::t('model', 'User').'('.Yii::app()->user->name.')', 'url'=>array('/user/info'), 'visible'=>!Yii::app()->user->isGuest),
-                array('label'=>Yii::t('common', 'Logout').' ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>Yii::t('common', 'Register'), 'url'=>array('/user/register'), 'visible'=>Yii::app()->user->isGuest),
+                array('label'=>Yii::app()->user->name.'的帐号', 'url'=>'#', 'items'=>array(
+                    array('label'=>Yii::t('model', 'User'), 'url'=>array('/user/info'), 'visible'=>!Yii::app()->user->isGuest),
+                    array('label'=>Yii::t('common', 'Logout'), 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+                )),
             ),
         ),
     ),
