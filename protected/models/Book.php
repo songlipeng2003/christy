@@ -120,9 +120,6 @@ class Book extends CActiveRecord
 	
 	protected function afterSave()
 	{
-		// var_dump($this);
-		// exit;
-
 		if(!isset($this->oldAttributes['document']) || $this->document != $this->oldAttributes['document']){
 			$filePath = $_SERVER['DOCUMENT_ROOT'].'/upload/tmp/'.$this->document;
 			$targetPath = $_SERVER['DOCUMENT_ROOT'].'/upload/book/'.$this->document;
