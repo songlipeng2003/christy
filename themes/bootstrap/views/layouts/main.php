@@ -53,7 +53,7 @@
 	<div id="footer">
         <?php echo Chtml::link('关于我们', array('/site/page', 'view'=>'about')); ?>
         <?php echo Chtml::link('联系我们', array('/site/contact')); ?><br/>
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by 佳美之处.<br/>
 		All Rights Reserved.
 	</div><!-- footer -->
 
