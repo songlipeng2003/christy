@@ -21,11 +21,11 @@ $this->breadcrumbs=array(
       </div><!--/.well -->
     </div><!--/span-->
 
-    <div class="span8">
+    <div class="span8 list">
         <h1>所有书籍</h1>
         <?php foreach ($model as $key => $book) { ?>
-        <div class="row">
-            <div class="span2">
+        <div class="row item">
+            <div class="span1">
                 <?php $this->widget('ext.SAImageDisplayer', array(
                     'image' => $book->picture,
                     'group' => 'book',
@@ -35,6 +35,10 @@ $this->breadcrumbs=array(
             </div>
             <div class="span6">
                 <h2><?php echo CHtml::link($book->name, '/book/'.$book->id) ?></h2>
+                <p>
+                    <?php if($book->author){ echo $book->author; } ?>/
+                    <?php if($book->press){ echo $book->press; } ?>
+                </p>
                 <p><?php echo $book->description; ?></p>
             </div>
         </div>
