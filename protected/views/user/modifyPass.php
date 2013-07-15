@@ -1,12 +1,19 @@
 <?php
 $this->breadcrumbs=array(
-	// Yii::t('model', 'Users')=>array('index'),
-	// $model->id=>array('view','id'=>$model->id),
-	Yii::t('common', 'ModifyPass'),
+	'用户中心' => array('info'),
+	'修改密码'
+);
+
+$this->menu=array(
+	array('label'=>'用户中心'),
+	array('label'=>'用户信息','url'=>array('info')),
+	array('label'=>'修改密码','url'=>array('modifyPass'),'active'=>true),
+	array('label'=>'修改信息','url'=>array('update')),
+	array('label'=>'修改邮箱','url'=>array('modifyEmail')),
 );
 ?>
 
-<h1> <?php echo $model->username; ?> <?php echo Yii::t('common', 'ModifyPass {model}', array('{model}'=>Yii::t('model', 'User'))); ?> </h1>
+<h1>修改密码</h1>
 
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'user-form',
@@ -17,8 +24,7 @@ $this->breadcrumbs=array(
     ), 
 )); ?>
 
-	<p class="help-block"><?php echo Yii::t('common', 'Fields with <span class="required">*</span> are required.') ?>
-</p>
+	<p class="help-block"><?php echo Yii::t('common', 'Fields with <span class="required">*</span> are required.') ?></p>
 
 	<?php echo $form->errorSummary($model); ?>
 

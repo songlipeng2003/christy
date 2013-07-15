@@ -32,7 +32,7 @@
                 array('label'=>Yii::app()->user->name.'的帐号', 'url'=>'#', 'items'=>array(
                     array('label'=>Yii::t('model', 'User'), 'url'=>array('/user/info'), 'visible'=>!Yii::app()->user->isGuest),
                     array('label'=>Yii::t('common', 'Logout'), 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
-                )),
+                ), 'visible'=>!Yii::app()->user->isGuest),
             ),
         ),
     ),

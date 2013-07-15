@@ -1,4 +1,20 @@
-<h1><?php echo '更改'.$model->username.'注册邮箱'; ?> </h1>
+<?php
+$this->breadcrumbs=array(
+	'用户中心' => array('info'),
+	'修改邮箱'
+);
+
+$this->menu=array(
+	array('label'=>'用户中心'),
+	array('label'=>'用户信息','url'=>array('info')),
+	array('label'=>'修改密码','url'=>array('modifyPass')),
+	array('label'=>'修改信息','url'=>array('update')),
+	array('label'=>'修改邮箱','url'=>array('modifyEmail'),'active'=>true),
+);
+?>
+
+<h1>修改邮箱</h1>
+
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'user-form',
 	'enableClientValidation'=>true,
