@@ -74,7 +74,7 @@ return array(
     'Doc.content'=>'内容',
     'Doc.created_at'=>'创建时间',
     'Doc.updated_at'=>'更新时间',
-
+    
     'User_admin'=>'用户',
     'User Admins'=>'用户',
     'User_admin.username'=>'用户名',
@@ -83,5 +83,17 @@ return array(
     'User_admin.user_tel'=>'电话',
     'User_admin.user_email'=>'电子邮箱',
     'User_admin.user_qq'=>'QQ',
-    
+
+    'Collection'=>'收藏',
+    'Collections'=>'收藏',
+    'Collection.id'=>'编号',
+    'Collection.user'=>'用户',
+    'Collection.object'=>'对象',
+    'Collection.type'=>'类型',
+    'Collection.status'=>'状态',
+    'Collection.rating'=>'星评',
+    'Collection.tags'=>'标签',
+    'Collection.comment'=>'评论内容',
+    'Collection.created_at'=>'创建时间',
+    'Collection.updated_at'=>'更新时间',
 );

@@ -25,6 +25,7 @@
                 array('label'=>'分类管理', 'url'=>array('/admin/category')),
                 array('label'=>'出版社管理', 'url'=>array('/admin/press')),
                 array('label'=>'电影管理', 'url'=>array('/admin/movie')),
+                array('label'=>'收藏管理', 'url'=>array('/admin/collection')),
                 array('label'=>'文档管理', 'url'=>array('/admin/doc')),
                 array('label'=>'网站配置', 'url'=>array('/admin/config')), 
                  array('label'=>'用户管理', 'url'=>array('/admin/user_admin')),
