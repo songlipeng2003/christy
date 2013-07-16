@@ -43,4 +43,26 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('updated_at')); ?>:</b>
 	<?php echo CHtml::encode($data->updated_at); ?>
 
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('price')); ?>:</b>
+	<?php echo CHtml::encode($data->price); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('pages')); ?>:</b>
+	<?php echo CHtml::encode($data->pages); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('press_time')); ?>:</b>
+	<?php echo CHtml::encode($data->press_time); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('word_number')); ?>:</b>
+	<?php echo CHtml::encode($data->word_number); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('alt_title')); ?>:</b>
+	<?php echo CHtml::encode($data->alt_title); ?>
+	<br />
+
 </div>

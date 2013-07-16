@@ -53,6 +53,11 @@ $('.search-form form').submit(function(){
 		*/
 		'created_at',
 		'updated_at',
+		'price',
+		'pages',
+		'press_time',
+		'word_number',
+		//'alt_title',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),

@@ -103,7 +103,7 @@ class BookController extends Controller
 			
 		}
 
-		$this->render('create',array(
+		$this->render('update',array(
 			'model'=>$model,
 		));
 	}
