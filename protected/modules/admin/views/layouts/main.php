@@ -26,6 +26,8 @@
                 array('label'=>'出版社管理', 'url'=>array('/admin/press')),
                 array('label'=>'电影管理', 'url'=>array('/admin/movie')),
                 array('label'=>'文档管理', 'url'=>array('/admin/doc')),
+                array('label'=>'网站配置', 'url'=>array('/admin/config')), 
+                 array('label'=>'用户管理', 'url'=>array('/admin/user_admin')),
                 array('label'=>'管理员登陆', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
                 array('label'=>'注销 ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
             ),

@@ -74,4 +74,14 @@ return array(
     'Doc.content'=>'内容',
     'Doc.created_at'=>'创建时间',
     'Doc.updated_at'=>'更新时间',
+
+    'User_admin'=>'用户',
+    'User Admins'=>'用户',
+    'User_admin.username'=>'用户名',
+    'User_admin.password'=>'密码',
+    'User_admin.user_sex'=>'性别',
+    'User_admin.user_tel'=>'电话',
+    'User_admin.user_email'=>'电子邮箱',
+    'User_admin.user_qq'=>'QQ',
+    
 );
