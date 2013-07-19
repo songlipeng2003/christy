@@ -30,7 +30,8 @@ $this->breadcrumbs=array(
                     'image' => $book->picture,
                     'group' => 'book',
                     'size' => 'thumb',
-                    'alt' => $book->name
+                    'title' => $book->name,
+                    'defaultImage' => 'default.jpg',
                 )); ?>
             </div>
             <div class="span6">
