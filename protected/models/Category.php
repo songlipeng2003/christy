@@ -113,22 +113,8 @@ class Category extends CActiveRecord
 	            'leftAttribute'=>'lft',
 	            'rightAttribute'=>'rgt',
 	            'levelAttribute'=>'level',
-       			'hasManyRoots'=>true
-	    	)
+	            'hasManyRoots'=>true,
+	        ),
 		);
 	}
-
-	// public function behaviors()
-	// {
-	//     return array(
-	//         'nestedSetBehavior'=>array(
-	//             'class'=>'NestedSetBehavior',
-	//             'leftAttribute'=>'lft',
-	//             'rightAttribute'=>'rgt',
-	//             'levelAttribute'=>'level',
-	//             'rootAttribute'=>'parent_id',
-	//             'hasManyRoots'=>true,
-	//         ),
-	//     );
-	// }
 }

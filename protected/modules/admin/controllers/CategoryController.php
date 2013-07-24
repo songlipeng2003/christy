@@ -95,7 +95,16 @@ class CategoryController extends Controller
 		if(isset($_POST['Category']))
 		{
 			$model->attributes=$_POST['Category'];
-			if($model->save())
+			$result = false;
+			if($_POST['Category']['parent_id']){
+				$parent = Category::model()->findByPk($_POST['Category']['parent_id']);
+
+				$result = $model->appendTo($parent);
+			}else{
+				$result = $model->saveNode();
+			}
+
+			if($result)
 			{
 				Yii::app()->user->setFlash('success', Yii::t('admin', 'Create succesfully'));
 				$this->redirect(array('view','id'=>$model->id));
@@ -129,7 +138,7 @@ class CategoryController extends Controller
 		{
 			$model->attributes=$_POST['Category'];
 
-			if($model->save())
+			if($model->saveNode())
 			{
 				Yii::app()->user->setFlash('success', Yii::t('admin', 'Update succesfully'));
 				$this->redirect(array('view','id'=>$model->id));
