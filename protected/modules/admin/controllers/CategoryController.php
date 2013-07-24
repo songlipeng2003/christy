@@ -2,6 +2,8 @@
 
 class CategoryController extends Controller
 {
+    private $_behaviorIDs = array();
+
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -26,15 +28,47 @@ class CategoryController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',
-				'actions'=>array('index','view','create','update','delete','ajaxFillTree'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
+			// array('allow',
+			// 	'actions'=>array('index','view','create','update','delete','ajaxFillTree'),
+			// 	'users'=>array('admin'),
+			// ),
+			// array('deny',  // deny all users
+			// 	'users'=>array('*'),
+			// ),
 		);
 	}
+
+	public function behaviors()
+	{
+		return array(
+			'jsTreeBehavior' => array(
+				'class' => 'ext.jstree-behavior.behaviors.JsTreeBehavior',
+				'modelClassName' => 'Category',
+				'form_alias_path' => 'application.modules.admin.views.category._form',
+				'view_alias_path' => 'application.modules.admin.views.category.view',
+				'label_property' => 'name',
+				'rel_property' => 'name'
+			)
+		);
+	}
+
+    public function createAction($actionID)
+    {
+        $action = parent::createAction($actionID);
+        if ($action !== null)
+            return $action;
+        foreach ($this->_behaviorIDs as $behaviorID) {
+            $object = $this->asa($behaviorID);
+            if ($object->getEnabled() && method_exists($object, 'action' . $actionID))
+                return new CInlineAction($object, $actionID);
+        }
+    }
+
+    public function attachBehavior($name, $behavior)
+    {
+        $this->_behaviorIDs[] = $name;
+        parent::attachBehavior($name, $behavior);
+    }
 
 	/**
 	 * Displays a particular model.

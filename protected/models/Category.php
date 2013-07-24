@@ -107,7 +107,14 @@ class Category extends CActiveRecord
 				'class' => 'zii.behaviors.CTimestampBehavior',
 				'createAttribute' => 'created_at',
 				'updateAttribute' => 'updated_at',
-			)
+			),
+	        'NestedSetBehavior'=>array(
+	            'class'=>'NestedSetBehavior',
+	            'leftAttribute'=>'lft',
+	            'rightAttribute'=>'rgt',
+	            'levelAttribute'=>'level',
+       			'hasManyRoots'=>true
+	    	)
 		);
 	}
 

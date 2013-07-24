@@ -84,4 +84,14 @@ $this->widget(
     	'persist' => 'cookies'
     )
 );
+
+$this->widget('ext.jstree-behavior.widgets.JsTreeWidget',
+	array('modelClassName' => 'Category',
+		'baseUrl'=>'/admin/',
+		'jstree_container_ID' => 'Category-wrapper',//jstree will be rendered in this div.id of your choice.
+		'themes' => array('theme' => 'default', 'dots' => true, 'icons' => true),
+		'plugins' => array('themes', 'html_data', 'contextmenu', 'crrm', 'dnd', 'cookies', 'ui')
+	)
+);
+
 ?>
