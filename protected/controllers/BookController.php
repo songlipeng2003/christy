@@ -27,8 +27,21 @@ class BookController extends Controller
 		if($book===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 
+        $collection = Collection::model()->findByAttributes(array(
+            'user_id'=>Yii::app()->user->id, 
+            'type'=>Collection::TYPE_BOOK,
+            'object_id'=>$id
+        ));
+
+        if(!$collection){
+            $collection = new Collection;
+            $collection->type = Collection::TYPE_BOOK;
+            $collection->object_id = $id;
+        }
+
 		$this->render('view', array(
-			'book' => $book
+			'book' => $book,
+            'collection' => $collection
 		));
 	}
 

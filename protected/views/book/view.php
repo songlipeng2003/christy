@@ -29,6 +29,41 @@ $this->breadcrumbs=array(
             </div>
         </div>
 
+        <div class="">
+            <!-- Button to trigger modal -->
+            <a href="#collection_modal" role="button" class="btn" data-toggle="modal">想读</a>
+            <a href="#collection_modal" role="button" class="btn" data-toggle="modal">在读</a>
+            <a href="#collection_modal" role="button" class="btn" data-toggle="modal">已读</a>
+             
+            <!-- Modal -->
+            <div id="collection_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">添加收藏</h3>
+              </div>
+              <div class="modal-body">
+                <?php /** @var BootActiveForm $form */
+                $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+                    'id'=>'collection_form',
+                    'action'=>array('collection/create'),
+                    'enableAjaxValidation'=>true,
+                )); ?>
+                    <?php echo $form->errorSummary($collection); ?>
+                    <?php echo $form->hiddenField($collection, 'object_id' ); ?>
+                    <?php echo $form->hiddenField($collection, 'type' ); ?>
+                    <?php echo $form->radioButtonListInlineRow($collection, 'status', 
+                        array('1'=>'想读', '2'=>'在读', '3'=>'已读')); ?>
+                    <?php echo $form->textFieldRow($collection, 'rating'); ?>
+                    <?php echo $form->textFieldRow($collection, 'tags'); ?>
+                    <?php echo $form->textAreaRow($collection, 'comment'); ?>
+                    <div class="form-actions">
+                        <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'primary', 'label'=>'提交')); ?>
+                    </div>
+                <?php $this->endWidget(); ?>
+              </div>
+            </div>
+        </div>
+
         <div class="summary">
             <h3>简介</h3>
             <p><?php echo $book->description; ?></p>
