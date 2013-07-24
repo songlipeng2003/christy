@@ -109,7 +109,7 @@ class Category extends CActiveRecord
 				'updateAttribute' => 'updated_at',
 			),
 	        'NestedSetBehavior'=>array(
-	            'class'=>'NestedSetBehavior',
+	            'class'=>'ext.jstree-behavior.behaviors.NestedSetBehavior',
 	            'leftAttribute'=>'lft',
 	            'rightAttribute'=>'rgt',
 	            'levelAttribute'=>'level',
