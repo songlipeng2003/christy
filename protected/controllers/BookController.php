@@ -21,6 +21,41 @@ class BookController extends Controller
 		));
 	}
 
+    public function actionCategory($id)
+    {
+        $category = Category::model()->findByPk($id);
+        if($category===null)
+            throw new CHttpException(404,'The requested page does not exist.');
+
+        $descendants=$category->descendants()->findAll();
+        $cate_ids = array();
+        foreach($descendants as $child){
+            $childs[] = $child->id;
+        }
+        $childs[] = $category->id;
+
+        $parents = $category->ancestors()->findAll();
+
+        $criteria = new CDbCriteria();
+        $criteria->addInCondition('category_id', $childs);
+        $criteria->order = 'id DESC';
+
+        $item_count = Book::model()->count($criteria);
+        $pages = new CPagination($item_count);
+        $pages->setPageSize(20);
+        $pages->applyLimit($criteria);
+
+        $this->render('category', array(
+            'model'=> Book::model()->findAll($criteria),
+            'item_count'=>$item_count,
+            'page_size'=>20,
+            'items_count'=>$item_count,
+            'pages'=>$pages,
+            'category'=>$category,
+            'parents'=>$parents
+        ));
+    }
+
 	public function actionView($id)
 	{
 		$book=Book::model()->findByPk($id);

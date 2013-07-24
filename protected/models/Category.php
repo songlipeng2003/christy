@@ -113,7 +113,7 @@ class Category extends CActiveRecord
 	            'leftAttribute'=>'lft',
 	            'rightAttribute'=>'rgt',
 	            'levelAttribute'=>'level',
-	            'hasManyRoots'=>true,
+	            'hasManyRoots'=>false,
 	        ),
 		);
 	}
