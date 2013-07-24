@@ -79,4 +79,11 @@ class User extends CActiveRecord
 			'qq' => 'QQ',
 		);
 	}
+
+	public function getAvatar($size=80)
+	{
+		$default = 'http://www.gravatar.com/avatar/fca897bd7fb2d58e94e5525c484e4ec9.png';
+
+		return "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $this->email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+	}
 }
