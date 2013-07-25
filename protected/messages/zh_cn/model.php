@@ -112,4 +112,13 @@ return array(
     'Review.comments'=>'回复数量',
     'Review.created_at'=>'创建时间',
     'Review.updated_at'=>'更新时间',
+
+    'Group'=>'小组',
+    'Groups'=>'小组',
+    'Group.id'=>'编号',
+    'Group.user'=>'创建者',
+    'Group.name'=>'名称',
+    'Group.summary'=>'介绍',
+    'Group.created_at'=>'创建时间',
+    'Group.updated_at'=>'更新时间',
 );

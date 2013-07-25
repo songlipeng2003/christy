@@ -29,6 +29,7 @@
                 array('label'=>'电影管理', 'url'=>array('/admin/movie')),
                 array('label'=>'收藏管理', 'url'=>array('/admin/collection')),
                 array('label'=>'评论管理', 'url'=>array('/admin/review')),
+                array('label'=>'群组管理', 'url'=>array('/admin/group')),
                 array('label'=>'用户管理', 'url'=>array('/admin/user_admin')),
                 array('label'=>'网站管理', 'url'=>'#', 'items'=>array(
                     array('label'=>'文档管理', 'url'=>array('/admin/doc')),
