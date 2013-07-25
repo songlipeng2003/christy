@@ -29,7 +29,7 @@ class UserController extends Controller
 		{
 			return array(
 				array('allow',
-					'actions'=>array('info','register','modifyPass','update','modifyEmail','activeEmail'),
+					'actions'=>array('info','register','modifyPass','update','modifyEmail','activeEmail','view'),
 				),
 				array('deny',  // deny all users
 					'users'=>array('*'),
@@ -38,13 +38,26 @@ class UserController extends Controller
 		}else{
 			return array(
 				array('allow',
-					'actions'=>array('register','activeEmailCheck'),
+					'actions'=>array('register','activeEmailCheck', 'view'),
 				),
 				array('deny',  // deny all users
 					'users'=>array('*'),
 				),
 			);
 		}
+	}
+
+	public function actionView($id)
+	{
+		$user=User::model()->findByPk($id);
+		if($user===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+
+		$this->layout='/layouts/main';
+
+		$this->render('view', array(
+			'user'=>$user
+		));
 	}
 
 	/**
