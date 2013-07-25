@@ -121,4 +121,14 @@ return array(
     'Group.summary'=>'介绍',
     'Group.created_at'=>'创建时间',
     'Group.updated_at'=>'更新时间',
+
+    'Topic'=>'帖子',
+    'Topics'=>'帖子',
+    'Topic.id'=>'编号',
+    'Topic.user'=>'创建者',
+    'Topic.group'=>'小组',
+    'Topic.title'=>'标题',
+    'Topic.content'=>'内容',
+    'Topic.created_at'=>'创建时间',
+    'Topic.updated_at'=>'更新时间',
 );
