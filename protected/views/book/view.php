@@ -76,6 +76,18 @@ $this->breadcrumbs=array(
 
         <div class="">
             <h3>书籍评论</h3>
+            <?php foreach ($reviews as $book_review) { ?>
+            <div class="row">
+                <div class="span-3">
+                    <?php echo CHtml::link($book_review->user->username, array('user/view', 'id'=>$book_review->user->id)) ?><br/>
+                    <img src="<?php echo $book_review->user->avatar ?>" />
+                </div>
+                <div class="span-5">
+                    <h4><?php echo $book_review->title ?></h4>
+                    <?php echo $book_review->content; ?>
+                </div>
+            </div>
+            <?php } ?>
         </div>
         <div class="well">
             <h3>发表评论</h3>

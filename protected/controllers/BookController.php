@@ -74,14 +74,26 @@ class BookController extends Controller
             $collection->object_id = $id;
         }
 
+        $reviews = Review::model()->findAllByAttributes(
+            array(
+                'object_id'=>$id,
+                'type'=>Review::TYPE_BOOK
+            ),
+            array(
+                'order'=>'id DESC',
+                'limit'=>10
+            )
+        );
+
         $review = new Review;
         $review->type = Review::TYPE_BOOK;
         $review->object_id = $id;
 
 		$this->render('view', array(
-			'book' => $book,
-            'collection' => $collection,
-            'review' => $review
+			'book'=>$book,
+            'collection'=>$collection,
+            'reviews'=>$reviews,
+            'review'=>$review
 		));
 	}
 
