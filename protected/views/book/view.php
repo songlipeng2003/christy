@@ -77,6 +77,30 @@ $this->breadcrumbs=array(
         <div class="">
             <h3>书籍评论</h3>
         </div>
+        <div class="well">
+            <h3>发表评论</h3>
+            <?php /** @var BootActiveForm $form */
+            $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+                'id'=>'review_form',
+                'type'=>'horizontal',
+                'action'=>array('review/create'),
+                'enableClientValidation'=>true,
+                'enableAjaxValidation'=>false,
+                'clientOptions'=>array( 
+                    'validateOnSubmit'=>true,
+                ), 
+            )); ?>
+                <?php echo $form->errorSummary($review); ?>
+                <?php echo $form->hiddenField($review, 'object_id' ); ?>
+                <?php echo $form->hiddenField($review, 'type' ); ?>
+                <?php echo $form->textFieldRow($review, 'rating'); ?>
+                <?php echo $form->textFieldRow($review, 'title'); ?>
+                <?php echo $form->textAreaRow($review, 'content', array('rows'=>'10', 'class'=>'span4')); ?>
+                <div class="form-actions">
+                    <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'primary', 'label'=>'提交')); ?>
+                </div>
+            <?php $this->endWidget(); ?>
+        </div>
     </div>
     <div class="span3">
         <div class="well">

@@ -20,6 +20,8 @@
  */
 class Review extends CActiveRecord
 {
+	const TYPE_BOOK = 1;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -46,7 +48,7 @@ class Review extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, object_id, type, title', 'required'),
+			array('user_id, object_id, type, title, content', 'required'),
 			array('user_id, object_id, type, rating, votes, useless, comments', 'numerical', 'integerOnly'=>true),
 			array('title, summary', 'length', 'max'=>255),
 			array('content, created_at, updated_at', 'safe'),

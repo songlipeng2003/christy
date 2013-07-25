@@ -74,9 +74,14 @@ class BookController extends Controller
             $collection->object_id = $id;
         }
 
+        $review = new Review;
+        $review->type = Review::TYPE_BOOK;
+        $review->object_id = $id;
+
 		$this->render('view', array(
 			'book' => $book,
-            'collection' => $collection
+            'collection' => $collection,
+            'review' => $review
 		));
 	}
 
