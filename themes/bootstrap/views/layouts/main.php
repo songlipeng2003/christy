@@ -30,7 +30,8 @@
             	array('label'=>Yii::t('common', 'Login'), 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
                 array('label'=>Yii::t('common', 'Register'), 'url'=>array('/user/register'), 'visible'=>Yii::app()->user->isGuest),
                 array('label'=>Yii::app()->user->name.'的帐号', 'url'=>'#', 'items'=>array(
-                    array('label'=>Yii::t('model', 'User'), 'url'=>array('/user/info'), 'visible'=>!Yii::app()->user->isGuest),
+                    array('label'=>'个人首页', 'url'=>array('/user/view', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
+                    array('label'=>'账户设置', 'url'=>array('/user/info'), 'visible'=>!Yii::app()->user->isGuest),
                     array('label'=>Yii::t('common', 'Logout'), 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
                 ), 'visible'=>!Yii::app()->user->isGuest),
             ),
