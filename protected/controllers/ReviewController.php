@@ -4,15 +4,7 @@ class ReviewController extends Controller
 {
 	public function actionCreate()
 	{
-		$model = Review::model()->findByAttributes(array(
-            'user_id'=>Yii::app()->user->id, 
-            'type'=>$_POST['Review']['type'],
-            'object_id'=>$_POST['Review']['object_id']
-        ));
-
-		if(!$model){
-			$model=new Review;
-		}
+		$model=new Review;
 		$model->user_id = Yii::app()->user->id;
 
 		$this->performAjaxValidation($model);
