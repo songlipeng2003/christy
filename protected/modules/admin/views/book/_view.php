@@ -53,8 +53,8 @@
 	<?php echo CHtml::encode($data->pages); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('press_time')); ?>:</b>
-	<?php echo CHtml::encode($data->press_time); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('press_date')); ?>:</b>
+	<?php echo CHtml::encode($data->press_date); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('word_number')); ?>:</b>

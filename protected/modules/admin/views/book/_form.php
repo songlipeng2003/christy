@@ -48,13 +48,35 @@
 
 	<?php echo $form->textAreaRow($model,'description',array('class'=>'span5','rows'=>'8','maxlength'=>255)); ?>
 
-	<?php echo $form->textFieldRow($model,'price',array('class'=>'span5','maxlength'=>255)); ?>
+	<?php echo $form->textFieldRow($model,'price',array('class'=>'span2','maxlength'=>255)); ?>
 
-	<?php echo $form->textFieldRow($model,'pages',array('class'=>'span5')); ?>
+	<?php echo $form->textFieldRow($model,'pages',array('class'=>'span2')); ?>
+<p>
+	<?php echo $form->labelEx($model,'press_date',array('class'=>'span2')); ?>
 
-	<?php echo $form->textFieldRow($model,'press_time',array('class'=>'span5')); ?>
+	<?php
+	$this->widget('zii.widgets.jui.CJuiDatePicker',array(
+		'attribute'=>'press_date',
+		'language'=>'zh_cn',
+		'model'=>$model,
+		'name'=>$model->press_date,
+		'options'=>array(
+			'showAnim'=>'fold',
+			'showOn'=>'both',
+			'buttonImage'=>Yii::app()->request->baseUrl.'/images/calendar.gif',
+			'buttonImageOnly'=>true,
+			// 'minDate'=>'new Date()',
+			'dateFormat'=>'yy-mm-dd',
+		),
+		'htmlOptions'=>array(
+			'style'=>'height:18px',
+		),
+	));
+	?>
+	<?php echo $form->error($model,'press_date'); ?>
+</p>
 
-	<?php echo $form->textFieldRow($model,'word_number',array('class'=>'span5')); ?>
+	<?php echo $form->textFieldRow($model,'word_number',array('class'=>'span2')); ?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

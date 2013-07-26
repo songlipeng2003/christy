@@ -27,7 +27,7 @@
 
 	<?php echo $form->textFieldRow($model,'pages',array('class'=>'span5')); ?>
 
-	<?php echo $form->textFieldRow($model,'press_time',array('class'=>'span5')); ?>
+	<?php echo $form->textFieldRow($model,'press_date',array('class'=>'span5')); ?>
 
 	<?php echo $form->textFieldRow($model,'word_number',array('class'=>'span5')); ?>
 

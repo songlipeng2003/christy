@@ -28,7 +28,7 @@ $this->menu=array(
 		'updated_at',
 		'price',
 		'pages',
-		'press_time',
+		'press_date',
 		'word_number',
 		'alt_title',
 	),

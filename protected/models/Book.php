@@ -48,10 +48,10 @@ class Book extends CActiveRecord
 			array('document, picture', 'required', 'on'=>'Create'),
 			array('pages, word_number', 'numerical', 'integerOnly'=>true),
 			array('name, author, category, press, isbn, description, document, picture,price, alt_title', 'length', 'max'=>255),
-			array('created_at, updated_at, press_time', 'safe'),
+			array('created_at, updated_at, press_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, author, category, press, isbn, description, document, created_at, updated_at, price, pages, press_time, word_number, alt_title', 'safe', 'on'=>'search'),
+			array('id, name, author, category, press, isbn, description, document, created_at, updated_at, price, pages, press_date, word_number, alt_title', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -85,7 +85,7 @@ class Book extends CActiveRecord
     		'updated_at'=>'更新时间',
 			'price' => '价格',
 			'pages' => '页数',
-			'press_time' => '出版时间',
+			'press_date' => '出版日期',
 			'word_number' => '字数',
 			'alt_title' => '副标题',
 		);
@@ -113,7 +113,7 @@ class Book extends CActiveRecord
 		$criteria->compare('updated_at',$this->updated_at,true);
 		$criteria->compare('price',$this->price,true);
 		$criteria->compare('pages',$this->pages);
-		$criteria->compare('press_time',$this->press_time,true);
+		$criteria->compare('press_date',$this->press_date,true);
 		$criteria->compare('word_number',$this->word_number);
 
 		return new CActiveDataProvider($this, array(
