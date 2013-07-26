@@ -2,6 +2,7 @@
 class UploadifyAction extends CAction {
 
     public function run() {
+        $result = '0';
         if (!empty($_FILES)) {
             $tempFile = $_FILES['Filedata']['tmp_name'];
 
@@ -14,9 +15,10 @@ class UploadifyAction extends CAction {
             @ mkdir($targetPath, 0755, true);
             move_uploaded_file($tempFile, $targetFile);
 
-            echo $newFileName;
-        }else{
-            echo 0;
+            $result = $newFileName;
         }
+
+        header('Content-type: text/plain');
+        echo $result;
     }
 }
