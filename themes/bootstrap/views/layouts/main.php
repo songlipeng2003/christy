@@ -20,7 +20,7 @@
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'items'=>array(
-                array('label'=>'书籍', 'url'=>'/book'),
+                array('label'=>'书籍', 'url'=>'book'),
             ),
         ),
         array(
