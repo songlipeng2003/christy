@@ -6,7 +6,7 @@ class UploadifyAction extends CAction {
         if (!empty($_FILES)) {
             $tempFile = $_FILES['Filedata']['tmp_name'];
 
-            $targetPath = $_SERVER['DOCUMENT_ROOT'] . '/upload/tmp/';
+            $targetPath = Yii::getPathOfAlias('webroot') . '/upload/tmp/';
             $newFileName = md5(uniqid());
             $ext = pathinfo($_FILES['Filedata']['name'], PATHINFO_EXTENSION);
             $newFileName = $newFileName . '.' . $ext;
