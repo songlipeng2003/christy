@@ -1,6 +1,6 @@
 <?php
 
-class User_adminController extends Controller
+class UserController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -53,15 +53,15 @@ class User_adminController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new User_admin;
+		$model=new User;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['User_admin']))
+		if(isset($_POST['User']))
 		{
-			$_POST['User_admin']['password']=md5($_POST['User_admin']['password']);
-			$model->attributes=$_POST['User_admin'];
+			$_POST['User']['password']=md5($_POST['User']['password']);
+			$model->attributes=$_POST['User'];
 			if($model->save())
 			{
 				Yii::app()->user->setFlash('success', Yii::t('admin', 'Create succesfully'));
@@ -88,10 +88,10 @@ class User_adminController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['User_admin']))
+		if(isset($_POST['User']))
 		{
-			$_POST['User_admin']['password']=md5($_POST['User_admin']['password']);
-			$model->attributes=$_POST['User_admin'];
+			$_POST['User']['password']=md5($_POST['User']['password']);
+			$model->attributes=$_POST['User'];
 
 			if($model->save())
 			{
@@ -136,10 +136,10 @@ class User_adminController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new User_admin('search');
+		$model=new User('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['User_admin']))
-			$model->attributes=$_GET['User_admin'];
+		if(isset($_GET['User']))
+			$model->attributes=$_GET['User'];
 
 		$this->render('index',array(
 			'model'=>$model,
@@ -153,7 +153,7 @@ class User_adminController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=User_admin::model()->findByPk($id);
+		$model=User::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

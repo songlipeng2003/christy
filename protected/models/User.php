@@ -48,6 +48,12 @@ class User extends CActiveRecord
 			array('username, password, sex, tel, email, qq', 'length', 'max'=>255),
 			array('config_password', 'compare', 'allowEmpty'=>false, 'compareAttribute'=>'password', 'message'=>'两次密码必须一致','on'=>'Register,ModifyPass'),
 			array('username', 'unique'),
+			array('username, password, email', 'required'),
+			array('emailActive', 'numerical', 'integerOnly'=>true),
+			array('username, password, sex, tel, email, qq', 'length', 'max'=>255),
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
+			array('id, username, password, sex, tel, email, qq, emailActive', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,7 +83,29 @@ class User extends CActiveRecord
 			'tel' => '电话',
 			'email' => '电子邮箱',
 			'qq' => 'QQ',
+			'emailActive' => '邮箱激活状态',
 		);
+	}
+
+	public function search()
+	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id',$this->id);
+		$criteria->compare('username',$this->username,true);
+		$criteria->compare('password',$this->password,true);
+		$criteria->compare('sex',$this->sex,true);
+		$criteria->compare('tel',$this->tel,true);
+		$criteria->compare('email',$this->email,true);
+		$criteria->compare('qq',$this->qq,true);
+		$criteria->compare('emailActive',$this->emailActive);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
 	}
 
 	public function getAvatar($size=80)

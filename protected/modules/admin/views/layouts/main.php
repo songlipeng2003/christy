@@ -33,7 +33,7 @@
                     array('label'=>'群组管理', 'url'=>array('/admin/group')),
                     array('label'=>'帖子管理', 'url'=>array('/admin/topic')),
                 )),
-                array('label'=>'用户管理', 'url'=>array('/admin/user_admin')),
+                array('label'=>'用户管理', 'url'=>array('/admin/user')),
                 array('label'=>'网站管理', 'url'=>'#', 'items'=>array(
                     array('label'=>'文档管理', 'url'=>array('/admin/doc')),
                     array('label'=>'网站配置', 'url'=>array('/admin/config')),

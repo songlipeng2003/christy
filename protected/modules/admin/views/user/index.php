@@ -3,10 +3,6 @@ $this->breadcrumbs=array(
 	Yii::t('model', 'User Admins'),
 );
 
-$this->menu=array(
-	array('label'=>Yii::t('admin', 'Create {model}', array('{model}'=>Yii::t('model', 'User_admin'))),'url'=>array('create')),
-);
-
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
@@ -20,8 +16,6 @@ $('.search-form form').submit(function(){
 });
 ");
 ?>
-
-<h1><?php echo Yii::t('admin', 'Create {model}', array('{model}'=>Yii::t('model', 'User_admin'))); ?></h1>
 
 <p><?php echo Yii::t('admin', 'You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b> or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.'); ?></p>
 
