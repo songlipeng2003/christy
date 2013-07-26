@@ -1,7 +1,7 @@
 $(function(){
     $('#file_upload').uploadify({
         swf  : SITE_URL+'/flash/uploadify.swf',
-        uploader    : '/site/upload',
+        uploader    : SITE_URL+'/site/upload',
         buttonText : '上传',
         auto      : true,
         multi     : false,
@@ -16,7 +16,7 @@ $(function(){
 
   $('#image_upload').uploadify({
         swf  : SITE_URL+'/flash/uploadify.swf',
-        uploader    : '/site/upload',
+        uploader    : SITE_URL+'/site/upload',
         buttonText : '上传',
         auto      : true,
         multi     : false,
