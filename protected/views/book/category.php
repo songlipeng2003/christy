@@ -43,7 +43,7 @@ $this->breadcrumbs=$breadcrumbs;
                 )); ?>
             </div>
             <div class="span6">
-                <h2><?php echo CHtml::link($book->name, '/book/'.$book->id) ?></h2>
+                <h2><?php echo CHtml::link($book->name, 'book/'.$book->id) ?></h2>
                 <p>
                     <?php if($book->author){ echo $book->author; } ?>/
                     <?php if($book->press){ echo $book->press; } ?>
