@@ -3,7 +3,7 @@
 $this->pageTitle=Yii::app()->name . ' - 书籍 - ' .  $book->name;
 
 $this->breadcrumbs=array(
-	'书籍'=>array('book'),
+	'书籍'=>array('book/'),
 	$book->name,
 );
 ?>

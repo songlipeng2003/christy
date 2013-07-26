@@ -3,7 +3,7 @@
 $this->pageTitle=Yii::app()->name . ' - 书籍';
 
 $breadcrumbs = array(
-    '书籍'=>array('book/index'),
+    '书籍'=>array('book/'),
 );
 
 foreach ($parents as $parent) {
