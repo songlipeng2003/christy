@@ -51,30 +51,29 @@
 	<?php echo $form->textFieldRow($model,'price',array('class'=>'span2','maxlength'=>255)); ?>
 
 	<?php echo $form->textFieldRow($model,'pages',array('class'=>'span2')); ?>
-<p>
-	<?php echo $form->labelEx($model,'press_date',array('class'=>'span2')); ?>
-
-	<?php
-	$this->widget('zii.widgets.jui.CJuiDatePicker',array(
-		'attribute'=>'press_date',
-		'language'=>'zh_cn',
-		'model'=>$model,
-		'name'=>$model->press_date,
-		'options'=>array(
-			'showAnim'=>'fold',
-			'showOn'=>'both',
-			'buttonImage'=>Yii::app()->request->baseUrl.'/images/calendar.gif',
-			'buttonImageOnly'=>true,
-			// 'minDate'=>'new Date()',
-			'dateFormat'=>'yy-mm-dd',
-		),
-		'htmlOptions'=>array(
-			'style'=>'height:18px',
-		),
-	));
-	?>
-	<?php echo $form->error($model,'press_date'); ?>
-</p>
+	<div class="control-group ">
+		<?php echo $form->labelEx($model,'press_date',array('class'=>'control-label')); ?>
+		<div class="controls">
+			<?php
+			$this->widget('zii.widgets.jui.CJuiDatePicker',array(
+				'attribute'=>'press_date',
+				'language'=>'zh_cn',
+				'model'=>$model,
+				'name'=>$model->press_date,
+				'options'=>array(
+					'showAnim'=>'fold',
+					'showOn'=>'both',
+					// 'minDate'=>'new Date()',
+					'dateFormat'=>'yy-mm-dd',
+				),
+				'htmlOptions'=>array(
+					'style'=>'height:18px',
+				),
+			));
+			?>
+		</div>
+		<?php echo $form->error($model,'press_date'); ?>
+	</div>
 
 	<?php echo $form->textFieldRow($model,'word_number',array('class'=>'span2')); ?>
 
