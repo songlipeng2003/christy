@@ -7,6 +7,10 @@
 
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/styles.css" />
 
+    <script type="text/javascript">
+    var SITE_URL = '<?php echo Yii::app()->getBaseUrl(true); ?>';
+    </script>
+
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
 	<?php Yii::app()->bootstrap->register(); ?>
