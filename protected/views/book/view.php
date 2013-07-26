@@ -14,7 +14,7 @@ $this->breadcrumbs=array(
         <div class="row">
             <div class="span2">
                 <?php $this->widget('ext.SAImageDisplayer', array(
-                    'image' => $book->picture,
+                    'image' => $book->image,
                     'group' => 'book',
                     'size' => 'big',
                     'defaultImage' => 'default.jpg',

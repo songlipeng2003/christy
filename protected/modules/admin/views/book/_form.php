@@ -20,17 +20,23 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<?php echo $form->textFieldRow($model,'name',array('class'=>'span5','maxlength'=>255)); ?>
-
 	<?php echo $form->textFieldRow($model,'isbn',array('class'=>'span5','maxlength'=>255)); ?>
 
-	<?php echo $form->dropDownListRow($model,'author',CHtml::listData(Author::model()->findAll(), 'name', 'name')); ?>
+	<?php echo $form->textFieldRow($model,'name',array('class'=>'span5','maxlength'=>255)); ?>
 
-	<?php echo $form->dropDownListRow($model,'category',CHtml::listData(Category::model()->findAll(), 'name', 'name')); ?>
+	<?php echo $form->textFieldRow($model,'origin_title',array('class'=>'span5','maxlength'=>255)); ?>
 
-	<?php echo $form->dropDownListRow($model,'press',CHtml::listData(Press::model()->findAll(), 'name', 'name')); ?>
+	<?php echo $form->textFieldRow($model,'alt_title',array('class'=>'span5','maxlength'=>255)); ?>
 
-	<?php echo $form->textFieldRow($model,'document',array('readonly'=>'true')); ?>
+	<?php echo $form->textFieldRow($model,'subtitle',array('class'=>'span5','maxlength'=>255)); ?>
+
+	<?php echo $form->dropDownListRow($model,'category_id',CHtml::listData(Category::model()->findAll(), 'name', 'name')); ?>
+
+	<?php echo $form->dropDownListRow($model,'author_id',CHtml::listData(Author::model()->findAll(), 'name', 'name')); ?>
+
+	<?php echo $form->dropDownListRow($model,'press_id',CHtml::listData(Press::model()->findAll(), 'name', 'name')); ?>
+
+	<?php echo $form->textFieldRow($model,'file',array('readonly'=>'true')); ?>
 	<div class="control-group ">
 		<label class="control-label"></label>
 		<div class="controls">
@@ -38,15 +44,13 @@
 		</div>
 	</div>
 
-	<?php echo $form->textFieldRow($model,'picture',array('readonly'=>'true')); ?>
+	<?php echo $form->textFieldRow($model,'image',array('readonly'=>'true')); ?>
 	<div class="control-group ">
 		<label class="control-label"></label>
 		<div class="controls">
 			<div id="image_upload"></div>
 		</div>
 	</div>
-
-	<?php echo $form->textAreaRow($model,'description',array('class'=>'span5','rows'=>'8','maxlength'=>255)); ?>
 
 	<?php echo $form->textFieldRow($model,'price',array('class'=>'span2','maxlength'=>255)); ?>
 
@@ -63,11 +67,7 @@
 				'options'=>array(
 					'showAnim'=>'fold',
 					'showOn'=>'both',
-					// 'minDate'=>'new Date()',
 					'dateFormat'=>'yy-mm-dd',
-				),
-				'htmlOptions'=>array(
-					'style'=>'height:18px',
 				),
 			));
 			?>
@@ -76,6 +76,10 @@
 	</div>
 
 	<?php echo $form->textFieldRow($model,'word_number',array('class'=>'span2')); ?>
+
+	<?php echo $form->textAreaRow($model,'description',array('class'=>'span5','rows'=>'10')); ?>
+
+	<?php echo $form->textAreaRow($model,'author_intro',array('class'=>'span5','rows'=>'10')); ?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

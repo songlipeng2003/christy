@@ -44,9 +44,8 @@ $('.search-form form').submit(function(){
 		),
 		'isbn',
 		'name',
-		'author',
-		'category',
-		'press',
+		'category_id',
+		'press_id',
 		'price',
 		'created_at',
 		array(

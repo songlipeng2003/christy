@@ -11,8 +11,8 @@
  * @property string $press
  * @property string $isbn
  * @property string $description
- * @property string $document
- * @property string $picture
+ * @property string $file
+ * @property string $image
  */
 class Book extends CActiveRecord
 {
@@ -44,14 +44,15 @@ class Book extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, author, press, isbn', 'required'),
-			array('document, picture', 'required', 'on'=>'Create'),
+			array('isbn, name, category_id, author_id, press_id, price, pages', 'required'),
+			array('file, image', 'required', 'on'=>'Create'),
 			array('pages, word_number', 'numerical', 'integerOnly'=>true),
-			array('name, author, category, press, isbn, description, document, picture,price, alt_title', 'length', 'max'=>255),
+			array('price', 'numerical'),
+			array('isbn, name, alt_title, origin_title, subtitle, description, author_intro', 'length', 'max'=>255),
 			array('created_at, updated_at, press_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, author, category, press, isbn, description, document, created_at, updated_at, price, pages, press_date, word_number, alt_title', 'safe', 'on'=>'search'),
+			array('id, name, author, category, press, isbn, description, file, created_at, updated_at, price, pages, press_date, word_number, alt_title', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,9 +61,12 @@ class Book extends CActiveRecord
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
 		return array(
+			'user'=>array(self::BELONGS_TO, 'User', 'user_id'),
+			'category'=>array(self::BELONGS_TO, 'Category', 'category_id'),
+			'author'=>array(self::BELONGS_TO, 'Author', 'author_id'),
+			'tranlator'=>array(self::BELONGS_TO, 'Author', 'tranlator_id'),
+			'press'=>array(self::BELONGS_TO, 'Press', 'press_id')
 		);
 	}
 
@@ -72,22 +76,25 @@ class Book extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '编号',
-			'name' => '书籍名称',
-			'author' => '作者',
-			'category' => '书籍分类',
-			'press' => '出版社',
-			'isbn' => 'ISBN编号',
-			'description' => '描述',
-			'document'=>'书籍文档',
-			'picture'=>'书籍封面',
-			'created_at'=>'创建时间',
-    		'updated_at'=>'更新时间',
-			'price' => '价格',
-			'pages' => '页数',
-			'press_date' => '出版日期',
-			'word_number' => '字数',
-			'alt_title' => '副标题',
+			'id'=>Yii::t('model', 'Book.id'),
+			'isbn'=>Yii::t('model', 'Book.isbn'),
+			'name'=>Yii::t('model', 'Book.name'),
+			'origin_title'=>Yii::t('model', 'Book.origin_title'),
+			'alt_title'=>Yii::t('model', 'Book.alt_title'),
+			'subtitle'=>Yii::t('model', 'Book.subtitle'),
+			'category_id'=>Yii::t('model', 'Book.category'),
+			'author_id'=>Yii::t('model', 'Book.author'),
+			'press_id'=>Yii::t('model', 'Book.press'),
+			'file'=>Yii::t('model', 'Book.file'),
+			'image'=>Yii::t('model', 'Book.image'),
+			'price'=>Yii::t('model', 'Book.price'),
+			'pages'=>Yii::t('model', 'Book.pages'),
+			'press_date'=>Yii::t('model', 'Book.press_date'),
+			'word_number'=>Yii::t('model', 'Book.word_number'),
+			'description'=>Yii::t('model', 'Book.description'),
+			'author_intro'=>Yii::t('model', 'Book.author_intro'),
+			'created_at'=>Yii::t('model', 'Book.created_at'),
+    		'updated_at'=>Yii::t('model', 'Book.updated_at'),
 		);
 	}
 
@@ -133,25 +140,25 @@ class Book extends CActiveRecord
 	
 	protected function afterSave()
 	{
-		if(!isset($this->oldAttributes['document']) || $this->document != $this->oldAttributes['document']){
-			$filePath = $_SERVER['DOCUMENT_ROOT'].'/upload/tmp/'.$this->document;
-			$targetPath = $_SERVER['DOCUMENT_ROOT'].'/upload/book/'.$this->document;
+		if(!isset($this->oldAttributes['file']) || $this->file != $this->oldAttributes['file']){
+			$filePath = Yii::getPathOfAlias('webroot').'/upload/tmp/'.$this->file;
+			$targetPath = Yii::getPathOfAlias('webroot').'/upload/book/'.$this->file;
 
 			copy($filePath, $targetPath);
 
-			@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/book/'.$this->oldAttributes['document']);
+			@ unlink(Yii::getPathOfAlias('webroot').'/upload/book/'.$this->oldAttributes['file']);
 		}
 
-		if(!isset($this->oldAttributes['picture']) || $this->picture != $this->oldAttributes['picture']){
-			$filePath = $_SERVER['DOCUMENT_ROOT'].'/upload/tmp/'.$this->picture;
-			$targetPath = $_SERVER['DOCUMENT_ROOT'].'/upload/images/book/originals/'.$this->picture;
+		if(!isset($this->oldAttributes['image']) || $this->image != $this->oldAttributes['image']){
+			$filePath = Yii::getPathOfAlias('webroot').'/upload/tmp/'.$this->image;
+			$targetPath = Yii::getPathOfAlias('webroot').'/upload/images/book/originals/'.$this->image;
 
 			copy($filePath, $targetPath);
 
-			@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/originals/'.$this->oldAttributes['picture']);
-			@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/thumb/'.$this->oldAttributes['picture']);
-			@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/tiny/'.$this->oldAttributes['picture']);
-			@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/big/'.$this->oldAttributes['picture']);
+			@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/book/originals/'.$this->oldAttributes['image']);
+			@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/book/thumb/'.$this->oldAttributes['image']);
+			@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/book/tiny/'.$this->oldAttributes['image']);
+			@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/book/big/'.$this->oldAttributes['image']);
 		}
 	}
 
@@ -163,10 +170,10 @@ class Book extends CActiveRecord
     }
 
     protected function afterDelete(){
-    	@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/book/'.$this->oldAttributes['document']);
-    	@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/originals/'.$this->oldAttributes['picture']);
-		@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/thumb/'.$this->oldAttributes['picture']);
-		@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/tiny/'.$this->oldAttributes['picture']);
-		@ unlink($_SERVER['DOCUMENT_ROOT'].'/upload/images/book/big/'.$this->oldAttributes['picture']);
+    	@ unlink(Yii::getPathOfAlias('webroot').'/upload/book/'.$this->oldAttributes['file']);
+    	@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/book/originals/'.$this->oldAttributes['image']);
+		@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/book/thumb/'.$this->oldAttributes['image']);
+		@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/book/tiny/'.$this->oldAttributes['image']);
+		@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/book/big/'.$this->oldAttributes['image']);
     }
 }

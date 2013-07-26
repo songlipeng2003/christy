@@ -5,31 +5,17 @@
 
 	<?php echo $form->textFieldRow($model,'id',array('class'=>'span5')); ?>
 
-	<?php echo $form->textFieldRow($model,'name',array('class'=>'span5','maxlength'=>255)); ?>
-
-	<?php echo $form->textFieldRow($model,'author',array('class'=>'span5','maxlength'=>255)); ?>
-
-	<?php echo $form->textFieldRow($model,'category',array('class'=>'span5','maxlength'=>255)); ?>
-
-	<?php echo $form->textFieldRow($model,'press',array('class'=>'span5','maxlength'=>255)); ?>
-
 	<?php echo $form->textFieldRow($model,'isbn',array('class'=>'span5','maxlength'=>255)); ?>
 
-	<?php echo $form->textFieldRow($model,'description',array('class'=>'span5','maxlength'=>255)); ?>
+	<?php echo $form->textFieldRow($model,'name',array('class'=>'span5','maxlength'=>255)); ?>
 
-	<?php echo $form->textFieldRow($model,'document',array('class'=>'span5','maxlength'=>255)); ?>
+	<?php echo $form->textFieldRow($model,'price',array('class'=>'span5','maxlength'=>255)); ?>
+
+	<?php echo $form->textFieldRow($model,'description',array('class'=>'span5','maxlength'=>255)); ?>
 
 	<?php echo $form->textFieldRow($model,'created_at',array('class'=>'span5')); ?>
 
 	<?php echo $form->textFieldRow($model,'updated_at',array('class'=>'span5')); ?>
-
-	<?php echo $form->textFieldRow($model,'price',array('class'=>'span5','maxlength'=>255)); ?>
-
-	<?php echo $form->textFieldRow($model,'pages',array('class'=>'span5')); ?>
-
-	<?php echo $form->textFieldRow($model,'press_date',array('class'=>'span5')); ?>
-
-	<?php echo $form->textFieldRow($model,'word_number',array('class'=>'span5')); ?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

@@ -9,7 +9,7 @@ $(function(){
         fileTypeExts   : '*.pdf',
         onUploadSuccess: function(file, response, data) {
             if(response!='0'){
-                $('#Book_document').val(response);
+                $('#Book_file').val(response);
             }
         }
   });
@@ -24,7 +24,7 @@ $(function(){
         fileTypeExts   : '*.jpg;*.jpeg;*.gif;*.png',
         onUploadSuccess : function(file, response, data) {
             if(response!='0'){
-                $('#Book_picture').val(response);
+                $('#Book_image').val(response);
             }
         }
   });
