@@ -19,6 +19,7 @@
  */
 class Movie extends CActiveRecord
 {
+	private $oldAttributes = array();
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -47,11 +48,11 @@ class Movie extends CActiveRecord
 		return array(
 			array('title', 'required'),
 			array('duration', 'numerical', 'integerOnly'=>true),
-			array('title, original_title, aka, directors, casts, writers, website, languages', 'length', 'max'=>255),
-			array('pubdate, summary', 'safe'),
+			array('title, original_title, aka, directors, casts, writers, website, languages, image', 'length', 'max'=>255),
+			array('pubdate, summary, created_at, updated_at', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, original_title, aka, directors, casts, writers, website, pubdate, languages, duration, summary', 'safe', 'on'=>'search'),
+			array('id, title, original_title, aka, directors, casts, writers, website, pubdate, languages, duration, summary, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -86,6 +87,7 @@ class Movie extends CActiveRecord
 			'summary' => Yii::t('model', 'Movie.summary'),
 			'created_at' => Yii::t('model', 'Movie.created_at'),
 			'updated_at' => Yii::t('model', 'Movie.updated_at'),
+			'image' => Yii::t('model','Movie.image'),
 		);
 	}
 
@@ -112,6 +114,9 @@ class Movie extends CActiveRecord
 		$criteria->compare('languages',$this->languages,true);
 		$criteria->compare('duration',$this->duration);
 		$criteria->compare('summary',$this->summary,true);
+		$criteria->compare('created_at',$this->created_at,true);
+		$criteria->compare('updated_at',$this->updated_at,true);
+		$criteria->compare('image',$this->image,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -126,4 +131,42 @@ class Movie extends CActiveRecord
 			)
 		);
 	}
+	protected function afterSave()
+	{
+		// if(!isset($this->oldAttributes['video']) || $this->video != $this->oldAttributes['video']){
+		// 	$filePath = Yii::getPathOfAlias('webroot').'/upload/tmp/'.$this->video;
+		// 	$targetPath = Yii::getPathOfAlias('webroot').'/upload/movie/'.$this->video;
+
+		// 	copy($filePath, $targetPath);
+
+		// 	@ unlink(Yii::getPathOfAlias('webroot').'/upload/movie/'.$this->oldAttributes['video']);
+		// }
+
+		if(!isset($this->oldAttributes['image']) || $this->image != $this->oldAttributes['image']){
+			$filePath = Yii::getPathOfAlias('webroot').'/upload/tmp/'.$this->image;
+			$targetPath = Yii::getPathOfAlias('webroot').'/upload/images/movie/originals/'.$this->image;
+
+			copy($filePath, $targetPath);
+
+			@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/movie/originals/'.$this->oldAttributes['image']);
+			@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/movie/thumb/'.$this->oldAttributes['image']);
+			@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/movie/tiny/'.$this->oldAttributes['image']);
+			@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/movie/big/'.$this->oldAttributes['image']);
+		}
+	}
+
+	protected function afterFind()
+    {
+        $this->oldAttributes = $this->getAttributes();
+
+        return parent::afterFind();
+    }
+
+    protected function afterDelete(){
+    	// @ unlink(Yii::getPathOfAlias('webroot').'/upload/movie/'.$this->oldAttributes['video']);
+    	@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/movie/originals/'.$this->oldAttributes['image']);
+		@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/movie/thumb/'.$this->oldAttributes['image']);
+		@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/movie/tiny/'.$this->oldAttributes['image']);
+		@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/movie/big/'.$this->oldAttributes['image']);
+    }
 }

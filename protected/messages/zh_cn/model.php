@@ -76,6 +76,7 @@ return array(
     'Movie.summary'=>'摘要',
     'Movie.created_at'=>'创建时间',
     'Movie.updated_at'=>'更新时间',
+    'Movie.image'=>'电影海报',
 
     'Doc'=>'文档',
     'Docs'=>'文档',
