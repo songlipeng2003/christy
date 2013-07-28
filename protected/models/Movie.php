@@ -133,19 +133,11 @@ class Movie extends CActiveRecord
 	}
 	protected function afterSave()
 	{
-		// if(!isset($this->oldAttributes['video']) || $this->video != $this->oldAttributes['video']){
-		// 	$filePath = Yii::getPathOfAlias('webroot').'/upload/tmp/'.$this->video;
-		// 	$targetPath = Yii::getPathOfAlias('webroot').'/upload/movie/'.$this->video;
-
-		// 	copy($filePath, $targetPath);
-
-		// 	@ unlink(Yii::getPathOfAlias('webroot').'/upload/movie/'.$this->oldAttributes['video']);
-		// }
 
 		if(!isset($this->oldAttributes['image']) || $this->image != $this->oldAttributes['image']){
 			$filePath = Yii::getPathOfAlias('webroot').'/upload/tmp/'.$this->image;
 			$targetPath = Yii::getPathOfAlias('webroot').'/upload/images/movie/originals/'.$this->image;
-
+			mkdir(Yii::getPathOfAlias('webroot').'/upload/images/movie/originals/', 0755, true);
 			copy($filePath, $targetPath);
 
 			@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/movie/originals/'.$this->oldAttributes['image']);
