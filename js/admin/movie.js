@@ -5,7 +5,7 @@ $(function(){
         buttonText : '上传',
         auto      : true,
         multi     : false,
-        sizeLimit : 10240000,
+        fileSizeLimit : '10MB',
         fileTypeExts   : '*.rmvb',
         onUploadSuccess: function(file, response, data) {
             if(response!='0'){
@@ -20,7 +20,7 @@ $(function(){
         buttonText : '上传',
         auto      : true,
         multi     : false,
-        sizeLimit : 10240000,
+        fileSizeLimit : '10MB',
         fileTypeExts   : '*.jpg;*.jpeg;*.gif;*.png',
         onUploadSuccess : function(file, response, data) {
             if(response!='0'){
