@@ -44,7 +44,6 @@ class Topic extends CActiveRecord
 			array('user_id, group_id', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
 			array('content', 'length', 'max'=>60000),
-			array('created_at, updated_at', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, user_id, group_id, title, content, created_at, updated_at', 'safe', 'on'=>'search'),
@@ -100,5 +99,15 @@ class Topic extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	public function behaviors(){
+		return array(
+			'CTimestampBehavior' => array(
+				'class' => 'zii.behaviors.CTimestampBehavior',
+				'createAttribute' => 'created_at',
+				'updateAttribute' => 'updated_at',
+			)
+		);
 	}
 }
