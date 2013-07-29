@@ -38,9 +38,9 @@ class Group extends CActiveRecord
 	{
 		return array(
 			array('user_id, name', 'required'),
+			array('name', 'unique'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
 			array('name, summary', 'length', 'max'=>255),
-			array('created_at, updated_at', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, user_id, name, summary, created_at, updated_at', 'safe', 'on'=>'search'),
