@@ -1,12 +1,12 @@
 <?php
 
-class GroupController extends Controller
+class MemberController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='/layouts/main';
+	public $layout='/layouts/column2';
 
 	/**
 	 * @return array action filters
@@ -26,13 +26,13 @@ class GroupController extends Controller
 	public function accessRules()
 	{
 		return array(
-			// array('allow',
-			// 	'actions'=>array('index','view','create','update','delete'),
-			// 	'users'=>array('admin'),
-			// ),
-			// array('deny',  // deny all users
-			// 	'users'=>array('*'),
-			// ),
+			array('allow',
+				'actions'=>array('index','view','create','update','delete'),
+				'users'=>array('admin'),
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
 		);
 	}
 
@@ -42,54 +42,8 @@ class GroupController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$group = $this->loadModel($id);
-
-		$member = Member::model()->findByAttributes(array(
-			'user_id'=>Yii::app()->user->id,
-			'group_id'=>$id
-		));
-
-		$topics=new Topic('search');
-		if(isset($_POST['Topic'])){
-			$topics->attributes=$_POST['Topic'];
-		}
-		
-		$topics->group_id = $id;
-		// $topics->sort = 'id DESC';
-
 		$this->render('view',array(
-			'group'=>$group,
-			'member'=>$member,
-			'topics'=>$topics
-		));
-	}
-
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreateTopic($id)
-	{
-		$model=new Topic;
-		$model->group_id = $id;
-		$group=$this->loadModel($id);
-
-		if(isset($_POST['Topic']))
-		{
-			$model->attributes=$_POST['Topic'];
-			$model->user_id = Yii::app()->user->id;
-			if($model->save())
-			{
-				Yii::app()->user->setFlash('success', '发表成功');
-				$this->redirect(array('view','id'=>$group->id));
-			}else{
-				Yii::app()->user->setFlash('error', '发表失败');
-			}
-		}
-
-		$this->render('createTopic',array(
-			'model'=>$model,
-			'group'=>$group
+			'model'=>$this->loadModel($id),
 		));
 	}
 
@@ -99,12 +53,14 @@ class GroupController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Group;
+		$model=new Member;
 
-		if(isset($_POST['Group']))
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Member']))
 		{
-			$model->attributes=$_POST['Group'];
-			$model->user_id = Yii::app()->user->id;
+			$model->attributes=$_POST['Member'];
 			if($model->save())
 			{
 				Yii::app()->user->setFlash('success', Yii::t('admin', 'Create succesfully'));
@@ -127,13 +83,13 @@ class GroupController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		if($model->user_id!=Yii::app()->user->id){
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-		}
 
-		if(isset($_POST['Group']))
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Member']))
 		{
-			$model->attributes=$_POST['Group'];
+			$model->attributes=$_POST['Member'];
 
 			if($model->save())
 			{
@@ -178,10 +134,10 @@ class GroupController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new Group('search');
+		$model=new Member('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Group']))
-			$model->attributes=$_GET['Group'];
+		if(isset($_GET['Member']))
+			$model->attributes=$_GET['Member'];
 
 		$this->render('index',array(
 			'model'=>$model,
@@ -195,7 +151,7 @@ class GroupController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Group::model()->findByPk($id);
+		$model=Member::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -207,7 +163,7 @@ class GroupController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='group-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='member-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

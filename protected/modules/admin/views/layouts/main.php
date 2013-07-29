@@ -35,6 +35,7 @@
                 array('label'=>'评论管理', 'url'=>array('/admin/review')),
                 array('label'=>'群组管理', 'url'=>'#', 'items'=>array(
                     array('label'=>'群组管理', 'url'=>array('/admin/group')),
+                    array('label'=>'群组成员管理', 'url'=>array('/admin/member')),
                     array('label'=>'帖子管理', 'url'=>array('/admin/topic')),
                 )),
                 array('label'=>'用户管理', 'url'=>array('/admin/user')),

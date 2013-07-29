@@ -1,21 +1,5 @@
-<div class="view span-3">
-    <b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-    <?php echo CHtml::link(CHtml::encode($data->id),array('view','id'=>$data->id)); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('user_id')); ?>:</b>
-    <?php echo CHtml::encode($data->user->username); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>
-    <?php echo CHtml::encode($data->name); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('summary')); ?>:</b>
-    <?php echo CHtml::encode($data->summary); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('created_at')); ?>:</b>
-    <?php echo CHtml::encode($data->created_at); ?>
-    <br />
+<div class="item span3">
+    <h2><?php echo CHtml::link($data->name, array('group/view', 'id'=>$data->id)); ?></h2>
+    <p class="summary"><?php echo CHtml::encode($data->summary); ?><p>
+    <p>创建于:<?php echo CHtml::encode($data->created_at); ?></p>
 </div>

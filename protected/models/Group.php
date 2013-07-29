@@ -37,10 +37,11 @@ class Group extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('user_id, name', 'required'),
+			array('user_id, name, summary', 'required'),
+			array('name', 'unique'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
-			array('name, summary', 'length', 'max'=>255),
-			array('created_at, updated_at', 'safe'),
+			array('name', 'length', 'max'=>255),
+			array('summary', 'length', 'min'=>10, 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, user_id, name, summary, created_at, updated_at', 'safe', 'on'=>'search'),
