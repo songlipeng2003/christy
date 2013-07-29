@@ -15,3 +15,13 @@
     line-height: 100%;
     margin-top: 0;
 }
+
+.grid .item{
+    height: 200px;
+    overflow: hidden;
+}
+
+.grid .item .summary{
+    height: 100px;
+    overflow: hidden;
+}

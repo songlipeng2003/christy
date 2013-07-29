@@ -26,13 +26,13 @@ class GroupController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',
-				'actions'=>array('index','view','create','update','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
+			// array('allow',
+			// 	'actions'=>array('index','view','create','update','delete'),
+			// 	'users'=>array('admin'),
+			// ),
+			// array('deny',  // deny all users
+			// 	'users'=>array('*'),
+			// ),
 		);
 	}
 
@@ -42,8 +42,54 @@ class GroupController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$group = $this->loadModel($id);
+
+		$member = Member::model()->findByAttributes(array(
+			'user_id'=>Yii::app()->user->id,
+			'group_id'=>$id
+		));
+
+		$topics=new Topic('search');
+		if(isset($_POST['Topic'])){
+			$topics->attributes=$_POST['Topic'];
+		}
+		
+		$topics->group_id = $id;
+		// $topics->sort = 'id DESC';
+
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'group'=>$group,
+			'member'=>$member,
+			'topics'=>$topics
+		));
+	}
+
+	/**
+	 * Creates a new model.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
+	 */
+	public function actionCreateTopic($id)
+	{
+		$model=new Topic;
+		$model->group_id = $id;
+		$group=$this->loadModel($id);
+
+		if(isset($_POST['Topic']))
+		{
+			$model->attributes=$_POST['Topic'];
+			$model->user_id = Yii::app()->user->id;
+			if($model->save())
+			{
+				Yii::app()->user->setFlash('success', '发表成功');
+				$this->redirect(array('view','id'=>$group->id));
+			}else{
+				Yii::app()->user->setFlash('error', '发表失败');
+			}
+		}
+
+		$this->render('createTopic',array(
+			'model'=>$model,
+			'group'=>$group
 		));
 	}
 

@@ -136,7 +136,7 @@ return array(
     'Topic'=>'帖子',
     'Topics'=>'帖子',
     'Topic.id'=>'编号',
-    'Topic.user'=>'创建者',
+    'Topic.user'=>'发布者',
     'Topic.group'=>'小组',
     'Topic.title'=>'标题',
     'Topic.content'=>'内容',
