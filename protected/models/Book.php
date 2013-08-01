@@ -144,7 +144,7 @@ class Book extends CActiveRecord
 			$filePath = Yii::getPathOfAlias('webroot').'/upload/tmp/'.$this->file;
 			$targetPath = Yii::getPathOfAlias('webroot').'/upload/book/'.$this->file;
 
-			mkdir(Yii::getPathOfAlias('webroot').'/upload/book/', 0755, true);
+			@ mkdir(Yii::getPathOfAlias('webroot').'/upload/book/', 0755, true);
 			copy($filePath, $targetPath);
 
 			@ unlink(Yii::getPathOfAlias('webroot').'/upload/book/'.$this->oldAttributes['file']);
@@ -154,7 +154,7 @@ class Book extends CActiveRecord
 			$filePath = Yii::getPathOfAlias('webroot').'/upload/tmp/'.$this->image;
 			$targetPath = Yii::getPathOfAlias('webroot').'/upload/images/book/originals/'.$this->image;
 
-			mkdir(Yii::getPathOfAlias('webroot').'/upload/images/book/originals/', 0755, true);
+			@ mkdir(Yii::getPathOfAlias('webroot').'/upload/images/book/originals/', 0755, true);
 			copy($filePath, $targetPath);
 
 			@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/book/originals/'.$this->oldAttributes['image']);
