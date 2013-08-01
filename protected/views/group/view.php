@@ -22,9 +22,9 @@ $this->menu=array(
                 echo CHtml::link('删除群组', array('group/delete', 'id'=>$group->id), array('confirm'=>'你确定要删除吗？这将删除小组所有信息！')); 
             }else{
                 if($member){
-                    echo CHtml::link('退出', array('member', array('member/add')));
+                    echo CHtml::link('退出', array('member/delete', 'group_id'=>$group->id));
                 }else{
-                    echo CHtml::link('加入群组', array('member', array('member/add')));
+                    echo CHtml::link('加入群组', array('member/create', 'group_id'=>$group->id));
                 }
 
             } ?>
