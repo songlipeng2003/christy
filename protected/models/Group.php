@@ -54,7 +54,9 @@ class Group extends CActiveRecord
 	public function relations()
 	{
 		return array(
-			'user'=>array(self::BELONGS_TO, 'User', 'user_id')
+			'user'=>array(self::BELONGS_TO, 'User', 'user_id'),
+			'members'=>array(self::HAS_MANY, 'Member', 'group_id'),
+            'memberCount'=>array(self::STAT, 'Member', 'group_id')
 		);
 	}
 
