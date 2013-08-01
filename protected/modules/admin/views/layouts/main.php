@@ -4,16 +4,12 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
-
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/styles.css" />
-
+	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
     <script type="text/javascript">
     var SITE_URL = '<?php echo Yii::app()->getBaseUrl(true); ?>';
     </script>
-
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
-
 	<?php Yii::app()->bootstrap->register(); ?>
+    <?php Yii::app()->clientScript->registerCSSFile('/css/common.css'); ?>
 </head>
 
 <body>
