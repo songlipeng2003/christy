@@ -57,10 +57,44 @@ class GroupController extends Controller
 		$topics->group_id = $id;
 		// $topics->sort = 'id DESC';
 
+		$last_members = Member::model()->group($id)->recently(24)->findAll();
+
 		$this->render('view',array(
 			'group'=>$group,
 			'member'=>$member,
+			'last_members'=>$last_members,
 			'topics'=>$topics
+		));
+	}
+
+	/**
+	 * Displays a particular model.
+	 * @param integer $id the ID of the model to be displayed
+	 */
+	public function actionMembers($id)
+	{
+		$group = $this->loadModel($id);
+
+		$criteria = new CDbCriteria();
+		$criteria->condition = 'group_id = :id';
+       	$criteria->order = 'id DESC';
+       	$criteria->params = array (':id'=>$id);
+
+       	$item_count = Member::model()->count($criteria);
+
+       	$pages = new CPagination($item_count);
+       	$page_size = 100;
+        $pages->setPageSize($page_size);
+        $pages->applyLimit($criteria);
+
+		$members = Member::model()->findAll($criteria);
+
+		$this->render('members',array(
+			'group'=>$group,
+			'members'=>$members,
+			'item_count'=>$item_count,
+            'page_size'=>$page_size,
+            'pages'=>$pages,
 		));
 	}
 

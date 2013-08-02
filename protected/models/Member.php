@@ -93,4 +93,20 @@ class Member extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+	public function group($group_id){
+	    $this->getDbCriteria()->mergeWith(array(
+	        'condition'=>'group_id='.$group_id,
+	    ));
+	    return $this;
+	}
+
+	public function recently($limit=10)
+	{
+	    $this->getDbCriteria()->mergeWith(array(
+	        'order'=>'id DESC',
+	        'limit'=>$limit,
+	    ));
+	    return $this;
+	}
 }

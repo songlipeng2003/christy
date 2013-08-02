@@ -65,7 +65,16 @@ $this->menu=array(
     <div class="span4">
         <div class="well">
             <h3><small>最近加入<small></h3>
-            <?php echo CHtml::link('预览所有成员', array('group/member', 'id'=>$group->id)); ?>
+            <?php echo CHtml::link('预览所有成员', array('group/members', 'id'=>$group->id)); ?>
+            <div class="user_grid clearfix">
+                <?php foreach ($last_members as $member) { ?>
+                    <div class="item">
+                        <?php $image = CHtml::image($member->user->avatar);
+                        echo CHtml::link($image, array('user/view', 'id'=>$member->user->id)); ?>
+                        <span class="username"><?php echo CHtml::link($member->user->username, array('user/view', 'id'=>$member->user->id)); ?></span>
+                    </div>
+                <?php } ?>
+            </div>
         </div>
     </div>
 </div>
