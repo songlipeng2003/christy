@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	Yii::t('model', 'Groups')=>array('index'),
+	Yii::t('model', 'Groups')=>array('group/'),
 	$model->name=>array('view','id'=>$model->id),
 	Yii::t('admin', 'Update'),
 );

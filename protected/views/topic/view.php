@@ -2,7 +2,7 @@
 /* @var $this TopicController */
 
 $this->breadcrumbs=array(
-	'小组'=>array('/groups'),
+	'小组'=>array('group/'),
     $topic->group->name=>array('group/view', 'id'=>$topic->group->id),
 	$topic->title,
 );

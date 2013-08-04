@@ -2,7 +2,7 @@
 $this->pageTitle=Yii::app()->name . ' - 小组 - '.$group->name;
 
 $this->breadcrumbs=array(
-	Yii::t('model', 'Groups')=>array('index'),
+	Yii::t('model', 'Groups')=>array('group/'),
 	$group->name,
 );
 
