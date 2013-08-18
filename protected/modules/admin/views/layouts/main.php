@@ -37,7 +37,7 @@
                 array('label'=>'用户管理', 'url'=>array('/admin/user')),
                 array('label'=>'网站管理', 'url'=>'#', 'items'=>array(
                     array('label'=>'文档管理', 'url'=>array('/admin/doc')),
-                    array('label'=>'网站配置', 'url'=>array('/admin/config')),
+                    array('label'=>'网站配置', 'url'=>array('/admin/settings')),
                 )),
                 array('label'=>'管理员登陆', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
             ),
