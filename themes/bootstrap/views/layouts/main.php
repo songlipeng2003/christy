@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
 
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+	<title><?php echo Yii::app()->settings->get('system', 'site_name'); ?></title>
 
 	<?php Yii::app()->bootstrap->register(); ?>
     <?php Yii::app()->clientScript->registerCSSFile('/css/common.css'); ?>
@@ -14,6 +14,7 @@
 <body>
 
 <?php $this->widget('bootstrap.widgets.TbNavbar',array(
+    'brand'=>Yii::app()->settings->get('system', 'site_name'),
     'items'=>array(
         array(
             'class'=>'bootstrap.widgets.TbMenu',
@@ -65,7 +66,7 @@
 	<div id="footer">
         <?php echo Chtml::link('关于我们', array('/site/page', 'view'=>'about')); ?>
         <?php echo Chtml::link('联系我们', array('/site/contact')); ?><br/>
-		Copyright &copy; <?php echo date('Y'); ?> by 佳美之处.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by <?php echo Yii::app()->settings->get('system', 'site_name'); ?>.<br/>
 		All Rights Reserved.
 	</div><!-- footer -->
 

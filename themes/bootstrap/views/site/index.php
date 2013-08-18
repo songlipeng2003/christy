@@ -1,8 +1,8 @@
 <?php $this->beginWidget('bootstrap.widgets.TbHeroUnit', array(
-    'heading'=>'欢迎来到佳美之处！',
+    'heading'=>'欢迎来到'.Yii::app()->settings->get('system', 'site_name').'!',
 )); ?>
  
-    <p>欢迎弟兄姊妹，来到佳美之处基督徒社区，愿为弟兄姊妹提供一个开发、信仰纯正的交流平台。</p>
+    <p><?php echo Yii::app()->settings->get('system', 'site_description');?></p>
     <p>
     <?php $this->widget('bootstrap.widgets.TbButton', array(
         'type'=>'primary',

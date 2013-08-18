@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+	<title><?php echo Yii::app()->settings->get('system', 'site_name'); ?></title>
     <script type="text/javascript">
     var SITE_URL = '<?php echo Yii::app()->getBaseUrl(true); ?>';
     </script>
@@ -15,6 +15,7 @@
 <body>
 
 <?php $this->widget('bootstrap.widgets.TbNavbar',array(
+    'brand'=>Yii::app()->settings->get('system', 'site_name'),
     'items'=>array(
         array(
             'class'=>'bootstrap.widgets.TbMenu',
@@ -67,7 +68,7 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by <?php echo Yii::app()->settings->get('system', 'site_name'); ?>.<br/>
 		All Rights Reserved.<br/>
 	</div><!-- footer -->
 
