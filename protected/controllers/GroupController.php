@@ -29,7 +29,7 @@ class GroupController extends Controller
 			array(
 				'allow',
 				'actions'=>array('index','view','members'),
-				'users'=>array('?'),
+				'users'=>array('*'),
 			),
 			array(
 				'deny',
