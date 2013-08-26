@@ -118,4 +118,10 @@ class Group extends CActiveRecord
 			$member->save();
 		}
 	}
+
+	public function afterDelete()
+	{
+		Member::model()->deleteAll('group_id='.$this->id);
+		Topic::model()->deleteAll('group_id='.$this->id);
+	}
 }

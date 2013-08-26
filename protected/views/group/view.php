@@ -19,7 +19,7 @@ $this->menu=array(
             <?php 
             if($group->user_id==Yii::app()->user->id){
                 echo CHtml::link('更新信息', array('group/update', 'id'=>$group->id));
-                echo CHtml::link('删除群组', array('group/delete', 'id'=>$group->id), array('confirm'=>'你确定要删除吗？这将删除小组所有信息！')); 
+                echo CHtml::link('删除群组', array('group/delete', 'id'=>$group->id), array('submit'=>array('group/delete', 'id'=>$group->id), 'confirm'=>'你确定要删除吗？这将删除小组所有信息！')); 
             }else{
                 if($member){
                     echo CHtml::link('退出', array('member/delete', 'group_id'=>$group->id));
