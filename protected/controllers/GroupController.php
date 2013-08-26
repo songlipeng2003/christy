@@ -2,11 +2,6 @@
 
 class GroupController extends Controller
 {
-	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
-	public $layout='/layouts/main';
 
 	/**
 	 * @return array action filters
@@ -26,13 +21,20 @@ class GroupController extends Controller
 	public function accessRules()
 	{
 		return array(
-			// array('allow',
-			// 	'actions'=>array('index','view','create','update','delete'),
-			// 	'users'=>array('admin'),
-			// ),
-			// array('deny',  // deny all users
-			// 	'users'=>array('*'),
-			// ),
+			array(
+				'allow',
+				'actions'=>array('create','update','delete', 'createTopic'),
+				'users'=>array('@'),
+			),
+			array(
+				'allow',
+				'actions'=>array('index','view','members'),
+				'users'=>array('?'),
+			),
+			array(
+				'deny',
+				'users'=>array('*')
+			)
 		);
 	}
 
