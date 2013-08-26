@@ -98,7 +98,8 @@ class Group extends CActiveRecord
 		));
 	}
 
-	public function behaviors(){
+	public function behaviors()
+	{
 		return array(
 			'CTimestampBehavior' => array(
 				'class' => 'zii.behaviors.CTimestampBehavior',
@@ -106,5 +107,15 @@ class Group extends CActiveRecord
 				'updateAttribute' => 'updated_at',
 			)
 		);
+	}
+
+	public function afterSave()
+	{
+		if($this->isNewRecord){
+			$member = new Member();
+			$member->user_id = $this->user_id;
+			$member->group_id = $this->id;
+			$member->save();
+		}
 	}
 }
