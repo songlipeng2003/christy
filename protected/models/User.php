@@ -39,23 +39,20 @@ class User extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
 		return array(
-			array('username, password, config_password, email', 'required','on'=>'Register'),
-			array('email', 'required','on'=>'ModifyEmail'),
-			array('username, email', 'required','on'=>'Register'),
-			array('password, config_password, old_password', 'required','on'=>'ModifyPass'),
-			array('username, password, sex, tel, email, qq', 'length', 'max'=>255),
-			array('config_password', 'compare', 'allowEmpty'=>false, 'compareAttribute'=>'password', 'message'=>'两次密码必须一致','on'=>'Register,ModifyPass'),
-			array('username, email', 'unique'),
 			array('username, password, email', 'required'),
+			array('password, config_password, old_password', 'required','on'=>'ModifyPass'),
+			array('password, sex, tel, email, qq', 'length', 'max'=>32),
+			array('config_password', 'compare', 'allowEmpty'=>false, 'compareAttribute'=>'password', 'message'=>'两次密码必须一致','on'=>'Register'),
 			array('emailActive', 'numerical', 'integerOnly'=>true),
-			array('username, password, sex, tel, email, qq', 'length', 'max'=>255),
+			array('username, email', 'unique'),
+			array('username', 'length', 'min'=>5, 'max'=>20),
+			array('username', 'match','pattern' => '/^[\x{4e00}-\x{9fa5},]+|[\w\s,]$/u', 'message' => '必须为英文或汉字'),
+			array('email', 'email'),
+			array('password', 'length', 'min'=>3, 'max'=>32),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, username, password, sex, tel, email, qq, emailActive', 'safe', 'on'=>'search'),
-			array('username', 'match','pattern' => '/^[\x{4e00}-\x{9fa5},]+|[\w\s,]+$/u', 'message' => '必须为英文或汉字'),
 		);
 	}
 
