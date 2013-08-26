@@ -40,7 +40,7 @@ class Group extends CActiveRecord
 			array('user_id, name, summary', 'required'),
 			array('name', 'unique'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>255),
+			array('name', 'length', 'max'=>20),
 			array('summary', 'length', 'min'=>10, 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
