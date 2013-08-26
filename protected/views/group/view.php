@@ -15,7 +15,7 @@ $this->menu=array(
 <div class="row">
     <div class="span8">
         <div>
-            <h1><?php echo $group->name; ?></h1>
+            <h1><?php echo CHtml::encode($group->name); ?></h1>
             <?php 
             if($group->user_id==Yii::app()->user->id){
                 echo CHtml::link('更新信息', array('group/update', 'id'=>$group->id));
@@ -32,7 +32,7 @@ $this->menu=array(
 
         <div class="well">
             <p>创建于:<?php echo Yii::app()->dateFormatter->formatDateTime($group->created_at, 'medium', false); ?> 组长:<?php echo $group->user->username ?></p>
-            <p><?php echo $group->summary ?></p>
+            <p><?php echo CHtml::encode($group->summary) ?></p>
         </div>
 
         <div class="row">
