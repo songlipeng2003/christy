@@ -75,6 +75,36 @@ class SiteController extends Controller
 		$this->render('contact',array('model'=>$model));
 	}
 
+    /**
+     * Registers a new model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     */
+    public function actionRegister()
+    {
+        $model=new User('Register');
+
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
+
+        if(isset($_POST['User']))
+        {
+            $model->attributes=$_POST['User'];
+            $model->password=md5($_POST['User']['password']);
+            $model->config_password=md5($_POST['User']['config_password']);
+            if($model->save())
+            {
+                Yii::app()->user->setFlash('success', Yii::t('common', 'Register succesfully'));
+                $this->redirect(array('/site/login'));
+            }else{
+                Yii::app()->user->setFlash('error', Yii::t('common', 'Register failed'));
+            }
+        }
+
+        $this->render('register',array(
+            'model'=>$model,
+        ));
+    }
+
 	/**
 	 * Displays the login page
 	 */
