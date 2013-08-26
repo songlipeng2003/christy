@@ -24,7 +24,7 @@ $this->breadcrumbs=array(
     <?php echo $form->textFieldRow($model,'site_description',array('class'=>'span5','maxlength'=>255)); ?>
     <?php echo $form->textFieldRow($model,'telephone',array('class'=>'span5','maxlength'=>255)); ?>
     <?php echo $form->textFieldRow($model,'email',array('class'=>'span5','maxlength'=>255)); ?>
-    <?php echo $form->textAreaRow($model,'about_us'); ?>
+    <?php echo $form->html5EditorRow($model,'about_us'); ?>
 
     <div class="form-actions">
         <?php $this->widget('bootstrap.widgets.TbButton', array(
