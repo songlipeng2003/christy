@@ -53,7 +53,9 @@ $this->breadcrumbs=array(
                     <?php echo $form->hiddenField($collection, 'type' ); ?>
                     <?php echo $form->radioButtonListInlineRow($collection, 'status', 
                         array('1'=>'想读', '2'=>'在读', '3'=>'已读')); ?>
-                    <?php echo $form->textFieldRow($collection, 'rating'); ?>
+                    <?php echo $form->labelEx($collection, 'rating'); ?>
+                    <?php $this->widget('CStarRating',array('name'=>'Collection[rating]', 'value'=>$collection->rating, 'htmlOptions'=>array('class'=>'clearfix'))); ?>
+                    <?php echo $form->error($collection, 'rating'); ?>
                     <?php echo $form->textFieldRow($collection, 'tags'); ?>
                     <?php echo $form->textAreaRow($collection, 'comment'); ?>
                     <div class="form-actions">
@@ -94,7 +96,6 @@ $this->breadcrumbs=array(
             <?php /** @var BootActiveForm $form */
             $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                 'id'=>'review_form',
-                'type'=>'horizontal',
                 'action'=>array('review/create'),
                 'enableClientValidation'=>true,
                 'enableAjaxValidation'=>false,
@@ -105,7 +106,9 @@ $this->breadcrumbs=array(
                 <?php echo $form->errorSummary($review); ?>
                 <?php echo $form->hiddenField($review, 'object_id' ); ?>
                 <?php echo $form->hiddenField($review, 'type' ); ?>
-                <?php echo $form->textFieldRow($review, 'rating'); ?>
+                <?php echo $form->labelEx($review, 'rating'); ?>
+                <?php $this->widget('CStarRating',array('name'=>'Review[rating]', 'value'=>$review->rating, 'htmlOptions'=>array('class'=>'clearfix'))); ?>
+                <?php echo $form->error($review, 'rating'); ?><br/>
                 <?php echo $form->textFieldRow($review, 'title'); ?>
                 <?php echo $form->textAreaRow($review, 'content', array('rows'=>'10', 'class'=>'span4')); ?>
                 <div class="form-actions">
