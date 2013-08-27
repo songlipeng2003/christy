@@ -124,6 +124,15 @@ return array(
     'Review.created_at'=>'创建时间',
     'Review.updated_at'=>'更新时间',
 
+    'Comment'=>'评论',
+    'Comments'=>'评论',
+    'Comment.id'=>'编号',
+    'Comment.user'=>'用户',
+    'Comment.object'=>'对象',
+    'Comment.type'=>'类型',
+    'Comment.content'=>'内容',
+    'Comment.created_at'=>'创建时间',
+
     'Group'=>'小组',
     'Groups'=>'小组',
     'Group.id'=>'编号',

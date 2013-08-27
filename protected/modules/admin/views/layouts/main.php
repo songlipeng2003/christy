@@ -28,8 +28,11 @@
                     array('label'=>'图书管理', 'url'=>array('/admin/book')),
                 )),
                 array('label'=>'电影管理', 'url'=>array('/admin/movie')),
-                array('label'=>'收藏管理', 'url'=>array('/admin/collection')),
-                array('label'=>'评论管理', 'url'=>array('/admin/review')),
+                array('label'=>'收藏评论回复', 'url'=>'#', 'items'=>array(
+                    array('label'=>'收藏管理', 'url'=>array('/admin/collection')),
+                    array('label'=>'评论管理', 'url'=>array('/admin/review')),
+                    array('label'=>'回复管理', 'url'=>array('/admin/comment')),
+                )),
                 array('label'=>'群组管理', 'url'=>'#', 'items'=>array(
                     array('label'=>'群组管理', 'url'=>array('/admin/group')),
                     array('label'=>'群组成员管理', 'url'=>array('/admin/member')),
