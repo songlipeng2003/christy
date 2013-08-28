@@ -14,6 +14,9 @@ $this->breadcrumbs=array(
         <div class="">
             <?php echo $topic->content ?>
         </div>
+
+        <?php $this->widget('CommentsList', array('object_id'=>$topic->id, 'type'=>'Topic')); ?>
+
     </div>
     <div class="span4">
         <div class="well">

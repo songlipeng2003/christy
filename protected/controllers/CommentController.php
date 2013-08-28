@@ -42,14 +42,12 @@ class CommentController extends Controller
             $model->attributes=$_POST['Comment'];
             if($model->save())
             {
-                Yii::app()->user->setFlash('success', '评论成功');
+                Yii::app()->user->setFlash('success', '回复成功');
             }else{
-                Yii::app()->user->setFlash('error', '评论失败');
+                Yii::app()->user->setFlash('error', '回复失败');
             }
         }
-
-        if($model->type=1){
-            $this->redirect(array('/review/view', 'id'=>$model->object_id));
-        }
+        
+        $this->redirect(array('/'.strtolower($model->type).'/view', 'id'=>$model->object_id));
     }
 }

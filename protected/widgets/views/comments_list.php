@@ -4,7 +4,7 @@
         <?php echo CHtml::link($book_comment->user->username, array('user/view', 'id'=>$book_comment->user->id)) ?><br/>
         <img src="<?php echo $book_comment->user->avatar ?>" />
     </div>
-    <div class="span8">
+    <div class="span7">
         <div><?php echo $book_comment->content; ?></div>
     </div>
 </div>

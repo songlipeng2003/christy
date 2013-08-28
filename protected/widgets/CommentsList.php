@@ -22,7 +22,7 @@ class CommentsList extends CWidget
 
         $comment = new Comment();
         $comment->object_id = $this->object_id;
-        $comment->type = $type;
+        $comment->type = $this->type;
 
         $this->render('comments_list', array(
             'comments' => Comment::model()->findAll($criteria),
