@@ -80,13 +80,18 @@ $this->breadcrumbs=array(
             <h3>书籍评论</h3>
             <?php foreach ($reviews as $book_review) { ?>
             <div class="row">
-                <div class="span-3">
+                <div class="span1">
                     <?php echo CHtml::link($book_review->user->username, array('user/view', 'id'=>$book_review->user->id)) ?><br/>
                     <img src="<?php echo $book_review->user->avatar ?>" />
                 </div>
-                <div class="span-5">
-                    <h4><?php echo $book_review->title ?></h4>
-                    <?php echo $book_review->content; ?>
+                <div class="span8">
+                    <h4><?php echo CHtml::link($book_review->title, array('review/view', 'id'=>$book_review->id)); ?></h4>
+                    <div><?php echo $book_review->content; ?></div>
+                    <div class="clearfix">
+                        <div class="pull-right">
+                            <?php echo CHtml::link('编辑', array('review/update', 'id'=>$book_review->id)); ?>
+                        </div>
+                    </div>
                 </div>
             </div>
             <?php } ?>
