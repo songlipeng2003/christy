@@ -98,6 +98,7 @@ return array(
 		),
         'bootstrap'=>array(
             'class'=>'bootstrap.components.Bootstrap',
+	    	'responsiveCss' => true,
         ),
 		'cache'=>array(
             'class'=>'system.caching.CFileCache',
