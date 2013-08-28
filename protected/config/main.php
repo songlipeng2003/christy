@@ -20,6 +20,7 @@ return array(
 		'application.components.*',
 		'application.behaviors.*',
 		'application.helpers.*',
+		'application.widgets.*',
 		'application.extensions.yii-mail.*',
 	),
 
