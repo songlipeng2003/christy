@@ -40,9 +40,9 @@ class Comment extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, object_id, type', 'required'),
-			array('user_id, object_id, type', 'numerical', 'integerOnly'=>true),
-			array('content', 'safe'),
+			array('user_id, object_id, type, content', 'required'),
+			array('user_id, object_id', 'numerical', 'integerOnly'=>true),
+			
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, user_id, object_id, type, content, created_at', 'safe', 'on'=>'search'),

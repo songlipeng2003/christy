@@ -13,4 +13,4 @@
     <div class="span3"></div>
 </div>
 
-<?php $this->widget('CommentsList', array('object_id'=>$review->id, 'type'=>1)); ?>
+<?php $this->widget('CommentsList', array('object_id'=>$review->id, 'type'=>'Review')); ?>
