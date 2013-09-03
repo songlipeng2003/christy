@@ -15,7 +15,7 @@
 
 	<?php echo $form->textFieldRow($model,'name',array('class'=>'span5','maxlength'=>255)); ?>
 
-	<?php echo $form->textFieldRow($model,'destription',array('class'=>'span5','maxlength'=>255)); ?>
+	<?php echo $form->textAreaRow($model,'destription',array('class'=>'span5','rows'=>10)); ?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

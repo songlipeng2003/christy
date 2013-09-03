@@ -43,7 +43,6 @@ $('.search-form form').submit(function(){
 			'value'=>'CHtml::link($data->id,Yii::app()->createUrl("admin/author/view",array("id"=>$data->id)))',
 		),
 		'name',
-		'destription',
 		'created_at',
 		'updated_at',
 		array(
