@@ -22,8 +22,8 @@ $this->breadcrumbs=array(
             </div>
             <div class="span6">
                 <p>
-                    <?php if($book->author){ echo '作者:'.$book->author; } ?><br/>
-                    <?php if($book->press){ echo '出版社:'.$book->press; } ?><br/>
+                    <?php if($book->author){ echo '作者:'.$book->author->name; } ?><br/>
+                    <?php if($book->press){ echo '出版社:'.$book->press->name; } ?><br/>
                     <?php if($book->isbn){ echo 'ISBN:'.$book->isbn; } ?><br/>
                 </p>
             </div>
