@@ -30,11 +30,11 @@
 
 	<?php echo $form->textFieldRow($model,'subtitle',array('class'=>'span5','maxlength'=>255)); ?>
 
-	<?php echo $form->dropDownListRow($model,'category_id',CHtml::listData(Category::model()->findAll(), 'name', 'name')); ?>
+	<?php echo $form->dropDownListRow($model,'category_id',CHtml::listData(Category::model()->findAll(), 'id', 'name')); ?>
 
-	<?php echo $form->dropDownListRow($model,'author_id',CHtml::listData(Author::model()->findAll(), 'name', 'name')); ?>
+	<?php echo $form->dropDownListRow($model,'author_id',CHtml::listData(Author::model()->findAll(), 'id', 'name')); ?>
 
-	<?php echo $form->dropDownListRow($model,'press_id',CHtml::listData(Press::model()->findAll(), 'name', 'name')); ?>
+	<?php echo $form->dropDownListRow($model,'press_id',CHtml::listData(Press::model()->findAll(), 'id', 'name')); ?>
 
 	<?php echo $form->textFieldRow($model,'file',array('readonly'=>'true')); ?>
 	<div class="control-group ">

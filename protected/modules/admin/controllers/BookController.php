@@ -91,7 +91,6 @@ class BookController extends Controller
 
 		if(isset($_POST['Book']))
 		{
-			// var_dump($_POST['Book']);
 			$model->attributes=$_POST['Book'];
 			if($model->save())
 			{
