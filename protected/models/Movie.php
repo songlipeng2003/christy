@@ -46,7 +46,7 @@ class Movie extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title', 'required'),
+			array('title, image', 'required'),
 			array('duration', 'numerical', 'integerOnly'=>true),
 			array('title, original_title, aka, directors, casts, writers, website, languages, image', 'length', 'max'=>255),
 			array('pubdate, summary, created_at, updated_at', 'safe'),
@@ -137,7 +137,7 @@ class Movie extends CActiveRecord
 		if(!isset($this->oldAttributes['image']) || $this->image != $this->oldAttributes['image']){
 			$filePath = Yii::getPathOfAlias('webroot').'/upload/tmp/'.$this->image;
 			$targetPath = Yii::getPathOfAlias('webroot').'/upload/images/movie/originals/'.$this->image;
-			mkdir(Yii::getPathOfAlias('webroot').'/upload/images/movie/originals/', 0755, true);
+			@ mkdir(Yii::getPathOfAlias('webroot').'/upload/images/movie/originals/', 0755, true);
 			copy($filePath, $targetPath);
 
 			@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/movie/originals/'.$this->oldAttributes['image']);
@@ -155,7 +155,6 @@ class Movie extends CActiveRecord
     }
 
     protected function afterDelete(){
-    	// @ unlink(Yii::getPathOfAlias('webroot').'/upload/movie/'.$this->oldAttributes['video']);
     	@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/movie/originals/'.$this->oldAttributes['image']);
 		@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/movie/thumb/'.$this->oldAttributes['image']);
 		@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/movie/tiny/'.$this->oldAttributes['image']);

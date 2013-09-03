@@ -18,6 +18,14 @@
 
 	<?php echo $form->textFieldRow($model,'title',array('class'=>'span5','maxlength'=>255)); ?>
 
+	<?php echo $form->textFieldRow($model,'image',array('readonly'=>'true')); ?>
+	<div class="control-group ">
+		<label class="control-label"></label>
+		<div class="controls">
+			<div id="image_upload"></div>
+		</div>
+	</div>
+
 	<?php echo $form->textFieldRow($model,'original_title',array('class'=>'span5','maxlength'=>255)); ?>
 
 	<?php echo $form->textFieldRow($model,'aka',array('class'=>'span5','maxlength'=>255)); ?>
@@ -37,14 +45,6 @@
 	<?php echo $form->textFieldRow($model,'duration',array('class'=>'span5')); ?>
 
 	<?php echo $form->textAreaRow($model,'summary',array('rows'=>6, 'cols'=>50, 'class'=>'span8')); ?>
-
-	<?php echo $form->textFieldRow($model,'image',array('readonly'=>'true')); ?>
-	<div class="control-group ">
-		<label class="control-label"></label>
-		<div class="controls">
-			<div id="image_upload"></div>
-		</div>
-	</div>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
