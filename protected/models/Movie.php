@@ -49,7 +49,8 @@ class Movie extends CActiveRecord
 			array('title, image, pubdate', 'required'),
 			array('duration', 'numerical', 'integerOnly'=>true),
 			array('title, original_title, aka, directors, casts, writers, website, languages, image', 'length', 'max'=>255),
-			array('summary, created_at, updated_at', 'safe'),
+			array('website', 'url'),
+			array('summary', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, title, original_title, aka, directors, casts, writers, website, pubdate, languages, duration, summary, created_at, updated_at', 'safe', 'on'=>'search'),
