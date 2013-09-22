@@ -46,10 +46,10 @@ class Movie extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, image', 'required'),
+			array('title, image, pubdate', 'required'),
 			array('duration', 'numerical', 'integerOnly'=>true),
 			array('title, original_title, aka, directors, casts, writers, website, languages, image', 'length', 'max'=>255),
-			array('pubdate, summary, created_at, updated_at', 'safe'),
+			array('summary, created_at, updated_at', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, title, original_title, aka, directors, casts, writers, website, pubdate, languages, duration, summary, created_at, updated_at', 'safe', 'on'=>'search'),
@@ -82,7 +82,7 @@ class Movie extends CActiveRecord
 			'writers' => Yii::t('model', 'Movie.writers'),
 			'website' => Yii::t('model', 'Movie.website'),
 			'pubdate' => Yii::t('model', 'Movie.pubdate'),
-			'languages' => Yii::t('model', 'Movie.id'),
+			'languages' => Yii::t('model', 'Movie.languages'),
 			'duration' => Yii::t('model', 'Movie.duration'),
 			'summary' => Yii::t('model', 'Movie.summary'),
 			'created_at' => Yii::t('model', 'Movie.created_at'),

@@ -38,7 +38,25 @@
 
 	<?php echo $form->textFieldRow($model,'website',array('class'=>'span5','maxlength'=>255)); ?>
 
-	<?php echo $form->textFieldRow($model,'pubdate',array('class'=>'span5')); ?>
+	<div class="control-group ">
+		<?php echo $form->labelEx($model,'pubdate',array('class'=>'control-label')); ?>
+		<div class="controls">
+			<?php
+			$this->widget('zii.widgets.jui.CJuiDatePicker',array(
+				'attribute'=>'pubdate',
+				'language'=>'zh_cn',
+				'model'=>$model,
+				'name'=>$model->pubdate,
+				'options'=>array(
+					'showAnim'=>'fold',
+					'showOn'=>'both',
+					'dateFormat'=>'yy-mm-dd',
+				),
+			));
+			?>
+		</div>
+		<?php echo $form->error($model,'pubdate'); ?>
+	</div>
 
 	<?php echo $form->textFieldRow($model,'languages',array('class'=>'span5','maxlength'=>255)); ?>
 
