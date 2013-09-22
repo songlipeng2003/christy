@@ -2,11 +2,6 @@
 <?php $this->beginContent('/layouts/main'); ?>
 <div class="row">
     <div class="span12">
-        <?php 
-        foreach($this->menu as $menu){
-            $this->widget('bootstrap.widgets.TbButton', $menu);
-        }
-        ?>
         <div id="content">
             <?php
                 $this->widget('bootstrap.widgets.TbAlert', array(
@@ -21,6 +16,11 @@
             ?>
             <?php echo $content; ?>
         </div><!-- content -->
+        <?php 
+        foreach($this->menu as $menu){
+            $this->widget('bootstrap.widgets.TbButton', $menu);
+        }
+        ?>
     </div>
 </div>
 <?php $this->endContent(); ?>
