@@ -148,6 +148,11 @@ return array(
 						    'big' => array('width' => 340, 'height' => 400),
 						    'thumb' => array('width' => 85, 'height' => 100),
 				    	),
+				    	'movie' => array(
+						    'tiny' => array('width' => 70, 'height' => 100),
+						    'big' => array('width' => 280, 'height' => 400),
+						    'thumb' => array('width' => 140, 'height' => 200),
+				    	),
 					),
                 ),
             ),

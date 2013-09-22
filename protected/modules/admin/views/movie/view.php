@@ -17,6 +17,16 @@ $this->menu=array(
 	'attributes'=>array(
 		'id',
 		'title',
+		array(
+			'name'=>'image',
+			'value'=>$this->widget('ext.SAImageDisplayer', array(
+                'image' => $model->image,
+                'group' => 'movie',
+                'size' => 'big',
+                'defaultImage' => 'default.jpg',
+            ), true),
+            'type'=>'raw',
+		),
 		'original_title',
 		'aka',
 		'directors',
