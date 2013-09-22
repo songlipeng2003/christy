@@ -39,18 +39,9 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'id',
 		'title',
-		'original_title',
 		'aka',
 		'directors',
 		'casts',
-		/*
-		'writers',
-		'website',
-		'pubdate',
-		'languages',
-		'duration',
-		'summary',
-		*/
 		'created_at',
 		'updated_at',
 		array(
