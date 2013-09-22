@@ -8,7 +8,7 @@
         'type'=>'primary',
         'size'=>'large',
         'label'=>'加入网站',
-        'url'=>array('user/register')
+        'url'=>array('site/register')
     )); ?>
     <?php $this->widget('bootstrap.widgets.TbButton', array(
         'type'=>'primary',
