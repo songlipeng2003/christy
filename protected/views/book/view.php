@@ -22,9 +22,14 @@ $this->breadcrumbs=array(
             </div>
             <div class="span6">
                 <p>
-                    <?php if($book->author){ echo '作者:'.$book->author->name; } ?><br/>
-                    <?php if($book->press){ echo '出版社:'.$book->press->name; } ?><br/>
-                    <?php if($book->isbn){ echo 'ISBN:'.$book->isbn; } ?><br/>
+                    <?php if($book->isbn){ echo Yii::t('model', 'Book.isbn').':'.$book->isbn.'<br/>'; } ?>
+                    <?php if($book->origin_title){ echo Yii::t('model', 'Book.origin_title').':'.$book->origin_title.'<br/>'; } ?>
+                    <?php if($book->alt_title){ echo Yii::t('model', 'Book.alt_title').':'.$book->alt_title.'<br/>'; } ?>
+                    <?php if($book->subtitle){ echo Yii::t('model', 'Book.subtitle').':'.$book->subtitle.'<br/>'; } ?>
+                    <?php if($book->price){ echo Yii::t('model', 'Book.price').':'.$book->price.'<br/>'; } ?>
+                    <?php if($book->press_date){ echo Yii::t('model', 'Book.press_date').':'.$book->press_date.'<br/>'; } ?>
+                    <?php if($book->word_number){ echo Yii::t('model', 'Book.word_number').':'.$book->word_number.'<br/>'; } ?>
+                    <?php if($book->pages){ echo Yii::t('model', 'Book.pages').':'.$book->pages.'<br/>'; } ?>
                 </p>
             </div>
         </div>
