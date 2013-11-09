@@ -11,7 +11,7 @@ $this->breadcrumbs=array(
 <div class="row">
     <div class="span9">
         <h1><?php echo $book->name; ?></h1>
-        <div class="row">
+        <div class="row base_info">
             <div class="span2">
                 <?php $this->widget('ext.SAImageDisplayer', array(
                     'image' => $book->image,
@@ -29,11 +29,11 @@ $this->breadcrumbs=array(
             </div>
         </div>
 
-        <div class="">
-            <!-- Button to trigger modal -->
-            <a href="#collection_modal" role="button" class="btn" data-toggle="modal">想读</a>
-            <a href="#collection_modal" role="button" class="btn" data-toggle="modal">在读</a>
-            <a href="#collection_modal" role="button" class="btn" data-toggle="modal">已读</a>
+        <div class="well">
+                <!-- Button to trigger modal -->
+                <a href="#collection_modal" role="button" class="btn" data-toggle="modal">想读</a>
+                <a href="#collection_modal" role="button" class="btn" data-toggle="modal">在读</a>
+                <a href="#collection_modal" role="button" class="btn" data-toggle="modal">已读</a>
              
             <!-- Modal -->
             <div id="collection_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -1,3 +1,10 @@
+/* 覆盖bootstrap的样式开始 */
+.breadcrumb{
+    padding-left: 0px;
+    margin-bottom: 0;
+}
+/* 覆盖bootstrap的样式结束 */
+
 #page {
     padding-top: 60px;
 }
@@ -44,6 +51,10 @@
 
 .user_grid .item .username{
     display: block;
+}
+
+.base_info{
+    margin-bottom: 10px;
 }
 
 #footer{
