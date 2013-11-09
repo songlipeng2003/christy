@@ -178,4 +178,8 @@ class Book extends CActiveRecord
 		@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/book/tiny/'.$this->oldAttributes['image']);
 		@ unlink(Yii::getPathOfAlias('webroot').'/upload/images/book/big/'.$this->oldAttributes['image']);
     }
+
+    public function getFileUrl(){
+    	return '/upload/book/'.$this->file;
+    }
 }

@@ -30,10 +30,12 @@ $this->breadcrumbs=array(
         </div>
 
         <div class="well">
+            <p>
                 <!-- Button to trigger modal -->
                 <a href="#collection_modal" role="button" class="btn" data-toggle="modal">想读</a>
                 <a href="#collection_modal" role="button" class="btn" data-toggle="modal">在读</a>
                 <a href="#collection_modal" role="button" class="btn" data-toggle="modal">已读</a>
+            </p>
              
             <!-- Modal -->
             <div id="collection_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -42,7 +44,7 @@ $this->breadcrumbs=array(
                 <h3 id="myModalLabel">添加收藏</h3>
               </div>
               <div class="modal-body">
-                <?php /** @var BootActiveForm $form */
+                <?php
                 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                     'id'=>'collection_form',
                     'action'=>array('collection/create'),
@@ -64,6 +66,10 @@ $this->breadcrumbs=array(
                 <?php $this->endWidget(); ?>
               </div>
             </div>
+
+            <p>
+                <a href="<?php echo $book->getFileUrl(); ?>" class="btn btn-primary">下载电子书</a>
+            </p>
         </div>
 
         <div class="summary">
