@@ -8,6 +8,7 @@
 	<title><?php echo Yii::app()->settings->get('system', 'site_name'); ?></title>
 
 	<?php Yii::app()->bootstrap->register(); ?>
+    <?php Yii::app()->clientScript->registerScriptFile("/js/common.js"); ?>
     <?php Yii::app()->clientScript->registerCSSFile('/css/common.css'); ?>
 </head>
 

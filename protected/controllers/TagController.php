@@ -12,9 +12,13 @@ class TagController extends Controller
             $tags = Tag::model()->findAll($criteria);
             $result = [];
             foreach ($tags as $tag) {
-                
+                $result[] = array(
+                    'id' => $tag->id,
+                    'label' => $tag->name,
+                    'value' => $tag->name
+                );
             }
-            $this->renderJSON();
+            $this->renderJSON($result);
         }
     }
 }

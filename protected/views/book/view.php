@@ -66,12 +66,29 @@ $this->breadcrumbs=array(
                     <label for="tags">标签</label>
                     <?php $this->widget('zii.widgets.jui.CJuiAutoComplete',array(
                         'name'=>'tags',
-                        // 'sourceUrl'=> CHtml::normalizeUrl(array('tag/autoComplete')),
+                        'source'=> 'js:function( request, response ) {
+                            $.getJSON( "/tag/autocomplete", {
+                                term: extractLast( request.term )
+                            }, response );
+                        }',
                         'value'=>$collection->tagsText,
                         // additional javascript options for the autocomplete plugin
-                        // 'options'=>array(
-                        //     'minLength'=>'1',
-                        // ),
+                        'options'=>array(
+                            'search'=>'js:function() {
+                                var term = extractLast( this.value );
+                                if ( term.length < 1 ) {
+                                    return false;
+                                }
+                            }',
+                            'select'=>'js:function( event, ui ) {
+                                var terms = split( this.value );
+                                terms.pop();
+                                terms.push( ui.item.value );
+                                terms.push( "" );
+                                this.value = terms.join( ", " );
+                                return false;
+                            }'
+                        ),
                     )); ?>
                     <?php echo $form->textAreaRow($collection, 'comment'); ?>
                     <div class="form-actions">
