@@ -63,7 +63,16 @@ $this->breadcrumbs=array(
                     <?php echo $form->labelEx($collection, 'rating'); ?>
                     <?php $this->widget('CStarRating',array('name'=>'Collection[rating]', 'value'=>$collection->rating, 'htmlOptions'=>array('class'=>'clearfix'))); ?>
                     <?php echo $form->error($collection, 'rating'); ?>
-                    <?php echo $form->textFieldRow($collection, 'tags'); ?>
+                    <label for="tags">标签</label>
+                    <?php $this->widget('zii.widgets.jui.CJuiAutoComplete',array(
+                        'name'=>'tags',
+                        // 'sourceUrl'=> CHtml::normalizeUrl(array('tag/autoComplete')),
+                        'value'=>$collection->tagsText,
+                        // additional javascript options for the autocomplete plugin
+                        // 'options'=>array(
+                        //     'minLength'=>'1',
+                        // ),
+                    )); ?>
                     <?php echo $form->textAreaRow($collection, 'comment'); ?>
                     <div class="form-actions">
                         <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'primary', 'label'=>'提交')); ?>

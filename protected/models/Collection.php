@@ -17,8 +17,6 @@
  */
 class Collection extends CActiveRecord
 {
-	const TYPE_BOOK = 1;
-
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -46,9 +44,9 @@ class Collection extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('user_id, object_id, type, status', 'required'),
-			array('user_id, object_id, type, status, rating', 'numerical', 'integerOnly'=>true),
-			array('tags, comment', 'length', 'max'=>255),
-			array('created_at, updated_at', 'safe'),
+			array('user_id, object_id, status, rating', 'numerical', 'integerOnly'=>true),
+			array('comment, type', 'length', 'max'=>255),
+
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, user_id, object_id, type, status, rating, tags, comment, created_at, updated_at', 'safe', 'on'=>'search'),
@@ -118,7 +116,23 @@ class Collection extends CActiveRecord
 				'class' => 'zii.behaviors.CTimestampBehavior',
 				'createAttribute' => 'created_at',
 				'updateAttribute' => 'updated_at',
+			),
+			'tags' => array(
+				'class' => 'application.extensions.taggable.ETaggableBehavior',
+				'tagTableCondition' => "type='BOOK'",
+        		'tagBindingTable' => 'collection_tag',
+            	'modelTableFk' => 'collection_id',
+        		'tagBindingTableTagId' => 'tag_id',
+	        	'insertValues' => array(
+	                'user_id' => Yii::app()->user->id,
+	                'type'=>'BOOK'
+	            ),
 			)
 		);
+	}
+
+	public function getTagsText(){
+		$tags = $this->getTags();
+		return implode(',', $tags);
 	}
 }

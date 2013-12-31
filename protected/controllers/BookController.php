@@ -64,13 +64,13 @@ class BookController extends Controller
 
         $collection = Collection::model()->findByAttributes(array(
             'user_id'=>Yii::app()->user->id, 
-            'type'=>Collection::TYPE_BOOK,
+            'type'=>'Book',
             'object_id'=>$id
         ));
 
         if(!$collection){
             $collection = new Collection;
-            $collection->type = Collection::TYPE_BOOK;
+            $collection->type = 'Book';
             $collection->object_id = $id;
         }
 

@@ -20,6 +20,7 @@ class CollectionController extends Controller
 		if(isset($_POST['Collection']))
 		{
 			$model->attributes=$_POST['Collection'];
+			$model->tags->setTags($_POST['tags']);
 			if($model->save())
 			{
 				Yii::app()->user->setFlash('success', '收藏成功');
