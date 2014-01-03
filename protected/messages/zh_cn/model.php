@@ -50,6 +50,16 @@ return array(
     'Book.created_at'=>'创建时间',
     'Book.updated_at'=>'更新时间',
 
+    'BookOrder'=>'书籍订单',
+    'BookOrders'=>'书籍订单',
+    'BookOrder.id'=>'书籍订单',
+    'BookOrder.user'=>'用户',
+    'BookOrder.book'=>'书籍',
+    'BookOrder.status'=>'状态',
+    'BookOrder.download_times'=>'下载次数',
+    'BookOrder.created_at'=>'创建时间',
+    'BookOrder.updated_at'=>'更新时间',
+
     'User'=>'用户',
     'Users'=>'用户',
     'User.username'=>'用户名',

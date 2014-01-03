@@ -26,6 +26,7 @@
                     array('label'=>'作者管理', 'url'=>array('/admin/author')),
                     array('label'=>'出版社管理', 'url'=>array('/admin/press')),
                     array('label'=>'图书管理', 'url'=>array('/admin/book')),
+                    array('label'=>'图书订单管理', 'url'=>array('/admin/bookOrder')),
                 )),
                 array('label'=>'电影管理', 'url'=>array('/admin/movie')),
                 array('label'=>'收藏评论回复', 'url'=>'#', 'items'=>array(
