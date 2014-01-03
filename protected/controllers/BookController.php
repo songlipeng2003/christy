@@ -74,6 +74,11 @@ class BookController extends Controller
             $collection->object_id = $id;
         }
 
+        $bookOrder = BookOrder::model()->findByAttributes(array(
+            'user_id'=>Yii::app()->user->id, 
+            'book_id'=>$id,
+        ));
+
         $reviews = Review::model()->findAllByAttributes(
             array(
                 'object_id'=>$id,
@@ -93,7 +98,8 @@ class BookController extends Controller
 			'book'=>$book,
             'collection'=>$collection,
             'reviews'=>$reviews,
-            'review'=>$review
+            'review'=>$review,
+            'bookOrder'=>$bookOrder
 		));
 	}
 
@@ -131,5 +137,31 @@ class BookController extends Controller
         );
 
         echo $json;
+    }
+
+    public function actionBuy($id)
+    {
+        $book=Book::model()->findByPk($id);
+        if($book===null){
+            throw new CHttpException(404,'The requested page does not exist.');
+        }
+
+        $bookOrder = BookOrder::model()->findByAttributes(array(
+            'user_id'=>Yii::app()->user->id, 
+            'book_id'=>$id,
+        ));
+
+        if(!$bookOrder){
+            $bookOrder = new BookOrder();
+            $bookOrder->user_id = Yii::app()->user->id;
+            $bookOrder->book_id = $id;
+            $bookOrder->save();
+
+            Yii::app()->user->setFlash('success', '购买成功，请点击下载');
+        }else{
+            Yii::app()->user->setFlash('success', '已经购买，请点击下载');
+        }
+
+        $this->redirect(array('/book/view', 'id'=>$id));
     }
 }

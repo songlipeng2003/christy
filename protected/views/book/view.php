@@ -99,7 +99,13 @@ $this->breadcrumbs=array(
             </div>
 
             <p>
-                <a href="<?php echo $book->getFileUrl(); ?>" class="btn btn-primary">下载电子书</a>
+                <?php 
+                if($bookOrder){
+                    echo CHtml::link('下载电子书', $book->getFileUrl(), array('class'=>'btn btn-primary'));
+                }else{
+                    echo CHtml::link('购买', array('book/buy', 'id'=>$book->id), array('class'=>'btn btn-primary'));
+                }
+                ?>
             </p>
         </div>
 
